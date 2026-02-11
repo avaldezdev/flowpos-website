@@ -1,0 +1,150 @@
+# Netlify Configuration for FlowPOS Website
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # Directory to publish (root directory for static site)
+  publish = "."
+
+  # No build command needed for static HTML site
+  command = ""
+
+# Production context: all deploys from the main branch
+[context.production.environment]
+  NODE_ENV = "production"
+
+# Deploy Preview context: all deploys from pull requests
+[context.deploy-preview.environment]
+  NODE_ENV = "preview"
+
+# Branch deploys: all deploys from branches that aren't main
+[context.branch-deploy.environment]
+  NODE_ENV = "development"
+
+# Headers for all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Cache control for static assets
+    Cache-Control = "public, max-age=3600"
+
+    # Content Security Policy
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com;
+      style-src 'self' 'unsafe-inline' https://unpkg.com;
+      img-src 'self' data: https:;
+      font-src 'self' data:;
+      connect-src 'self' https://api.github.com;
+      frame-ancestors 'none';
+    """
+
+# Cache CSS and JS files for longer
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Cache images for longer
+[[headers]]
+  for = "/*.{jpg,jpeg,png,gif,svg,ico,webp}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirects for download shortcuts
+[[redirects]]
+  from = "/download"
+  to = "/descargas.html"
+  status = 301
+
+[[redirects]]
+  from = "/download/latest"
+  to = "https://github.com/flowpos/flowpos/releases/latest"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/download/windows"
+  to = "https://github.com/flowpos/flowpos/releases/latest/download/FlowPOS-Setup-2.0.0.exe"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/download/mac"
+  to = "https://github.com/flowpos/flowpos/releases/latest/download/FlowPOS-2.0.0.dmg"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/download/linux"
+  to = "https://github.com/flowpos/flowpos/releases/latest/download/FlowPOS-2.0.0.AppImage"
+  status = 302
+  force = true
+
+# Redirect /activate to activation page
+[[redirects]]
+  from = "/activate"
+  to = "/activacion.html"
+  status = 301
+
+[[redirects]]
+  from = "/activation"
+  to = "/activacion.html"
+  status = 301
+
+# Redirect /downloads to descargas page
+[[redirects]]
+  from = "/downloads"
+  to = "/descargas.html"
+  status = 301
+
+# SPA fallback (optional, for future React/Vue conversion)
+# [[redirects]]
+#   from = "/*"
+#   to = "/index.html"
+#   status = 200
+
+# Custom 404 page (optional - create 404.html if needed)
+# [[redirects]]
+#   from = "/*"
+#   to = "/404.html"
+#   status = 404
+
+# Form handling (if you add contact forms later)
+# [build.processing]
+#   skip_processing = false
+
+# [build.processing.css]
+#   bundle = true
+#   minify = true
+
+# [build.processing.js]
+#   bundle = true
+#   minify = true
+
+# [build.processing.html]
+#   pretty_urls = true
+
+# [build.processing.images]
+#   compress = true
+
+# Plugins (optional - can be added later)
+# [[plugins]]
+#   package = "@netlify/plugin-sitemap"
+
+# [[plugins]]
+#   package = "netlify-plugin-minify-html"
+
+# Environment variables (set in Netlify UI)
+# GITHUB_TOKEN - for accessing private repos if needed
+# CONTACT_EMAIL - for form submissions

@@ -1,0 +1,74 @@
+{
+  "latest": {
+    "version": "2.0.0",
+    "date": "2026-02-11",
+    "releaseNotes": {
+      "new": [
+        "Sistema de licencias implementado con hardware binding",
+        "Sistema de crédito/libreta para clientes",
+        "Importación/exportación masiva de productos desde Excel",
+        "Sistema de permisos de caja por usuario",
+        "Una sesión activa por usuario en todo el sistema",
+        "Sistema de reimpresión de documentos (cumple normativa SET)"
+      ],
+      "improved": [
+        "Vista previa de tickets con HTML pre-generado",
+        "Mejoras significativas en UX y navegación por teclado",
+        "Optimización de rendimiento en carga de datos"
+      ],
+      "fixed": [
+        "Corrección de bugs menores en reportes",
+        "Mejoras de estabilidad en impresión térmica"
+      ]
+    },
+    "downloads": {
+      "windows": "https://github.com/flowpos/flowpos/releases/download/v2.0.0/FlowPOS-Setup-2.0.0.exe",
+      "mac": "https://github.com/flowpos/flowpos/releases/download/v2.0.0/FlowPOS-2.0.0.dmg",
+      "linux": "https://github.com/flowpos/flowpos/releases/download/v2.0.0/FlowPOS-2.0.0.AppImage"
+    },
+    "sizes": {
+      "windows": 157286400,
+      "mac": 167772160,
+      "linux": 162529280
+    }
+  },
+  "previous": [
+    {
+      "version": "1.5.0",
+      "date": "2025-12-15",
+      "releaseNotes": {
+        "new": [
+          "Sistema de pedidos y órdenes de entrega",
+          "Gestión de devoluciones parciales y totales",
+          "Mejoras en reportes y exportaciones"
+        ]
+      },
+      "downloads": {
+        "windows": "https://github.com/flowpos/flowpos/releases/download/v1.5.0/FlowPOS-Setup-1.5.0.exe",
+        "mac": "https://github.com/flowpos/flowpos/releases/download/v1.5.0/FlowPOS-1.5.0.dmg",
+        "linux": "https://github.com/flowpos/flowpos/releases/download/v1.5.0/FlowPOS-1.5.0.AppImage"
+      }
+    },
+    {
+      "version": "1.4.0",
+      "date": "2025-11-01",
+      "releaseNotes": {
+        "new": [
+          "Sistema de backups automáticos",
+          "Múltiples métodos de pago por venta",
+          "Dashboard mejorado con gráficos"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2026-02-11T15:30:00Z",
+    "repository": "https://github.com/flowpos/flowpos",
+    "website": "https://flowpos.netlify.app",
+    "support": {
+      "email": "soporte@flowpos.com",
+      "whatsapp": "+595XXXXXXXXX",
+      "docs": "https://docs.flowpos.com"
+    }
+  }
+}

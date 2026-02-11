@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FlowPOS - Sistema de Punto de Venta Local Profesional para negocios en Paraguay. Offline-first, completo y fácil de usar.">
+    <meta name="keywords" content="POS, punto de venta, Paraguay, sistema de ventas, facturación, inventario">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flowpos.netlify.app/">
+    <meta property="og:title" content="FlowPOS - Sistema de Punto de Venta Profesional">
+    <meta property="og:description" content="Sistema POS completo para tu negocio. Funciona sin internet, gestión completa de productos, clientes, inventario y más.">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://flowpos.netlify.app/">
+    <meta property="twitter:title" content="FlowPOS - Sistema de Punto de Venta Profesional">
+    <meta property="twitter:description" content="Sistema POS completo para tu negocio. Funciona sin internet, gestión completa de productos, clientes, inventario y más.">
+
+    <title>FlowPOS - Sistema de Punto de Venta Profesional</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="shopping-bag" class="text-white" width="24" height="24"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">FlowPOS</span>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#features" class="text-gray-600 hover:text-blue-600 transition">Características</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-blue-600 transition">Planes</a>
+                    <a href="descargas.html" class="text-gray-600 hover:text-blue-600 transition">Descargas</a>
+                    <a href="activacion.html" class="text-gray-600 hover:text-blue-600 transition">Activación</a>
+                </div>
+                <a href="descargas.html" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                    Descargar Gratis
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h1 class="text-5xl font-bold mb-6">
+                        Sistema de Punto de Venta <span class="text-blue-200">Profesional</span>
+                    </h1>
+                    <p class="text-xl mb-8 text-blue-100">
+                        Gestiona tu negocio de manera eficiente con FlowPOS. Funciona sin internet, completo y fácil de usar.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="descargas.html" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center space-x-2">
+                            <i data-lucide="download" width="20" height="20"></i>
+                            <span>Descargar Gratis</span>
+                        </a>
+                        <a href="#features" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
+                            Ver Características
+                        </a>
+                    </div>
+                    <div class="mt-8 flex items-center space-x-4">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="check-circle" class="text-green-300" width="20" height="20"></i>
+                            <span class="text-sm">Funciona sin internet</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="check-circle" class="text-green-300" width="20" height="20"></i>
+                            <span class="text-sm">Prueba de 30 días</span>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-left" class="hidden md:block">
+                    <div class="bg-white rounded-xl shadow-2xl p-2">
+                        <div class="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
+                            <i data-lucide="monitor" class="text-gray-400" width="200" height="200"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Características Principales</h2>
+                <p class="text-xl text-gray-600">Todo lo que necesitas para gestionar tu negocio</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="shopping-cart" class="text-blue-600" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Sistema de Ventas Completo</h3>
+                    <p class="text-gray-600">
+                        Carritos múltiples, pagos divididos, descuentos, crédito y más. Todo lo que necesitas para vender rápido y eficiente.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="package" class="text-green-600" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Gestión de Inventario</h3>
+                    <p class="text-gray-600">
+                        Control de stock en tiempo real, kardex completo, alertas de stock bajo y movimientos trazables.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="users" class="text-purple-600" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Gestión de Clientes</h3>
+                    <p class="text-gray-600">
+                        Base de datos completa con sistema de crédito/libreta, gestión de cuentas por cobrar y estados de deuda.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="wallet" class="text-yellow-600" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Control de Caja</h3>
+                    <p class="text-gray-600">
+                        Apertura/cierre con arqueo, transferencias entre cajas, múltiples cajas registradoras y dashboard en tiempo real.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="500">
+                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="bar-chart-3" class="text-red-600" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Reportes Profesionales</h3>
+                    <p class="text-gray-600">
+                        14 tipos de reportes con 28 exportaciones (PDF + Excel). Reporte Z, ventas por período, inventario y más.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="shield-check" class="text-indigo-600" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Seguridad y Auditoría</h3>
+                    <p class="text-gray-600">
+                        Backups automáticos cada 4 horas, sistema de permisos granular, auditoría completa y datos históricos inmutables.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offline First Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6">Funciona Sin Internet</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        FlowPOS es 100% local. Todos tus datos están en tu computadora, sin depender de conexión a internet.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="wifi-off" class="text-blue-600 mt-1" width="24" height="24"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Sin cortes de servicio</h4>
+                                <p class="text-gray-600">Tu negocio nunca se detiene, funciona siempre.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="zap" class="text-blue-600 mt-1" width="24" height="24"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Ultra rápido</h4>
+                                <p class="text-gray-600">Sin latencia, respuesta instantánea en todas las operaciones.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i data-lucide="lock" class="text-blue-600 mt-1" width="24" height="24"></i>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Datos seguros</h4>
+                                <p class="text-gray-600">Tus datos están en tu computadora, bajo tu control.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div data-aos="fade-left" class="hidden md:block">
+                    <div class="bg-white rounded-xl shadow-xl p-8">
+                        <div class="flex items-center justify-center h-64">
+                            <i data-lucide="hard-drive" class="text-gray-300" width="200" height="200"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Planes y Precios</h2>
+                <p class="text-xl text-gray-600">Elige el plan que mejor se adapte a tu negocio</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Trial -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Trial</h3>
+                        <p class="text-gray-600 mb-6">Prueba gratuita</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-800">30</span>
+                            <span class="text-gray-600"> días</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">1 usuario</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">500 transacciones/mes</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">1 caja registradora</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">Reportes básicos</span>
+                        </li>
+                    </ul>
+                    <a href="descargas.html" class="block w-full text-center bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition">
+                        Descargar
+                    </a>
+                </div>
+
+                <!-- Standard -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Standard</h3>
+                        <p class="text-gray-600 mb-6">Para pequeños negocios</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-800">Gs 200K</span>
+                            <span class="text-gray-600">/mes</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">3 usuarios</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">2,000 transacciones/mes</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">2 cajas registradoras</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">Reportes completos</span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/595XXXXXXXXX?text=Hola,%20quiero%20activar%20FlowPOS%20Standard" class="block w-full text-center bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
+                        Contactar
+                    </a>
+                </div>
+
+                <!-- Premium (Popular) -->
+                <div class="bg-blue-600 text-white p-8 rounded-xl shadow-xl transform md:scale-105" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute top-0 right-0 bg-yellow-400 text-gray-800 px-4 py-1 rounded-bl-lg rounded-tr-lg text-sm font-semibold">
+                        Popular
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-2">Premium</h3>
+                        <p class="text-blue-100 mb-6">Para negocios en crecimiento</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold">Gs 350K</span>
+                            <span class="text-blue-100">/mes</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span>5 usuarios</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span>5,000 transacciones/mes</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span>3 cajas registradoras</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span>Reportes avanzados</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span>Soporte prioritario</span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/595XXXXXXXXX?text=Hola,%20quiero%20activar%20FlowPOS%20Premium" class="block w-full text-center bg-white text-blue-600 py-3 rounded-lg hover:bg-blue-50 transition font-semibold">
+                        Contactar
+                    </a>
+                </div>
+
+                <!-- Enterprise -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Enterprise</h3>
+                        <p class="text-gray-600 mb-6">Para grandes empresas</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-800">Custom</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">Usuarios ilimitados</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">Transacciones ilimitadas</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">Cajas ilimitadas</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">Transferencia de licencia</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
+                            <span class="text-gray-600">Soporte 24/7</span>
+                        </li>
+                    </ul>
+                    <a href="https://wa.me/595XXXXXXXXX?text=Hola,%20quiero%20información%20sobre%20FlowPOS%20Enterprise" class="block w-full text-center bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-900 transition">
+                        Contactar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-6">¿Listo para comenzar?</h2>
+            <p class="text-xl mb-8 text-blue-100">Descarga FlowPOS y pruébalo gratis por 30 días</p>
+            <div class="flex justify-center space-x-4">
+                <a href="descargas.html" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center space-x-2">
+                    <i data-lucide="download" width="20" height="20"></i>
+                    <span>Descargar Ahora</span>
+                </a>
+                <a href="activacion.html" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition">
+                    Guía de Activación
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="shopping-bag" class="text-white" width="24" height="24"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">FlowPOS</span>
+                    </div>
+                    <p class="text-sm">Sistema de Punto de Venta Profesional para tu negocio.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Producto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#features" class="hover:text-blue-400 transition">Características</a></li>
+                        <li><a href="#pricing" class="hover:text-blue-400 transition">Precios</a></li>
+                        <li><a href="descargas.html" class="hover:text-blue-400 transition">Descargas</a></li>
+                        <li><a href="activacion.html" class="hover:text-blue-400 transition">Activación</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Recursos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-blue-400 transition">Documentación</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Video Tutoriales</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Soporte</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="mail" width="16" height="16"></i>
+                            <span>soporte@flowpos.com</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="phone" width="16" height="16"></i>
+                            <span>+595 XXX XXXXXX</span>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/595XXXXXXXXX" class="flex items-center space-x-2 hover:text-blue-400 transition">
+                                <i data-lucide="message-circle" width="16" height="16"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p>&copy; 2026 FlowPOS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/595XXXXXXXXX?text=Hola,%20necesito%20ayuda%20con%20FlowPOS"
+       class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-50"
+       target="_blank">
+        <i data-lucide="message-circle" width="28" height="28"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
