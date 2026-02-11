@@ -207,16 +207,14 @@ function handleDownload(os, releaseData) {
   // Track download (optional: add analytics here)
   console.log(`Download initiated for ${os}: ${downloadUrl}`)
 
-  // Show success message
-  showToast('success', `Iniciando descarga para ${getOSInfo(os).name}...`)
-
-  // Trigger download
+  // Trigger download immediately
   window.location.href = downloadUrl
 
-  // Show post-download message after a delay
+  // Show post-download message after a short delay
+  // This appears AFTER the browser's save dialog
   setTimeout(() => {
     showPostDownloadMessage()
-  }, 2000)
+  }, 1000)
 }
 
 // ============================================================================
@@ -266,28 +264,41 @@ function showPostDownloadMessage() {
     <div class="bg-white rounded-2xl p-8 max-w-md mx-4 shadow-2xl">
       <div class="text-center">
         <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i data-lucide="download-cloud" class="text-green-600" width="32" height="32"></i>
+          <i data-lucide="check-circle" class="text-green-600" width="32" height="32"></i>
         </div>
-        <h3 class="text-2xl font-bold text-gray-800 mb-2">¡Descarga Iniciada!</h3>
-        <p class="text-gray-600 mb-6">La descarga debería comenzar automáticamente. Si no es así, verifica tu carpeta de descargas.</p>
+        <h3 class="text-2xl font-bold text-gray-800 mb-2">Descarga en Proceso</h3>
+        <p class="text-gray-600 mb-6">El archivo se está descargando. Revisa tu carpeta de Descargas o la ubicación que elegiste.</p>
 
         <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 text-left">
-          <h4 class="font-semibold text-blue-900 mb-2">Próximos pasos:</h4>
-          <ol class="text-sm text-blue-800 space-y-1">
-            <li>1. Espera a que complete la descarga</li>
-            <li>2. Ejecuta el instalador</li>
-            <li>3. Sigue la guía de activación</li>
+          <h4 class="font-semibold text-blue-900 mb-2 flex items-center space-x-2">
+            <i data-lucide="info" class="text-blue-600" width="18" height="18"></i>
+            <span>Próximos pasos:</span>
+          </h4>
+          <ol class="text-sm text-blue-800 space-y-2">
+            <li class="flex items-start space-x-2">
+              <span class="font-semibold">1.</span>
+              <span>Espera a que complete la descarga (~150 MB)</span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="font-semibold">2.</span>
+              <span>Ejecuta el archivo <code class="bg-blue-100 px-1 rounded">FlowPOS-Setup-2.0.0.exe</code></span>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="font-semibold">3.</span>
+              <span>Sigue la guía de activación para obtener tu licencia</span>
+            </li>
           </ol>
         </div>
 
         <div class="flex space-x-3">
           <button onclick="this.closest('.fixed').remove()"
-                  class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition">
-            Cerrar
+                  class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition font-medium">
+            Entendido
           </button>
           <a href="activacion.html"
-             class="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition text-center">
-            Ver Guía
+             class="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition text-center font-medium flex items-center justify-center space-x-2">
+            <i data-lucide="book-open" width="18" height="18"></i>
+            <span>Ver Guía</span>
           </a>
         </div>
       </div>
@@ -303,6 +314,15 @@ function showPostDownloadMessage() {
       modal.remove()
     }
   })
+
+  // Auto-close after 15 seconds (optional)
+  setTimeout(() => {
+    if (modal.parentNode) {
+      modal.style.opacity = '0'
+      modal.style.transition = 'opacity 0.3s ease'
+      setTimeout(() => modal.remove(), 300)
+    }
+  }, 15000)
 }
 
 /**
