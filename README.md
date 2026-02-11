@@ -195,7 +195,7 @@ Para que el sitio web se actualice automáticamente cuando se publica un release
 #### WhatsApp
 Buscar y reemplazar en todos los archivos HTML:
 ```
-595XXXXXXXXX  →  595981123456  (tu número real)
+595986708565  →  595981123456  (tu número real)
 ```
 
 #### Email

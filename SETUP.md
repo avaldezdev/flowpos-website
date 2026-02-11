@@ -10,8 +10,12 @@ Esta guía te ayudará a poner el sitio web en línea en menos de 10 minutos.
 # Navegar a la carpeta del proyecto
 cd flowpos-website
 
-# Inicializar repositorio git
-git init
+# Inicializar repositorio git con rama 'main' (NO master)
+git init -b main
+
+# IMPORTANTE: Si tu git es antiguo y no soporta -b, usa:
+# git init
+# git branch -M main
 
 # Agregar todos los archivos
 git add .
@@ -25,13 +29,14 @@ git commit -m "feat: initial commit - FlowPOS website v1.0"
 # Descripción: Sitio web oficial de FlowPOS - Sistema de Punto de Venta
 # Público o Privado: TÚ DECIDES
 
-# Conectar con el repositorio remoto (reemplaza TU_USUARIO)
-git remote add origin https://github.com/TU_USUARIO/flowpos-website.git
+# Conectar con el repositorio remoto
+git remote add origin https://github.com/avaldezdev/flowpos-website.git
 
-# Subir cambios
-git branch -M main
+# Subir cambios (ya estamos en main)
 git push -u origin main
 ```
+
+> **✅ Nota:** Este proyecto está configurado para usar `main` como rama principal (no `master`).
 
 ### 2️⃣ Desplegar en Netlify
 
@@ -62,7 +67,7 @@ git push -u origin main
 **Buscar y reemplazar en todos los archivos HTML:**
 
 ```
-595XXXXXXXXX  →  595981123456  (tu número real con código de país)
+595986708565  →  595981123456  (tu número real con código de país)
 ```
 
 **Archivos a modificar:**
@@ -72,13 +77,13 @@ git push -u origin main
 
 **Comando rápido (Linux/Mac):**
 ```bash
-find . -name "*.html" -type f -exec sed -i 's/595XXXXXXXXX/595981123456/g' {} +
+find . -name "*.html" -type f -exec sed -i 's/595986708565/595981123456/g' {} +
 ```
 
 **Windows PowerShell:**
 ```powershell
 Get-ChildItem -Filter *.html -Recurse | ForEach-Object {
-    (Get-Content $_.FullName) -replace '595XXXXXXXXX', '595981123456' | Set-Content $_.FullName
+    (Get-Content $_.FullName) -replace '595986708565', '595981123456' | Set-Content $_.FullName
 }
 ```
 
