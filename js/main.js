@@ -178,17 +178,14 @@ async function initializeDownloadPage() {
  * @param {object} releaseData - Release data
  */
 function setupAlternativeDownloads(releaseData) {
-  const platforms = ['windows', 'mac', 'linux']
-
-  platforms.forEach(platform => {
-    const btn = document.getElementById(`download-${platform}`)
-    if (btn) {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault()
-        handleDownload(platform, releaseData)
-      })
-    }
-  })
+  // Only setup Windows download (Mac and Linux are in development)
+  const windowsBtn = document.getElementById('download-windows')
+  if (windowsBtn) {
+    windowsBtn.addEventListener('click', (e) => {
+      e.preventDefault()
+      handleDownload('windows', releaseData)
+    })
+  }
 }
 
 /**
