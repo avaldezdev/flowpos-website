@@ -69,25 +69,25 @@
 
 [[redirects]]
   from = "/download/latest"
-  to = "https://github.com/flowpos/flowpos/releases/latest"
+  to = "https://github.com/avaldezdev/flowpos/releases/latest"
   status = 302
   force = true
 
 [[redirects]]
   from = "/download/windows"
-  to = "https://github.com/flowpos/flowpos/releases/latest/download/FlowPOS-Setup-2.0.0.exe"
+  to = "https://github.com/avaldezdev/flowpos/releases/latest/download/FlowPOS-Setup-2.0.0.exe"
   status = 302
   force = true
 
 [[redirects]]
   from = "/download/mac"
-  to = "https://github.com/flowpos/flowpos/releases/latest/download/FlowPOS-2.0.0.dmg"
+  to = "https://github.com/avaldezdev/flowpos/releases/latest/download/FlowPOS-2.0.0.dmg"
   status = 302
   force = true
 
 [[redirects]]
   from = "/download/linux"
-  to = "https://github.com/flowpos/flowpos/releases/latest/download/FlowPOS-2.0.0.AppImage"
+  to = "https://github.com/avaldezdev/flowpos/releases/latest/download/FlowPOS-2.0.0.AppImage"
   status = 302
   force = true
 

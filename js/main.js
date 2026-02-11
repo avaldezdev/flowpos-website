@@ -9,9 +9,9 @@
 
 const CONFIG = {
   github: {
-    owner: 'flowpos',
+    owner: 'avaldezdev',
     repo: 'flowpos',
-    releasesUrl: 'https://api.github.com/repos/flowpos/flowpos/releases/latest'
+    releasesUrl: 'https://api.github.com/repos/avaldezdev/flowpos/releases/latest'
   },
   downloads: {
     windows: {
