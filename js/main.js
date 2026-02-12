@@ -10,8 +10,8 @@
 const CONFIG = {
   github: {
     owner: 'avaldezdev',
-    repo: 'flowpos',
-    releasesUrl: 'https://api.github.com/repos/avaldezdev/flowpos/releases/latest'
+    repo: 'flowpos-releases',
+    releasesUrl: 'https://api.github.com/repos/avaldezdev/flowpos-releases/releases/latest'
   },
   downloads: {
     windows: {
@@ -115,9 +115,9 @@ async function fetchReleaseData() {
     version: '2.0.1',
     date: '2026-02-11',
     downloads: {
-      windows: `https://github.com/${CONFIG.github.owner}/${CONFIG.github.repo}/releases/download/v2.0.1/FlowPOS-Setup-2.0.1.exe`,
-      mac: `https://github.com/${CONFIG.github.owner}/${CONFIG.github.repo}/releases/download/v2.0.1/FlowPOS-2.0.1.dmg`,
-      linux: `https://github.com/${CONFIG.github.owner}/${CONFIG.github.repo}/releases/download/v2.0.1/FlowPOS-2.0.1.AppImage`
+      windows: 'https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-Setup-2.0.1.exe',
+      mac: 'https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-2.0.1.dmg',
+      linux: 'https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-2.0.1.AppImage'
     }
   }
 }
