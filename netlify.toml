@@ -67,30 +67,6 @@
   to = "/descargas.html"
   status = 301
 
-[[redirects]]
-  from = "/download/latest"
-  to = "https://github.com/avaldezdev/flowpos-releases/releases/latest"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/download/windows"
-  to = "https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-Setup-2.0.1.exe"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/download/mac"
-  to = "https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-2.0.1.dmg"
-  status = 302
-  force = true
-
-[[redirects]]
-  from = "/download/linux"
-  to = "https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-2.0.1.AppImage"
-  status = 302
-  force = true
-
 # Redirect /activate to activation page
 [[redirects]]
   from = "/activate"
@@ -100,12 +76,6 @@
 [[redirects]]
   from = "/activation"
   to = "/activacion.html"
-  status = 301
-
-# Redirect /downloads to descargas page
-[[redirects]]
-  from = "/downloads"
-  to = "/descargas.html"
   status = 301
 
 # SPA fallback (optional, for future React/Vue conversion)
