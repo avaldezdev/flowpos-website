@@ -7,30 +7,8 @@
 // CONFIGURATION
 // ============================================================================
 
-const CONFIG = {
-  github: {
-    owner: 'avaldezdev',
-    repo: 'flowpos-releases',
-    releasesUrl: 'https://api.github.com/repos/avaldezdev/flowpos-releases/releases/latest'
-  },
-  downloads: {
-    windows: {
-      filename: 'FlowPOS-Setup-{version}.exe',
-      size: '~150 MB',
-      icon: 'laptop'
-    },
-    mac: {
-      filename: 'FlowPOS-{version}.dmg',
-      size: '~160 MB',
-      icon: 'apple'
-    },
-    linux: {
-      filename: 'FlowPOS-{version}.AppImage',
-      size: '~155 MB',
-      icon: 'box'
-    }
-  }
-}
+// Usar configuración centralizada desde config.js
+const CONFIG = window.FLOWPOS_CONFIG;
 
 // ============================================================================
 // OS DETECTION
@@ -95,30 +73,15 @@ function getOSInfo(os) {
 // ============================================================================
 
 /**
- * Fetches release data from local JSON or GitHub API
+ * Obtiene datos de release desde la configuración centralizada
  * @returns {Promise<object>} Release data
  */
 async function fetchReleaseData() {
-  try {
-    // First, try to load from local releases.json
-    const response = await fetch('assets/downloads/releases.json')
-    if (response.ok) {
-      const data = await response.json()
-      return data.latest
-    }
-  } catch (error) {
-    console.warn('Could not load local releases.json, falling back to defaults')
-  }
-
-  // Fallback to default data
+  // Usar configuración centralizada - sin hardcoded URLs
   return {
-    version: '2.0.1',
-    date: '2026-02-11',
-    downloads: {
-      windows: 'https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-Setup-2.0.1.exe',
-      mac: 'https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-2.0.1.dmg',
-      linux: 'https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-2.0.1.AppImage'
-    }
+    version: CONFIG.version,
+    date: CONFIG.releaseDate,
+    downloads: CONFIG.getAllDownloadUrls()
   }
 }
 
@@ -166,7 +129,7 @@ async function initializeDownloadPage() {
   // Update download size
   const downloadSizeElement = document.getElementById('download-size')
   if (downloadSizeElement) {
-    downloadSizeElement.textContent = CONFIG.downloads[detectedOS].size
+    downloadSizeElement.textContent = CONFIG.installers[detectedOS].size
   }
 
   // Setup alternative download buttons
