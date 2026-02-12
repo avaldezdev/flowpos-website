@@ -112,12 +112,12 @@ async function fetchReleaseData() {
 
   // Fallback to default data
   return {
-    version: '2.0.0',
+    version: '2.0.1',
     date: '2026-02-11',
     downloads: {
-      windows: `https://github.com/${CONFIG.github.owner}/${CONFIG.github.repo}/releases/download/v2.0.0/FlowPOS-Setup-2.0.0.exe`,
-      mac: `https://github.com/${CONFIG.github.owner}/${CONFIG.github.repo}/releases/download/v2.0.0/FlowPOS-2.0.0.dmg`,
-      linux: `https://github.com/${CONFIG.github.owner}/${CONFIG.github.repo}/releases/download/v2.0.0/FlowPOS-2.0.0.AppImage`
+      windows: `https://github.com/${CONFIG.github.owner}/${CONFIG.github.repo}/releases/download/v2.0.1/FlowPOS-Setup-2.0.1.exe`,
+      mac: `https://github.com/${CONFIG.github.owner}/${CONFIG.github.repo}/releases/download/v2.0.1/FlowPOS-2.0.1.dmg`,
+      linux: `https://github.com/${CONFIG.github.owner}/${CONFIG.github.repo}/releases/download/v2.0.1/FlowPOS-2.0.1.AppImage`
     }
   }
 }
@@ -278,7 +278,7 @@ function showPostDownloadMessage() {
             </li>
             <li class="flex items-start space-x-2">
               <span class="font-semibold">2.</span>
-              <span>Ejecuta el archivo <code class="bg-blue-100 px-1 rounded">FlowPOS-Setup-2.0.0.exe</code></span>
+              <span>Ejecuta el archivo <code class="bg-blue-100 px-1 rounded">FlowPOS-Setup-2.0.1.exe</code></span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="font-semibold">3.</span>

@@ -1,9 +1,11 @@
 {
   "latest": {
-    "version": "2.0.0",
+    "version": "2.0.1",
     "date": "2026-02-11",
     "releaseNotes": {
       "new": [
+        "Validación automática de código de barras duplicado",
+        "Carga automática de producto existente si código de barras duplicado",
         "Sistema de licencias implementado con hardware binding",
         "Sistema de crédito/libreta para clientes",
         "Importación/exportación masiva de productos desde Excel",
@@ -12,19 +14,23 @@
         "Sistema de reimpresión de documentos (cumple normativa SET)"
       ],
       "improved": [
+        "Foco automático en campo código de barras al crear producto (optimizado para lectores)",
+        "Diseño visual diferenciado del campo código de barras con icono y color azul",
+        "Placeholder mejorado con hint para usuarios sin lector",
         "Vista previa de tickets con HTML pre-generado",
         "Mejoras significativas en UX y navegación por teclado",
         "Optimización de rendimiento en carga de datos"
       ],
       "fixed": [
+        "Evita duplicación de productos por código de barras",
         "Corrección de bugs menores en reportes",
         "Mejoras de estabilidad en impresión térmica"
       ]
     },
     "downloads": {
-      "windows": "https://github.com/avaldezdev/flowpos/releases/download/v2.0.0/FlowPOS-Setup-2.0.0.exe",
-      "mac": "https://github.com/avaldezdev/flowpos/releases/download/v2.0.0/FlowPOS-2.0.0.dmg",
-      "linux": "https://github.com/avaldezdev/flowpos/releases/download/v2.0.0/FlowPOS-2.0.0.AppImage"
+      "windows": "https://github.com/avaldezdev/flowpos/releases/download/v2.0.1/FlowPOS-Setup-2.0.1.exe",
+      "mac": "https://github.com/avaldezdev/flowpos/releases/download/v2.0.1/FlowPOS-2.0.1.dmg",
+      "linux": "https://github.com/avaldezdev/flowpos/releases/download/v2.0.1/FlowPOS-2.0.1.AppImage"
     },
     "sizes": {
       "windows": 157286400,
