@@ -250,7 +250,7 @@ Si necesitas actualizar la versión sin esperar al workflow:
     "version": "2.1.0",  // ← Actualizar
     "date": "2026-03-01",
     "downloads": {
-      "windows": "https://github.com/avaldezdev/flowpos/releases/download/v2.1.0/FlowPOS-Setup-2.1.0.exe",
+      "windows": "https://github.com/avaldezdev/flowpos-releases/releases/download/v2.1.0/FlowPOS-Setup-2.1.0.exe",
       "mac": "...",
       "linux": "..."
     }
@@ -260,7 +260,7 @@ Si necesitas actualizar la versión sin esperar al workflow:
 
 **2. Actualizar `netlify.toml`** (redirects):
 ```toml
-to = "https://github.com/avaldezdev/flowpos/releases/latest/download/FlowPOS-Setup-2.1.0.exe"
+to = "https://github.com/avaldezdev/flowpos-releases/releases/latest/download/FlowPOS-Setup-2.1.0.exe"
 ```
 
 **3. Commit y push**:

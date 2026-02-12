@@ -33,7 +33,7 @@ jobs:
         id: fetch-release
         run: |
           # Fetch latest release from GitHub API
-          RELEASE_DATA=$(curl -s https://api.github.com/repos/avaldezdev/flowpos/releases/latest)
+          RELEASE_DATA=$(curl -s https://api.github.com/repos/avaldezdev/flowpos-releases/releases/latest)
 
           # Extract version (remove 'v' prefix if present)
           VERSION=$(echo "$RELEASE_DATA" | jq -r '.tag_name' | sed 's/^v//')
