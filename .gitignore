@@ -64,4 +64,5 @@ drafts/
 wip/
 
 # Downloads folder (installers are hosted on flowpos-releases repo)
-downloads/
+# Note: assets/downloads/ should NOT be ignored as it contains releases.json metadata
+/downloads/

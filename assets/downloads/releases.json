@@ -28,9 +28,9 @@
       ]
     },
     "downloads": {
-      "windows": "https://github.com/avaldezdev/flowpos/releases/download/v2.0.1/FlowPOS-Setup-2.0.1.exe",
-      "mac": "https://github.com/avaldezdev/flowpos/releases/download/v2.0.1/FlowPOS-2.0.1.dmg",
-      "linux": "https://github.com/avaldezdev/flowpos/releases/download/v2.0.1/FlowPOS-2.0.1.AppImage"
+      "windows": "https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-Setup-2.0.1.exe",
+      "mac": "https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-2.0.1.dmg",
+      "linux": "https://github.com/avaldezdev/flowpos-releases/releases/download/v2.0.1/FlowPOS-2.0.1.AppImage"
     },
     "sizes": {
       "windows": 157286400,
@@ -50,9 +50,9 @@
         ]
       },
       "downloads": {
-        "windows": "https://github.com/avaldezdev/flowpos/releases/download/v1.5.0/FlowPOS-Setup-1.5.0.exe",
-        "mac": "https://github.com/avaldezdev/flowpos/releases/download/v1.5.0/FlowPOS-1.5.0.dmg",
-        "linux": "https://github.com/avaldezdev/flowpos/releases/download/v1.5.0/FlowPOS-1.5.0.AppImage"
+        "windows": "https://github.com/avaldezdev/flowpos-releases/releases/download/v1.5.0/FlowPOS-Setup-1.5.0.exe",
+        "mac": "https://github.com/avaldezdev/flowpos-releases/releases/download/v1.5.0/FlowPOS-1.5.0.dmg",
+        "linux": "https://github.com/avaldezdev/flowpos-releases/releases/download/v1.5.0/FlowPOS-1.5.0.AppImage"
       }
     },
     {
@@ -68,8 +68,8 @@
     }
   ],
   "metadata": {
-    "lastUpdated": "2026-02-11T15:30:00Z",
-    "repository": "https://github.com/avaldezdev/flowpos",
+    "lastUpdated": "2026-02-12T00:00:00Z",
+    "repository": "https://github.com/avaldezdev/flowpos-releases",
     "website": "https://flowpos.netlify.app",
     "support": {
       "email": "soporte@flowpos.com",
