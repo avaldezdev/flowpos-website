@@ -44,7 +44,7 @@
     <section class="py-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-5xl font-bold mb-4">Descarga FlowPOS</h1>
-            <p class="text-xl text-blue-100 mb-8">Versión actual: <span id="current-version" class="font-semibold">v2.0.1</span></p>
+            <p class="text-xl text-blue-100 mb-8">Versión actual: <span id="current-version" class="font-semibold">v2.4.0</span></p>
 
             <!-- Main Download Button (Auto-detect OS) -->
             <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-2xl mx-auto">
@@ -256,11 +256,11 @@
                 <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Notas de la Versión</h2>
 
                 <div id="release-notes" class="space-y-6">
-                    <!-- Latest Release -->
+                    <!-- v2.4.0 - Latest Release -->
                     <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-blue-600">
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <h3 class="text-2xl font-semibold text-gray-800">v2.0.1</h3>
+                                <h3 class="text-2xl font-semibold text-gray-800">v2.4.0</h3>
                                 <p class="text-gray-600">Febrero 2026</p>
                             </div>
                             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Actual</span>
@@ -274,27 +274,23 @@
                                 <ul class="space-y-1 text-gray-700 ml-6">
                                     <li class="flex items-start space-x-2">
                                         <span class="text-green-600 mt-1">•</span>
-                                        <span>Sistema de licencias implementado con hardware binding</span>
+                                        <span><strong>Plan Gratuito:</strong> ventas ilimitadas en guaraníes sin costo, sin necesidad de licencia de pago</span>
                                     </li>
                                     <li class="flex items-start space-x-2">
                                         <span class="text-green-600 mt-1">•</span>
-                                        <span>Sistema de crédito/libreta para clientes</span>
+                                        <span><strong>Sistema de planes:</strong> Gratuito, Inicio, Profesional, Total y Vitalicio con funcionalidades diferenciadas</span>
                                     </li>
                                     <li class="flex items-start space-x-2">
                                         <span class="text-green-600 mt-1">•</span>
-                                        <span>Importación/exportación masiva de productos desde Excel</span>
+                                        <span><strong>Plan Vitalicio:</strong> pago único sin renovación anual, acceso completo de por vida</span>
                                     </li>
                                     <li class="flex items-start space-x-2">
                                         <span class="text-green-600 mt-1">•</span>
-                                        <span>Sistema de permisos de caja por usuario</span>
+                                        <span>Restricción de módulos y funciones según el plan activo (gating en tiempo real)</span>
                                     </li>
                                     <li class="flex items-start space-x-2">
                                         <span class="text-green-600 mt-1">•</span>
-                                        <span>Una sesión activa por usuario en todo el sistema</span>
-                                    </li>
-                                    <li class="flex items-start space-x-2">
-                                        <span class="text-green-600 mt-1">•</span>
-                                        <span>Sistema de reimpresión de documentos (cumple normativa SET)</span>
+                                        <span>Búsqueda inteligente de clientes en datos fiscales (por nombre, RUC o CI)</span>
                                     </li>
                                 </ul>
                             </div>
@@ -306,15 +302,19 @@
                                 <ul class="space-y-1 text-gray-700 ml-6">
                                     <li class="flex items-start space-x-2">
                                         <span class="text-blue-600 mt-1">•</span>
-                                        <span>Vista previa de tickets con HTML pre-generado</span>
+                                        <span>Modal de licencia rediseñado con gestión inteligente de ventanas (ESC jerárquico)</span>
                                     </li>
                                     <li class="flex items-start space-x-2">
                                         <span class="text-blue-600 mt-1">•</span>
-                                        <span>Mejoras significativas en UX y navegación por teclado</span>
+                                        <span>Equivalente en Gs visible en reportes de inventario, caja y métricas al usar otra moneda base</span>
                                     </li>
                                     <li class="flex items-start space-x-2">
                                         <span class="text-blue-600 mt-1">•</span>
-                                        <span>Optimización de rendimiento en carga de datos</span>
+                                        <span>Botón "Crear cliente" siempre visible en datos fiscales, incluso sin base de contribuyentes</span>
+                                    </li>
+                                    <li class="flex items-start space-x-2">
+                                        <span class="text-blue-600 mt-1">•</span>
+                                        <span>Secciones de configuración adaptadas según el plan (oculta opciones no disponibles)</span>
                                     </li>
                                 </ul>
                             </div>
@@ -327,7 +327,22 @@
                             <span>Versiones Anteriores</span>
                             <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
                         </summary>
-                        <div class="p-6 pt-0 space-y-4 border-t">
+                        <div class="p-6 pt-0 space-y-6 border-t">
+                            <!-- v2.0.x -->
+                            <div class="border-l-4 border-gray-300 pl-4">
+                                <h3 class="text-lg font-semibold text-gray-800">v2.0.x</h3>
+                                <p class="text-sm text-gray-600 mb-2">Febrero 2026</p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Sistema de licencias con hardware binding y serial key</li>
+                                    <li>• Sistema de crédito/libreta para clientes</li>
+                                    <li>• Importación y exportación masiva de productos desde Excel</li>
+                                    <li>• Sistema de permisos de caja por usuario</li>
+                                    <li>• Sesión activa única por usuario en todo el sistema</li>
+                                    <li>• Sistema de reimpresión de documentos (cumple normativa SET)</li>
+                                    <li>• Vista previa de tickets con HTML pre-generado</li>
+                                    <li>• Mejoras de UX y navegación por teclado</li>
+                                </ul>
+                            </div>
                             <!-- v1.5.0 -->
                             <div class="border-l-4 border-gray-300 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-800">v1.5.0</h3>
