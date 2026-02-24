@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FlowPOS - Comparativa completa de planes. Gratuito, Inicio (590.000 Gs/año), Profesional (990.000 Gs/año) y Total (1.970.000 Gs/año). Elegí el plan ideal para tu negocio en Paraguay.">
+    <meta name="keywords" content="FlowPOS planes, precios POS Paraguay, comparativa planes punto de venta">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://flowpos.netlify.app/planes.html">
+    <meta property="og:title" content="FlowPOS - Comparativa de Planes y Precios">
+    <meta property="og:description" content="Comparativa completa de todos los planes FlowPOS. Desde 0 Gs para siempre hasta el Plan Total sin límites.">
+
+    <title>FlowPOS - Comparativa de Planes y Precios</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Tabla comparativa */
+        .compare-table th,
+        .compare-table td {
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+        .compare-table .cat-row td {
+            background-color: #f9fafb;
+            border-bottom: 2px solid #e5e7eb;
+            border-top: 2px solid #e5e7eb;
+        }
+        /* Columna Profesional destacada */
+        .col-pro {
+            background-color: #eff6ff;
+        }
+        .col-pro-header {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+        }
+        /* Scroll hint */
+        .scroll-hint {
+            animation: fadeHint 3s ease-in-out infinite;
+        }
+        @keyframes fadeHint {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i data-lucide="shopping-bag" class="text-white" width="24" height="24"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800">FlowPOS</span>
+                </a>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="index.html#features" class="text-gray-600 hover:text-blue-600 transition">Características</a>
+                    <a href="planes.html" class="text-blue-600 font-semibold border-b-2 border-blue-600 pb-0.5">Planes</a>
+                    <a href="descargas.html" class="text-gray-600 hover:text-blue-600 transition">Descargas</a>
+                    <a href="activacion.html" class="text-gray-600 hover:text-blue-600 transition">Activación</a>
+                </div>
+                <a href="descargas.html" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                    Descargar Gratis
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pt-28 pb-12 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Comparativa de Planes</h1>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+                Elegí el plan que mejor se adapta a tu negocio. Empezá gratis, sin tarjeta, sin fecha de vencimiento.
+            </p>
+        </div>
+    </section>
+
+    <!-- Plan Cards - Resumen de precios -->
+    <section class="py-12 bg-white border-b border-gray-200">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+
+                <!-- Gratuito -->
+                <div class="text-center p-5 rounded-2xl border-2 border-gray-200 hover:border-gray-400 transition" data-aos="fade-up" data-aos-delay="100">
+                    <span class="block text-xs font-bold text-gray-500 tracking-wide mb-2">GRATUITO</span>
+                    <span class="block text-3xl font-bold text-gray-800 mb-0.5">0 Gs</span>
+                    <span class="block text-xs text-gray-400 mb-4">Para siempre</span>
+                    <a href="descargas.html" class="block text-center bg-gray-100 text-gray-700 hover:bg-gray-200 py-2 px-4 rounded-xl text-sm font-semibold transition">
+                        Empezar Gratis
+                    </a>
+                </div>
+
+                <!-- Inicio -->
+                <div class="text-center p-5 rounded-2xl border-2 border-green-200 hover:border-green-400 transition" data-aos="fade-up" data-aos-delay="150">
+                    <span class="block text-xs font-bold text-green-600 tracking-wide mb-2">INICIO</span>
+                    <span class="block text-3xl font-bold text-gray-800 mb-0.5">590.000</span>
+                    <span class="block text-xs text-gray-400 mb-4">Gs/año · ~49.000/mes</span>
+                    <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20el%20Plan%20Inicio%20de%20FlowPOS" class="block text-center bg-green-600 text-white hover:bg-green-700 py-2 px-4 rounded-xl text-sm font-semibold transition">
+                        Contactar
+                    </a>
+                </div>
+
+                <!-- Profesional -->
+                <div class="text-center p-5 rounded-2xl border-2 border-blue-600 bg-blue-50 relative" data-aos="fade-up" data-aos-delay="200">
+                    <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-yellow-400 text-gray-900 text-xs font-bold px-3 py-1 rounded-full">⭐ Popular</span>
+                    <span class="block text-xs font-bold text-blue-600 tracking-wide mb-2 mt-1">PROFESIONAL</span>
+                    <span class="block text-3xl font-bold text-gray-800 mb-0.5">990.000</span>
+                    <span class="block text-xs text-gray-400 mb-4">Gs/año · ~82.500/mes</span>
+                    <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20el%20Plan%20Profesional%20de%20FlowPOS" class="block text-center bg-blue-600 text-white hover:bg-blue-700 py-2 px-4 rounded-xl text-sm font-bold transition">
+                        Contactar
+                    </a>
+                </div>
+
+                <!-- Total -->
+                <div class="text-center p-5 rounded-2xl border-2 border-purple-200 hover:border-purple-400 transition" data-aos="fade-up" data-aos-delay="250">
+                    <span class="block text-xs font-bold text-purple-600 tracking-wide mb-2">TOTAL</span>
+                    <span class="block text-3xl font-bold text-gray-800 mb-0.5">1.970.000</span>
+                    <span class="block text-xs text-gray-400 mb-4">Gs/año · ~164.000/mes</span>
+                    <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20el%20Plan%20Total%20de%20FlowPOS" class="block text-center bg-purple-600 text-white hover:bg-purple-700 py-2 px-4 rounded-xl text-sm font-semibold transition">
+                        Contactar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tabla Comparativa Completa -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-3">Comparativa Completa</h2>
+                <p class="text-gray-500">Cada funcionalidad, cada plan — todo en un solo lugar</p>
+            </div>
+
+            <!-- Hint scroll mobile -->
+            <p class="text-xs text-center text-gray-400 mb-4 md:hidden scroll-hint">← Deslizá horizontalmente para ver todos los planes →</p>
+
+            <div class="overflow-x-auto rounded-2xl shadow-lg" data-aos="fade-up">
+                <table class="compare-table min-w-[700px] w-full bg-white text-sm">
+
+                    <!-- Header fijo con nombres de plan -->
+                    <thead>
+                        <tr>
+                            <th class="px-6 py-5 text-left font-bold text-gray-700 w-2/5 bg-white border-b-2 border-gray-200">
+                                Funcionalidad
+                            </th>
+                            <th class="px-4 py-5 text-center bg-white border-b-2 border-gray-200 w-[15%]">
+                                <span class="block text-xs font-bold text-gray-500 tracking-wide">GRATUITO</span>
+                                <span class="block text-lg font-bold text-gray-800">0 Gs</span>
+                                <span class="block text-xs text-gray-400">Para siempre</span>
+                            </th>
+                            <th class="px-4 py-5 text-center bg-white border-b-2 border-green-400 w-[15%]">
+                                <span class="block text-xs font-bold text-green-600 tracking-wide">INICIO</span>
+                                <span class="block text-lg font-bold text-gray-800">590.000</span>
+                                <span class="block text-xs text-gray-400">Gs/año</span>
+                            </th>
+                            <th class="px-4 py-5 text-center col-pro-header border-b-2 border-blue-800 w-[15%]">
+                                <span class="block text-xs font-bold text-blue-200 tracking-wide">PROFESIONAL</span>
+                                <span class="block text-lg font-bold text-white">990.000</span>
+                                <span class="block text-xs text-blue-200">Gs/año</span>
+                                <span class="inline-block mt-1 bg-yellow-400 text-gray-900 text-xs font-bold px-2 py-0.5 rounded-full">⭐ Popular</span>
+                            </th>
+                            <th class="px-4 py-5 text-center bg-white border-b-2 border-purple-400 w-[15%]">
+                                <span class="block text-xs font-bold text-purple-600 tracking-wide">TOTAL</span>
+                                <span class="block text-lg font-bold text-gray-800">1.970.000</span>
+                                <span class="block text-xs text-gray-400">Gs/año</span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <!-- ═══════════════════════════════ VENTAS ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="shopping-cart" width="15" height="15"></i> Ventas
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Ventas ilimitadas</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Productos ilimitados</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Pestañas de carrito simultáneas</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">1</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">3</td>
+                            <td class="px-4 py-3.5 text-center col-pro font-semibold text-blue-700">5</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">5</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Efectivo en Guaraníes</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Tarjeta + Transferencia</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">PIX + Pagos fraccionados (split)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Descuentos por producto y global</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Cancelación de ventas</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Devoluciones (parciales y totales)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Asociar cliente a venta</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Dashboard del día (KPIs)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ FISCAL ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="file-text" width="15" height="15"></i> Facturación Fiscal (SET Paraguay)
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Tickets sin validez fiscal</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Facturas SET con timbrado</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Gestión de timbrados con alertas</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Integración DNIT (búsqueda RUC/CI)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Notas de crédito fiscales</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Libro IVA / exportación RG90</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ CLIENTES ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="users" width="15" height="15"></i> Clientes
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Registro de clientes (CI, RUC, contacto)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Historial de compras por cliente</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Ventas a crédito (fiado)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Cuenta corriente y cobranzas</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ INVENTARIO ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="package" width="15" height="15"></i> Inventario
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Control de stock básico</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Kardex completo (historial de movimientos)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Ajuste masivo / inventario físico</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Alertas de stock bajo</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Valorización de inventario</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Integración balanza etiquetadora</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ CAJA ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="wallet" width="15" height="15"></i> Caja
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Apertura y cierre de caja</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Conteo de denominaciones (billetes)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Historial de sesiones cerradas</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Transferencia entre cajas</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Cajas registradoras</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">1</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">1</td>
+                            <td class="px-4 py-3.5 text-center col-pro font-semibold text-blue-700">1</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">Ilimitadas</td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ COMPRAS ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="truck" width="15" height="15"></i> Compras y Proveedores
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Gestión de proveedores</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Órdenes de compra</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Actualización automática de costos</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ PEDIDOS ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="clipboard-list" width="15" height="15"></i> Pedidos y Entregas
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Órdenes de entrega</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Pre-ventas con seña</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ REPORTES ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="bar-chart-3" width="15" height="15"></i> Reportes
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Reportes básicos de ventas</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Exportación en PDF</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Reportes avanzados (ABC, rentabilidad)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Exportación en Excel (multi-hoja)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Libro IVA + Reporte Z fiscal</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ MULTIMONEDA ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="dollar-sign" width="15" height="15"></i> Multimoneda
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Moneda base configurable (PYG / USD / BRL)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Cobro en USD y BRL</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Pagos mixtos (Gs + USD en una venta)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ IMPRESIÓN ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="printer" width="15" height="15"></i> Impresión
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Ticket térmico 80mm</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Sin marca FlowPOS en tickets</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Logo del negocio en tickets</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Formatos A4 / Oficio / Nota</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ USUARIOS ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="user-check" width="15" height="15"></i> Usuarios y Permisos
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Usuarios</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">1</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">3</td>
+                            <td class="px-4 py-3.5 text-center col-pro font-semibold text-blue-700">Ilimitados</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">Ilimitados</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Roles (owner, admin, supervisor, cajero)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Permisos granulares por módulo</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ INFRAESTRUCTURA ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="server" width="15" height="15"></i> Infraestructura
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Terminales en red local</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">1</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">1</td>
+                            <td class="px-4 py-3.5 text-center col-pro font-semibold text-blue-700">1</td>
+                            <td class="px-4 py-3.5 text-center font-semibold text-gray-700">3</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Backup local automático (cada 4h)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-green-500 font-bold text-base">✓</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Backup en la nube (encriptado)</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Consulta remota desde celular</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ SOPORTE ═══════════════════════════════ -->
+                        <tr class="cat-row">
+                            <td colspan="5" class="px-6 py-3">
+                                <span class="flex items-center gap-2 text-xs font-bold text-gray-600 uppercase tracking-widest">
+                                    <i data-lucide="headphones" width="15" height="15"></i> Soporte
+                                </span>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Canal de soporte</td>
+                            <td class="px-4 py-3.5 text-center text-xs text-gray-500">Email / WA</td>
+                            <td class="px-4 py-3.5 text-center text-xs text-gray-500">Email / WA</td>
+                            <td class="px-4 py-3.5 text-center col-pro text-xs text-blue-700 font-semibold">WhatsApp prioritario</td>
+                            <td class="px-4 py-3.5 text-center text-xs text-gray-600 font-semibold">Dedicado</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Tiempo de respuesta</td>
+                            <td class="px-4 py-3.5 text-center text-xs text-gray-400">Sin garantía</td>
+                            <td class="px-4 py-3.5 text-center text-xs text-gray-600 font-semibold">48h</td>
+                            <td class="px-4 py-3.5 text-center col-pro text-xs text-blue-700 font-semibold">24h</td>
+                            <td class="px-4 py-3.5 text-center text-xs text-purple-700 font-bold">4h garantizadas</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-3.5 text-gray-700">Capacitación presencial</td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center col-pro"><span class="text-gray-300 text-lg">—</span></td>
+                            <td class="px-4 py-3.5 text-center"><span class="text-green-500 font-bold text-base">✓</span></td>
+                        </tr>
+
+                        <!-- ═══════════════════════════════ PRECIO FINAL ═══════════════════════════════ -->
+                        <tr class="bg-gray-800 text-white">
+                            <td class="px-6 py-5 font-bold">Precio anual</td>
+                            <td class="px-4 py-5 text-center">
+                                <span class="block text-2xl font-bold">0 Gs</span>
+                                <span class="block text-xs text-gray-400">Para siempre</span>
+                            </td>
+                            <td class="px-4 py-5 text-center">
+                                <span class="block text-2xl font-bold">590.000 Gs</span>
+                                <span class="block text-xs text-gray-400">~49.000/mes</span>
+                            </td>
+                            <td class="px-4 py-5 text-center bg-blue-700">
+                                <span class="block text-2xl font-bold">990.000 Gs</span>
+                                <span class="block text-xs text-blue-200">~82.500/mes</span>
+                            </td>
+                            <td class="px-4 py-5 text-center">
+                                <span class="block text-2xl font-bold">1.970.000 Gs</span>
+                                <span class="block text-xs text-gray-400">~164.000/mes</span>
+                            </td>
+                        </tr>
+
+                        <!-- CTA FINAL -->
+                        <tr class="bg-gray-50">
+                            <td class="px-6 py-5 text-sm text-gray-500 italic">Incluye actualizaciones del sistema</td>
+                            <td class="px-4 py-5 text-center">
+                                <a href="descargas.html" class="inline-block bg-gray-700 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-800 transition">
+                                    Empezar Gratis
+                                </a>
+                            </td>
+                            <td class="px-4 py-5 text-center">
+                                <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20el%20Plan%20Inicio" class="inline-block bg-green-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                                    Contactar
+                                </a>
+                            </td>
+                            <td class="px-4 py-5 text-center col-pro">
+                                <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20el%20Plan%20Profesional" class="inline-block bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                                    Contactar
+                                </a>
+                            </td>
+                            <td class="px-4 py-5 text-center">
+                                <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20el%20Plan%20Total" class="inline-block bg-purple-600 text-white text-xs font-semibold px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                                    Contactar
+                                </a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plan Vitalicio -->
+    <section class="py-10 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-4 max-w-3xl text-center" data-aos="fade-up">
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border border-purple-200 rounded-2xl p-8">
+                <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="infinity" class="text-purple-600" width="24" height="24"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-800 mb-2">¿Preferís pagar una sola vez?</h3>
+                <p class="text-gray-600 mb-4">
+                    El <strong>Plan Vitalicio</strong> te da acceso permanente al plan que elijas — sin renovaciones anuales.
+                    El precio equivale a <strong>3 años del plan seleccionado</strong> pagados de una vez.
+                </p>
+                <div class="grid grid-cols-3 gap-4 mb-6 text-sm">
+                    <div class="bg-white rounded-xl p-3 border border-gray-200">
+                        <span class="block font-bold text-gray-800">Inicio Vitalicio</span>
+                        <span class="block text-gray-500">1.770.000 Gs</span>
+                        <span class="block text-xs text-gray-400">pago único</span>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-blue-300">
+                        <span class="block font-bold text-blue-700">Profesional Vitalicio</span>
+                        <span class="block text-blue-600 font-semibold">2.970.000 Gs</span>
+                        <span class="block text-xs text-gray-400">pago único</span>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 border border-purple-200">
+                        <span class="block font-bold text-gray-800">Total Vitalicio</span>
+                        <span class="block text-gray-500">5.910.000 Gs</span>
+                        <span class="block text-xs text-gray-400">pago único</span>
+                    </div>
+                </div>
+                <a href="https://wa.me/595986708565?text=Hola%2C%20me%20interesa%20el%20Plan%20Vitalicio%20de%20FlowPOS" class="inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-xl hover:bg-purple-700 transition font-semibold text-sm">
+                    <i data-lucide="message-circle" width="16" height="16"></i>
+                    Consultar Plan Vitalicio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Precios de Lanzamiento -->
+    <section class="py-10 bg-yellow-50 border-t border-yellow-200">
+        <div class="container mx-auto px-4 max-w-3xl text-center" data-aos="fade-up">
+            <span class="inline-block bg-yellow-400 text-gray-900 text-xs font-bold px-4 py-1.5 rounded-full mb-4">PRECIO DE FUNDADOR — PRIMEROS 100 CLIENTES</span>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">40% de descuento en el lanzamiento</h3>
+            <p class="text-gray-600 mb-6">Para los primeros 100 clientes que activen un plan pago. <strong>Cupos limitados.</strong></p>
+            <div class="grid grid-cols-3 gap-4 text-sm mb-6">
+                <div class="bg-white rounded-xl p-4 border-2 border-green-200">
+                    <span class="block text-xs font-bold text-green-600 mb-1">INICIO</span>
+                    <span class="block text-lg font-bold text-gray-400 line-through">590.000 Gs</span>
+                    <span class="block text-2xl font-bold text-gray-800">354.000 Gs</span>
+                    <span class="block text-xs text-gray-400">/año · ahorrás 236.000</span>
+                </div>
+                <div class="bg-white rounded-xl p-4 border-2 border-blue-400">
+                    <span class="block text-xs font-bold text-blue-600 mb-1">PROFESIONAL</span>
+                    <span class="block text-lg font-bold text-gray-400 line-through">990.000 Gs</span>
+                    <span class="block text-2xl font-bold text-blue-700">594.000 Gs</span>
+                    <span class="block text-xs text-gray-400">/año · ahorrás 396.000</span>
+                </div>
+                <div class="bg-white rounded-xl p-4 border-2 border-purple-200">
+                    <span class="block text-xs font-bold text-purple-600 mb-1">TOTAL</span>
+                    <span class="block text-lg font-bold text-gray-400 line-through">1.970.000 Gs</span>
+                    <span class="block text-2xl font-bold text-gray-800">1.182.000 Gs</span>
+                    <span class="block text-xs text-gray-400">/año · ahorrás 788.000</span>
+                </div>
+            </div>
+            <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20aprovechar%20el%20precio%20de%20fundador%20de%20FlowPOS" class="inline-flex items-center gap-2 bg-yellow-500 text-gray-900 px-8 py-3 rounded-xl hover:bg-yellow-600 transition font-bold">
+                <i data-lucide="zap" width="18" height="18"></i>
+                Quiero el precio de fundador
+            </a>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center" data-aos="fade-up">
+            <h2 class="text-4xl font-bold mb-6">¿Listo para comenzar?</h2>
+            <p class="text-xl mb-8 text-blue-100">Descargá FlowPOS ahora y empezá gratis — sin tarjeta, sin compromiso</p>
+            <div class="flex justify-center flex-wrap gap-4">
+                <a href="descargas.html" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center space-x-2">
+                    <i data-lucide="download" width="20" height="20"></i>
+                    <span>Descargar Gratis</span>
+                </a>
+                <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20los%20planes%20de%20FlowPOS" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition flex items-center space-x-2">
+                    <i data-lucide="message-circle" width="20" height="20"></i>
+                    <span>Consultar por WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="shopping-bag" class="text-white" width="24" height="24"></i>
+                        </div>
+                        <span class="text-2xl font-bold text-white">FlowPOS</span>
+                    </div>
+                    <p class="text-sm">Sistema de Punto de Venta Profesional para tu negocio.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Producto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html#features" class="hover:text-blue-400 transition">Características</a></li>
+                        <li><a href="index.html#pricing" class="hover:text-blue-400 transition">Precios</a></li>
+                        <li><a href="planes.html" class="text-blue-400">Comparativa de planes</a></li>
+                        <li><a href="descargas.html" class="hover:text-blue-400 transition">Descargas</a></li>
+                        <li><a href="activacion.html" class="hover:text-blue-400 transition">Activación</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Recursos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-blue-400 transition">Documentación</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Video Tutoriales</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition">Soporte</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Contacto</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="mail" width="16" height="16"></i>
+                            <span>soporte@flowpos.com</span>
+                        </li>
+                        <li>
+                            <a href="https://wa.me/595986708565" class="flex items-center space-x-2 hover:text-blue-400 transition">
+                                <i data-lucide="message-circle" width="16" height="16"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p>&copy; 2026 FlowPOS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/595986708565?text=Hola%2C%20necesito%20ayuda%20con%20FlowPOS"
+       class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-50"
+       target="_blank">
+        <i data-lucide="message-circle" width="28" height="28"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+        lucide.createIcons();
+    </script>
+</body>
+</html>

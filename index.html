@@ -221,155 +221,194 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-20">
+    <section id="pricing" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16" data-aos="fade-up">
+            <div class="text-center mb-14" data-aos="fade-up">
                 <h2 class="text-4xl font-bold text-gray-800 mb-4">Planes y Precios</h2>
-                <p class="text-xl text-gray-600">Elige el plan que mejor se adapte a tu negocio</p>
+                <p class="text-xl text-gray-600">Empezá gratis, pagá solo cuando tu negocio crezca</p>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-8">
-                <!-- Trial -->
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="100">
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Trial</h3>
-                        <p class="text-gray-600 mb-6">Prueba gratuita</p>
-                        <div class="mb-6">
-                            <span class="text-4xl font-bold text-gray-800">30</span>
-                            <span class="text-gray-600"> días</span>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Plan Gratuito -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition flex flex-col p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-6">
+                        <span class="inline-block px-3 py-1 bg-gray-100 text-gray-500 text-xs font-bold rounded-full tracking-wide mb-4">PLAN GRATUITO</span>
+                        <div class="flex items-end gap-1 mb-1">
+                            <span class="text-4xl font-bold text-gray-800">0 Gs</span>
                         </div>
+                        <p class="text-sm text-gray-400 mb-4">Para siempre · Sin tarjeta</p>
+                        <p class="text-sm text-gray-600">Para emprendedores que recién arrancan y quieren probar sin compromiso.</p>
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">1 usuario</span>
+                    <ul class="space-y-3 flex-grow mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Ventas ilimitadas en efectivo</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">500 transacciones/mes</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Productos ilimitados + stock</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">1 caja registradora</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Dashboard del día (KPIs)</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">Reportes básicos</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Tickets térmicos 80mm</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">1 usuario · 1 caja</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="minus" class="text-gray-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-400">Sin facturación fiscal</span>
                         </li>
                     </ul>
-                    <a href="descargas.html" class="block w-full text-center bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition">
-                        Descargar
+                    <a href="descargas.html" class="block w-full text-center border-2 border-gray-300 text-gray-700 py-3 rounded-xl hover:border-gray-400 hover:bg-gray-50 transition font-semibold text-sm">
+                        Empezar Gratis
                     </a>
                 </div>
 
-                <!-- Standard -->
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="200">
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Standard</h3>
-                        <p class="text-gray-600 mb-6">Para pequeños negocios</p>
-                        <div class="mb-6">
-                            <span class="text-4xl font-bold text-gray-800">Gs 200K</span>
-                            <span class="text-gray-600">/mes</span>
+                <!-- Plan Inicio -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition flex flex-col p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="mb-6">
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full tracking-wide mb-4">PLAN INICIO</span>
+                        <div class="flex items-end gap-1 mb-1">
+                            <span class="text-4xl font-bold text-gray-800">590.000</span>
+                            <span class="text-gray-500 pb-1 text-sm">Gs/año</span>
                         </div>
+                        <p class="text-sm text-gray-400 mb-4">~49.000 Gs/mes · ~1.600 Gs/día</p>
+                        <p class="text-sm text-gray-600">Para negocios que necesitan facturar legalmente y tener control profesional.</p>
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">3 usuarios</span>
+                    <ul class="space-y-3 flex-grow mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Todo lo del plan Gratuito</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">2,000 transacciones/mes</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Facturación SET con timbrado</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">2 cajas registradoras</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">3 usuarios con roles</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">Reportes completos</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Clientes + historial de compras</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Reportes + exportación PDF</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Descuentos y devoluciones</span>
                         </li>
                     </ul>
-                    <a href="https://wa.me/595986708565?text=Hola,%20quiero%20activar%20FlowPOS%20Standard" class="block w-full text-center bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">
-                        Contactar
+                    <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20activar%20el%20Plan%20Inicio%20de%20FlowPOS%20(590.000%20Gs%2Fa%C3%B1o)" class="block w-full text-center bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition font-semibold text-sm">
+                        Contactar por WhatsApp
                     </a>
                 </div>
 
-                <!-- Premium (Popular) -->
-                <div class="bg-blue-600 text-white p-8 rounded-xl shadow-xl transform md:scale-105" data-aos="fade-up" data-aos-delay="300">
-                    <div class="absolute top-0 right-0 bg-yellow-400 text-gray-800 px-4 py-1 rounded-bl-lg rounded-tr-lg text-sm font-semibold">
-                        Popular
+                <!-- Plan Profesional (Popular) -->
+                <div class="relative bg-blue-600 text-white rounded-2xl shadow-2xl flex flex-col p-8 lg:-mt-3 lg:mb-0" data-aos="fade-up" data-aos-delay="300">
+                    <div class="absolute -top-4 left-0 right-0 flex justify-center">
+                        <span class="bg-yellow-400 text-gray-900 text-xs font-bold px-5 py-1.5 rounded-full shadow-md">⭐ MÁS ELEGIDO</span>
                     </div>
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold mb-2">Premium</h3>
-                        <p class="text-blue-100 mb-6">Para negocios en crecimiento</p>
-                        <div class="mb-6">
-                            <span class="text-4xl font-bold">Gs 350K</span>
-                            <span class="text-blue-100">/mes</span>
+                    <div class="mb-6 mt-3">
+                        <span class="inline-block px-3 py-1 bg-blue-500 text-blue-100 text-xs font-bold rounded-full tracking-wide mb-4">PLAN PROFESIONAL</span>
+                        <div class="flex items-end gap-1 mb-1">
+                            <span class="text-4xl font-bold">990.000</span>
+                            <span class="text-blue-200 pb-1 text-sm">Gs/año</span>
                         </div>
+                        <p class="text-sm text-blue-200 mb-4">~82.500 Gs/mes · menos de 1 millón/año</p>
+                        <p class="text-sm text-blue-100">Para negocios en crecimiento que venden a crédito y gestionan proveedores.</p>
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span>5 usuarios</span>
+                    <ul class="space-y-3 flex-grow mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm">Todo lo del plan Inicio</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span>5,000 transacciones/mes</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm">Ventas a crédito (libreta)</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span>3 cajas registradoras</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm">Proveedores + compras</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span>Reportes avanzados</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm">Multimoneda (USD, BRL, Gs)</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-300 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span>Soporte prioritario</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm">Reportes avanzados + Excel</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm">Usuarios ilimitados</span>
                         </li>
                     </ul>
-                    <a href="https://wa.me/595986708565?text=Hola,%20quiero%20activar%20FlowPOS%20Premium" class="block w-full text-center bg-white text-blue-600 py-3 rounded-lg hover:bg-blue-50 transition font-semibold">
-                        Contactar
+                    <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20activar%20el%20Plan%20Profesional%20de%20FlowPOS%20(990.000%20Gs%2Fa%C3%B1o)" class="block w-full text-center bg-white text-blue-600 py-3 rounded-xl hover:bg-blue-50 transition font-bold text-sm">
+                        Contactar por WhatsApp
                     </a>
                 </div>
 
-                <!-- Enterprise -->
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-center">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Enterprise</h3>
-                        <p class="text-gray-600 mb-6">Para grandes empresas</p>
-                        <div class="mb-6">
-                            <span class="text-4xl font-bold text-gray-800">Custom</span>
+                <!-- Plan Total -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition flex flex-col p-8" data-aos="fade-up" data-aos-delay="400">
+                    <div class="mb-6">
+                        <span class="inline-block px-3 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full tracking-wide mb-4">PLAN TOTAL</span>
+                        <div class="flex items-end gap-1 mb-1">
+                            <span class="text-4xl font-bold text-gray-800">1.970.000</span>
+                            <span class="text-gray-500 pb-1 text-sm">Gs/año</span>
                         </div>
+                        <p class="text-sm text-gray-400 mb-4">~164.000 Gs/mes · ~5.400 Gs/día</p>
+                        <p class="text-sm text-gray-600">Para negocios con múltiples puntos de venta o cajas en red local.</p>
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">Usuarios ilimitados</span>
+                    <ul class="space-y-3 flex-grow mb-8">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Todo lo del plan Profesional</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">Transacciones ilimitadas</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Hasta 3 terminales en red local</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">Cajas ilimitadas</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Cajas registradoras ilimitadas</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">Transferencia de licencia</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Backup automático en la nube</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i data-lucide="check" class="text-green-500 mt-1 flex-shrink-0" width="20" height="20"></i>
-                            <span class="text-gray-600">Soporte 24/7</span>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Consulta remota (celular)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Soporte dedicado (respuesta 4h)</span>
                         </li>
                     </ul>
-                    <a href="https://wa.me/595986708565?text=Hola,%20quiero%20información%20sobre%20FlowPOS%20Enterprise" class="block w-full text-center bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-900 transition">
-                        Contactar
+                    <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20activar%20el%20Plan%20Total%20de%20FlowPOS%20(1.970.000%20Gs%2Fa%C3%B1o)" class="block w-full text-center bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition font-semibold text-sm">
+                        Contactar por WhatsApp
                     </a>
                 </div>
+            </div>
+
+            <!-- Enlace a comparativa completa -->
+            <div class="text-center mt-12" data-aos="fade-up">
+                <p class="text-gray-500 mb-5 text-sm">¿Querés comparar todas las funcionalidades en detalle antes de elegir?</p>
+                <a href="planes.html" class="inline-flex items-center gap-2 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-xl transition font-semibold text-sm shadow-sm">
+                    <i data-lucide="layout-list" width="18" height="18"></i>
+                    Ver comparativa completa de planes
+                    <i data-lucide="arrow-right" width="16" height="16"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -409,6 +448,7 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="#features" class="hover:text-blue-400 transition">Características</a></li>
                         <li><a href="#pricing" class="hover:text-blue-400 transition">Precios</a></li>
+                        <li><a href="planes.html" class="hover:text-blue-400 transition">Comparativa de planes</a></li>
                         <li><a href="descargas.html" class="hover:text-blue-400 transition">Descargas</a></li>
                         <li><a href="activacion.html" class="hover:text-blue-400 transition">Activación</a></li>
                     </ul>
