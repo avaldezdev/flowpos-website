@@ -241,7 +241,7 @@ function showPostDownloadMessage() {
             </li>
             <li class="flex items-start space-x-2">
               <span class="font-semibold">2.</span>
-              <span>Ejecuta el archivo <code class="bg-blue-100 px-1 rounded">FlowPOS-Setup-2.0.1.exe</code></span>
+              <span>Ejecuta el archivo <code class="bg-blue-100 px-1 rounded">FlowPOS-Setup-${window.FLOWPOS_CONFIG.version}.exe</code></span>
             </li>
             <li class="flex items-start space-x-2">
               <span class="font-semibold">3.</span>
