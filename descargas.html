@@ -260,7 +260,7 @@
                     <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-blue-600">
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <h3 class="text-2xl font-semibold text-gray-800">v2.4.9</h3>
+                                <h3 class="text-2xl font-semibold text-gray-800">v2.4.10</h3>
                                 <p class="text-gray-600">Marzo 2026</p>
                             </div>
                             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Actual</span>
@@ -274,11 +274,11 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span>Pagos de Crédito Reflejados en Caja</span>
+                            <span>Validación de sesión de caja para pagos a crédito</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span>Si no hay sesión de caja activa, el pago de crédito se registra normalmente sin movimiento de caja</span>
+                            <span>Se requiere una sesión de caja activa para registrar pagos de crédito. La validación se aplica tanto en frontend como en backend; si no existe una sesión abierta, el botón de pago se deshabilita y se muestra una alerta al usuario.</span>
                         </li>
                             </ul>
                         </div>
@@ -294,6 +294,14 @@
                         </summary>
                         <div class="p-6 pt-0 space-y-6 border-t">
                             <!-- FLOWPOS:RELEASE:HISTORY:START -->
+                            <div class="border-l-4 border-gray-300 pl-4">
+                                <h3 class="text-lg font-semibold text-gray-800">v2.4.9</h3>
+                                <p class="text-sm text-gray-600 mb-2">Marzo 2026</p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• Validación de sesión de caja para pagos a crédito</li>
+                        <li>• Se requiere una sesión de caja activa para registrar pagos de crédito. La validación se aplica tanto en frontend como en backend; si no existe una sesión abierta, el botón de pago se deshabilita y se muestra una alerta al usuario.</li>
+                                </ul>
+                            </div>
                             <div class="border-l-4 border-gray-300 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-800">v2.4.8</h3>
                                 <p class="text-sm text-gray-600 mb-2">Febrero 2026</p>
