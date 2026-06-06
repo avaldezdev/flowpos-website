@@ -14,7 +14,7 @@ window.FLOWPOS_CONFIG = {
   // CONFIGURACIÓN PRINCIPAL - Solo cambiar aquí para nuevas versiones
   // ============================================================================
 
-  version: '3.2.15',
+  version: '3.2.16',
   releaseDate: '2026-06-06',
 
   // ============================================================================
