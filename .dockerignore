@@ -1,0 +1,9 @@
+# No copiar al contenedor lo que no es parte del sitio.
+.git
+.github
+.gitignore
+Dockerfile
+.dockerignore
+nginx.conf
+netlify.toml
+*.md
