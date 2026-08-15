@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Guía paso a paso para activar FlowPOS - Sistema de Punto de Venta">
-    <title>Activar FlowPOS - Guía de Activación</title>
+    <meta name="description" content="Cómo empezar con FlowPOS: instalás y ya vendés. 7 días con el sistema completo, sin serial y sin tarjeta. Después seguís gratis registrándote.">
+    <title>Cómo empezar con FlowPOS</title>
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=20260815">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -32,10 +32,16 @@
                     <a href="index.html#pricing" class="text-gray-600 hover:text-blue-600 transition">Planes</a>
                     <a href="descargas.html" class="text-gray-600 hover:text-blue-600 transition">Descargas</a>
                 </div>
-                <a href="https://wa.me/595986708565" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition flex items-center space-x-2">
-                    <i data-lucide="message-circle" width="18" height="18"></i>
-                    <span>Soporte</span>
-                </a>
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <a href="https://app.flowpos.com.py/" class="inline-flex items-center gap-1.5 text-gray-600 hover:text-blue-600 transition font-medium px-2 py-2 whitespace-nowrap">
+                        <i data-lucide="log-in" width="18" height="18"></i>
+                        <span class="hidden sm:inline">Ingresar</span>
+                    </a>
+                    <a href="https://wa.me/595986708565" class="bg-green-500 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-green-600 transition flex items-center space-x-2 whitespace-nowrap">
+                        <i data-lucide="message-circle" width="18" height="18"></i>
+                        <span>Soporte</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -43,280 +49,176 @@
     <!-- Hero Section -->
     <section class="py-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
         <div class="container mx-auto px-4 text-center">
-            <i data-lucide="shield-check" class="mx-auto mb-4 text-white" width="64" height="64"></i>
-            <h1 class="text-5xl font-bold mb-4">Guía de Activación</h1>
+            <i data-lucide="rocket" class="mx-auto mb-4 text-white" width="64" height="64"></i>
+            <h1 class="text-5xl font-bold mb-4">Cómo empezar</h1>
             <p class="text-xl text-blue-100 max-w-2xl mx-auto">
-                Sigue estos simples pasos para activar FlowPOS y comenzar a gestionar tu negocio
+                Instalás y ya estás vendiendo. No hay serial que pedir, ni licencia que esperar, ni tarjeta que cargar.
             </p>
         </div>
     </section>
 
-    <!-- Activation Steps -->
+    <!-- Aviso: ya no hay serial -->
+    <section class="pt-12">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-amber-50 border border-amber-200 rounded-2xl p-6 flex items-start gap-4">
+                <i data-lucide="info" class="text-amber-600 flex-shrink-0 mt-0.5" width="24" height="24"></i>
+                <div>
+                    <h2 class="font-bold text-gray-900 mb-1">¿Buscabas dónde poner el número de serie?</h2>
+                    <p class="text-gray-700">
+                        Ya no hace falta. Antes había que pedir un código por WhatsApp y copiarlo a mano en el sistema.
+                        <strong>Ese paso desapareció:</strong> FlowPOS arranca solo, y cuando contratás un plan la licencia
+                        llega sola al sistema.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pasos -->
     <section class="py-16">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
-                <!-- Step 1: Download -->
+
+                <!-- Paso 1 -->
                 <div class="bg-white rounded-2xl shadow-xl p-8 mb-8 border-l-8 border-blue-600">
                     <div class="flex items-start space-x-6">
                         <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                                1
-                            </div>
+                            <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">1</div>
                         </div>
                         <div class="flex-1">
                             <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-3">
                                 <i data-lucide="download" class="text-blue-600" width="28" height="28"></i>
-                                <span>Descargar FlowPOS</span>
+                                <span>Descargá e instalá</span>
                             </h2>
                             <p class="text-gray-600 mb-4">
-                                Ve a la página de descargas y obtén el instalador para tu sistema operativo.
+                                Bajás un solo archivo y le hacés doble clic. La instalación tarda unos dos minutos y podés
+                                dejar todas las opciones como vienen.
                             </p>
+                            <div class="bg-gray-50 rounded-lg p-4 mb-4 text-sm text-gray-600">
+                                <p class="mb-2"><strong class="text-gray-800">Necesitás:</strong> una PC con Windows 10 u 11.</p>
+                                <p><strong class="text-gray-800">No necesitás:</strong> internet, tarjeta de crédito, ni ningún código.</p>
+                            </div>
                             <a href="descargas.html" class="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-                                <i data-lucide="arrow-right" width="18" height="18"></i>
                                 <span>Ir a Descargas</span>
+                                <i data-lucide="arrow-right" width="18" height="18"></i>
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 2: Install -->
+                <!-- Paso 2 -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 mb-8 border-l-8 border-blue-600">
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">2</div>
+                        </div>
+                        <div class="flex-1">
+                            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-3">
+                                <i data-lucide="play-circle" class="text-blue-600" width="28" height="28"></i>
+                                <span>Abrí FlowPOS y empezá a vender</span>
+                            </h2>
+                            <p class="text-gray-600 mb-4">
+                                La primera vez que lo abrís, el sistema se activa solo con
+                                <strong class="text-gray-800">7 días de acceso completo</strong>. No te pide usuario, ni clave,
+                                ni licencia: entrás directo a la pantalla de ventas.
+                            </p>
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-5">
+                                <p class="font-semibold text-gray-800 mb-3">Durante esos 7 días tenés todo desbloqueado:</p>
+                                <ul class="grid sm:grid-cols-2 gap-2 text-sm text-gray-700">
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-green-600 flex-shrink-0" width="16" height="16"></i> Facturación fiscal con timbrado</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-green-600 flex-shrink-0" width="16" height="16"></i> Ventas a crédito (libreta)</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-green-600 flex-shrink-0" width="16" height="16"></i> Proveedores y compras</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-green-600 flex-shrink-0" width="16" height="16"></i> Reportes con PDF y Excel</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-green-600 flex-shrink-0" width="16" height="16"></i> Multimoneda y descuentos</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="check" class="text-green-600 flex-shrink-0" width="16" height="16"></i> Usuarios y cajas sin límite</li>
+                                </ul>
+                            </div>
+                            <p class="text-gray-600 mt-4">
+                                Cargá tus productos y vendé de verdad. Es la mejor forma de saber si te sirve.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paso 3 -->
                 <div class="bg-white rounded-2xl shadow-xl p-8 mb-8 border-l-8 border-green-600">
                     <div class="flex items-start space-x-6">
                         <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                                2
-                            </div>
+                            <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">3</div>
                         </div>
                         <div class="flex-1">
                             <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-3">
-                                <i data-lucide="package" class="text-green-600" width="28" height="28"></i>
-                                <span>Instalar el Sistema</span>
+                                <i data-lucide="user-plus" class="text-green-600" width="28" height="28"></i>
+                                <span>Registrate y seguí gratis</span>
                             </h2>
                             <p class="text-gray-600 mb-4">
-                                Ejecuta el instalador descargado y sigue las instrucciones en pantalla.
+                                Cuando se cumplen los 7 días, el sistema te avisa. Tenés un par de días de margen con un
+                                recordatorio que podés postergar, y después te pide registrarte para continuar.
+                                <strong class="text-gray-800">El registro es gratis</strong> y te deja usando FlowPOS
+                                sin costo, para siempre.
                             </p>
-                            <div class="bg-gray-50 rounded-lg p-4 space-y-2">
-                                <div class="flex items-start space-x-2">
-                                    <i data-lucide="check-circle" class="text-green-600 mt-1 flex-shrink-0" width="20" height="20"></i>
-                                    <span class="text-sm text-gray-700">Haz doble clic en el archivo descargado</span>
-                                </div>
-                                <div class="flex items-start space-x-2">
-                                    <i data-lucide="check-circle" class="text-green-600 mt-1 flex-shrink-0" width="20" height="20"></i>
-                                    <span class="text-sm text-gray-700">Acepta los permisos de instalación</span>
-                                </div>
-                                <div class="flex items-start space-x-2">
-                                    <i data-lucide="check-circle" class="text-green-600 mt-1 flex-shrink-0" width="20" height="20"></i>
-                                    <span class="text-sm text-gray-700">Elige la carpeta de instalación (recomendado: dejar por defecto)</span>
-                                </div>
-                                <div class="flex items-start space-x-2">
-                                    <i data-lucide="check-circle" class="text-green-600 mt-1 flex-shrink-0" width="20" height="20"></i>
-                                    <span class="text-sm text-gray-700">Espera a que complete la instalación (~2 minutos)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 3: First Launch -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 mb-8 border-l-8 border-purple-600">
-                    <div class="flex items-start space-x-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                                3
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-3">
-                                <i data-lucide="rocket" class="text-purple-600" width="28" height="28"></i>
-                                <span>Abrir FlowPOS</span>
-                            </h2>
-                            <p class="text-gray-600 mb-4">
-                                Inicia FlowPOS desde el acceso directo en tu escritorio o menú de inicio.
-                            </p>
-                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                                <h4 class="font-semibold text-blue-900 mb-2 flex items-center space-x-2">
-                                    <i data-lucide="key" class="text-blue-600" width="20" height="20"></i>
-                                    <span>Primer acceso</span>
-                                </h4>
-                                <p class="text-sm text-blue-800 mb-2">
-                                    Al abrir por primera vez, el sistema crea un usuario administrador por defecto:
+                            <div class="bg-gray-50 rounded-lg p-5 mb-4">
+                                <p class="font-semibold text-gray-800 mb-3">Te va a pedir estos datos:</p>
+                                <ul class="grid sm:grid-cols-2 gap-2 text-sm text-gray-700">
+                                    <li class="flex items-center gap-2"><i data-lucide="dot" class="text-gray-400 flex-shrink-0" width="16" height="16"></i> Nombre del negocio</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="dot" class="text-gray-400 flex-shrink-0" width="16" height="16"></i> Tu nombre</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="dot" class="text-gray-400 flex-shrink-0" width="16" height="16"></i> Número de contacto</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="dot" class="text-gray-400 flex-shrink-0" width="16" height="16"></i> Tipo de negocio</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="dot" class="text-gray-400 flex-shrink-0" width="16" height="16"></i> Ciudad</li>
+                                    <li class="flex items-center gap-2"><i data-lucide="dot" class="text-gray-400 flex-shrink-0" width="16" height="16"></i> Email y contraseña</li>
+                                </ul>
+                                <p class="text-sm text-gray-500 mt-3">
+                                    Para este paso sí necesitás internet, una sola vez. Al final creás tu PIN de 4 dígitos,
+                                    que es con lo que vas a entrar todos los días.
                                 </p>
-                                <div class="bg-white rounded p-3 space-y-1 text-sm">
-                                    <p><span class="font-semibold">PIN:</span> <code class="bg-gray-100 px-2 py-1 rounded">1234</code></p>
-                                    <p><span class="font-semibold">Rol:</span> Administrador</p>
-                                </div>
-                                <p class="text-xs text-blue-700 mt-2">
-                                    ⚠️ <strong>Importante:</strong> Cambia este PIN inmediatamente después de activar tu licencia.
+                            </div>
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-5 flex items-start gap-3">
+                                <i data-lucide="shield-check" class="text-green-600 flex-shrink-0 mt-0.5" width="22" height="22"></i>
+                                <p class="text-gray-700 text-sm">
+                                    <strong class="text-gray-900">Tus datos no se tocan.</strong> Todo lo que cargaste durante
+                                    la prueba — productos, ventas, clientes, stock — sigue exactamente donde estaba. Nada se borra.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 4: Get Hardware ID -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 mb-8 border-l-8 border-yellow-600">
+                <!-- Paso 4 -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 border-l-8 border-purple-600">
                     <div class="flex items-start space-x-6">
                         <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-yellow-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                                4
-                            </div>
+                            <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">4</div>
                         </div>
                         <div class="flex-1">
                             <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-3">
-                                <i data-lucide="cpu" class="text-yellow-600" width="28" height="28"></i>
-                                <span>Obtener Hardware ID</span>
+                                <i data-lucide="badge-check" class="text-purple-600" width="28" height="28"></i>
+                                <span>¿Querés un plan pago? Escribinos</span>
                             </h2>
                             <p class="text-gray-600 mb-4">
-                                El Hardware ID es único para tu computadora y es necesario para generar tu licencia.
+                                Si necesitás más de lo que da el plan gratuito, elegís un plan y nos escribís por WhatsApp.
+                                Coordinamos el pago y activamos tu licencia.
                             </p>
-                            <div class="bg-gray-50 rounded-lg p-4 space-y-3">
-                                <div class="flex items-start space-x-2">
-                                    <span class="text-yellow-600 font-bold mt-1">1.</span>
-                                    <span class="text-sm text-gray-700">Dentro de FlowPOS, ve a <strong>Configuración → Licencias</strong></span>
-                                </div>
-                                <div class="flex items-start space-x-2">
-                                    <span class="text-yellow-600 font-bold mt-1">2.</span>
-                                    <span class="text-sm text-gray-700">Verás tu <strong>Hardware ID</strong> en la pantalla (ejemplo: <code class="bg-gray-200 px-2 py-1 rounded text-xs">a1b2c3d4...</code>)</span>
-                                </div>
-                                <div class="flex items-start space-x-2">
-                                    <span class="text-yellow-600 font-bold mt-1">3.</span>
-                                    <span class="text-sm text-gray-700">Copia este código o tómale una captura de pantalla</span>
-                                </div>
-                            </div>
-                            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-4">
-                                <p class="text-sm text-yellow-900 flex items-start space-x-2">
-                                    <i data-lucide="alert-triangle" class="text-yellow-600 mt-1 flex-shrink-0" width="20" height="20"></i>
-                                    <span><strong>Nota:</strong> Este ID está vinculado a tu hardware. Si cambias de computadora, necesitarás una nueva licencia o transferir la existente (solo en plan Enterprise).</span>
+                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-5 mb-5">
+                                <p class="text-gray-700 text-sm">
+                                    <strong class="text-gray-900">No hay ningún código que copiar.</strong> Una vez activada,
+                                    tu licencia baja sola al sistema. Si no la ves al instante, entrá a
+                                    <em>Ajustes → Licencia</em> y tocá <em>Sincronizar</em>.
                                 </p>
+                            </div>
+                            <div class="flex flex-wrap gap-3">
+                                <a href="planes.html" class="inline-flex items-center space-x-2 bg-white border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-lg hover:bg-purple-600 hover:text-white transition font-semibold">
+                                    <i data-lucide="layout-list" width="18" height="18"></i>
+                                    <span>Ver los planes</span>
+                                </a>
+                                <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20contratar%20un%20plan%20de%20FlowPOS" class="inline-flex items-center space-x-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-semibold" target="_blank">
+                                    <i data-lucide="message-circle" width="18" height="18"></i>
+                                    <span>Escribir por WhatsApp</span>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 5: Contact Support -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 mb-8 border-l-8 border-red-600">
-                    <div class="flex items-start space-x-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                                5
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-3">
-                                <i data-lucide="message-circle" class="text-red-600" width="28" height="28"></i>
-                                <span>Contactar Soporte</span>
-                            </h2>
-                            <p class="text-gray-600 mb-4">
-                                Contáctanos por WhatsApp con tu Hardware ID y el plan que deseas adquirir.
-                            </p>
-                            <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-4">
-                                <h4 class="font-semibold text-green-900 mb-3 flex items-center space-x-2">
-                                    <i data-lucide="smartphone" class="text-green-600" width="20" height="20"></i>
-                                    <span>Información a enviar</span>
-                                </h4>
-                                <div class="space-y-2 text-sm">
-                                    <div class="flex items-start space-x-2">
-                                        <i data-lucide="check" class="text-green-600 mt-1 flex-shrink-0" width="16" height="16"></i>
-                                        <span><strong>Hardware ID</strong> (copiado del sistema)</span>
-                                    </div>
-                                    <div class="flex items-start space-x-2">
-                                        <i data-lucide="check" class="text-green-600 mt-1 flex-shrink-0" width="16" height="16"></i>
-                                        <span><strong>Plan deseado</strong> (Trial, Standard, Premium, Enterprise)</span>
-                                    </div>
-                                    <div class="flex items-start space-x-2">
-                                        <i data-lucide="check" class="text-green-600 mt-1 flex-shrink-0" width="16" height="16"></i>
-                                        <span><strong>Datos de facturación</strong> (Nombre/Empresa, RUC si aplica)</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="https://wa.me/595986708565?text=Hola,%20quiero%20activar%20FlowPOS.%0A%0AHardware%20ID:%20[PEGAR_AQUI]%0APlan:%20[Standard/Premium/Enterprise]%0ANombre:%20[TU_NOMBRE]"
-                               class="inline-flex items-center space-x-2 bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition text-lg font-semibold"
-                               target="_blank">
-                                <i data-lucide="message-circle" width="24" height="24"></i>
-                                <span>Contactar por WhatsApp</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 6: Receive License -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 mb-8 border-l-8 border-indigo-600">
-                    <div class="flex items-start space-x-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-indigo-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                                6
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-3">
-                                <i data-lucide="ticket" class="text-indigo-600" width="28" height="28"></i>
-                                <span>Recibir Serial Key</span>
-                            </h2>
-                            <p class="text-gray-600 mb-4">
-                                Nuestro equipo procesará tu solicitud y te enviará un <strong>Serial Key</strong> único.
-                            </p>
-                            <div class="bg-indigo-50 rounded-lg p-4">
-                                <p class="text-sm text-indigo-900 mb-3">
-                                    El Serial Key tiene el siguiente formato:
-                                </p>
-                                <div class="bg-white rounded p-3 text-center font-mono text-lg">
-                                    FLOW-XXXX-XXXX-XXXX-XXXX-XXXX
-                                </div>
-                                <p class="text-xs text-indigo-700 mt-3">
-                                    Este código está vinculado a tu Hardware ID y solo funcionará en tu computadora.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 7: Activate -->
-                <div class="bg-white rounded-2xl shadow-xl p-8 border-l-8 border-emerald-600">
-                    <div class="flex items-start space-x-6">
-                        <div class="flex-shrink-0">
-                            <div class="w-16 h-16 bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl font-bold">
-                                7
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center space-x-3">
-                                <i data-lucide="check-circle" class="text-emerald-600" width="28" height="28"></i>
-                                <span>Activar Licencia</span>
-                            </h2>
-                            <p class="text-gray-600 mb-4">
-                                Ingresa el Serial Key en FlowPOS para activar tu licencia.
-                            </p>
-                            <div class="bg-gray-50 rounded-lg p-4 space-y-3">
-                                <div class="flex items-start space-x-2">
-                                    <span class="text-emerald-600 font-bold mt-1">1.</span>
-                                    <span class="text-sm text-gray-700">Ve a <strong>Configuración → Licencias</strong></span>
-                                </div>
-                                <div class="flex items-start space-x-2">
-                                    <span class="text-emerald-600 font-bold mt-1">2.</span>
-                                    <span class="text-sm text-gray-700">Haz clic en <strong>"Activar Licencia"</strong></span>
-                                </div>
-                                <div class="flex items-start space-x-2">
-                                    <span class="text-emerald-600 font-bold mt-1">3.</span>
-                                    <span class="text-sm text-gray-700">Pega o escribe tu <strong>Serial Key</strong></span>
-                                </div>
-                                <div class="flex items-start space-x-2">
-                                    <span class="text-emerald-600 font-bold mt-1">4.</span>
-                                    <span class="text-sm text-gray-700">Completa tus datos (Nombre, Email, Empresa, RUC)</span>
-                                </div>
-                                <div class="flex items-start space-x-2">
-                                    <span class="text-emerald-600 font-bold mt-1">5.</span>
-                                    <span class="text-sm text-gray-700">Haz clic en <strong>"Activar"</strong></span>
-                                </div>
-                            </div>
-                            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mt-4">
-                                <p class="text-sm text-emerald-900 flex items-start space-x-2">
-                                    <i data-lucide="party-popper" class="text-emerald-600 mt-1 flex-shrink-0" width="20" height="20"></i>
-                                    <span><strong>¡Listo!</strong> FlowPOS está activado y listo para usar. Todas las características de tu plan están ahora disponibles.</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -325,72 +227,96 @@
     <section class="py-16 bg-gray-100">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Preguntas Frecuentes</h2>
+                <h2 id="faq" class="text-3xl font-bold text-gray-800 mb-8 text-center scroll-mt-24">Preguntas Frecuentes</h2>
 
                 <div class="space-y-4">
-                    <!-- FAQ 1 -->
                     <details class="bg-white rounded-lg shadow-md overflow-hidden">
                         <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
-                            <span>¿Puedo probar FlowPOS antes de comprar?</span>
+                            <span>¿Puedo probar FlowPOS antes de pagar?</span>
                             <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
                         </summary>
                         <div class="p-6 pt-0 text-gray-600">
-                            <p>Sí, FlowPOS incluye una prueba gratuita de 30 días con funcionalidad completa (plan Trial). No se requiere tarjeta de crédito.</p>
+                            <p>Sí. Al instalarlo tenés 7 días con el sistema completo, sin límites y sin tarjeta de crédito. Después seguís usándolo gratis registrándote, o elegís un plan pago si necesitás más.</p>
                         </div>
                     </details>
 
-                    <!-- FAQ 2 -->
+                    <details class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
+                            <span>¿Qué pasa cuando se terminan los 7 días?</span>
+                            <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
+                        </summary>
+                        <div class="p-6 pt-0 text-gray-600">
+                            <p>El sistema te avisa y te da unos días de margen con un recordatorio que podés postergar. Para seguir usándolo hay que registrarse — es gratuito y toma un minuto. Nunca te corta en medio de una venta, y ningún dato tuyo se borra.</p>
+                        </div>
+                    </details>
+
+                    <details class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
+                            <span>¿Dónde ingreso el número de serie o la clave de licencia?</span>
+                            <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
+                        </summary>
+                        <div class="p-6 pt-0 text-gray-600">
+                            <p>En ningún lado — ese paso ya no existe. La licencia se emite desde nuestro sistema y baja sola a tu FlowPOS. Si contrataste un plan y todavía no lo ves reflejado, andá a <em>Ajustes → Licencia</em> y tocá <em>Sincronizar</em>.</p>
+                        </div>
+                    </details>
+
+                    <details class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
+                            <span>¿FlowPOS necesita internet?</span>
+                            <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
+                        </summary>
+                        <div class="p-6 pt-0 text-gray-600">
+                            <p>Para vender, no: FlowPOS funciona 100% en tu computadora y sigue andando aunque se corte la conexión. Solo necesitás internet en dos momentos puntuales: para registrarte y para que el sistema revalide tu licencia cada tanto.</p>
+                        </div>
+                    </details>
+
+                    <details class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
+                            <span>¿Me piden el RUC para registrarme?</span>
+                            <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
+                        </summary>
+                        <div class="p-6 pt-0 text-gray-600">
+                            <p>No. El registro solo pide nombre del negocio, tu nombre, un número de contacto, tipo de negocio, ciudad, email y contraseña. Los datos fiscales se cargan después, dentro del sistema, y solo si vas a facturar.</p>
+                        </div>
+                    </details>
+
                     <details class="bg-white rounded-lg shadow-md overflow-hidden">
                         <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
                             <span>¿Qué pasa si cambio de computadora?</span>
                             <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
                         </summary>
                         <div class="p-6 pt-0 text-gray-600">
-                            <p>El Serial Key está vinculado a tu Hardware ID. Si cambias de computadora, contacta soporte para obtener una nueva licencia. Los planes Enterprise permiten transferencias ilimitadas.</p>
+                            <p>Escribinos por WhatsApp y reasignamos tu licencia a la PC nueva. Acordate de llevarte también tu respaldo de datos para no empezar de cero.</p>
                         </div>
                     </details>
 
-                    <!-- FAQ 3 -->
                     <details class="bg-white rounded-lg shadow-md overflow-hidden">
                         <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
-                            <span>¿FlowPOS requiere internet?</span>
+                            <span>¿Puedo cambiar de plan más adelante?</span>
                             <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
                         </summary>
                         <div class="p-6 pt-0 text-gray-600">
-                            <p>No. FlowPOS funciona 100% offline. La conexión a internet solo se usa opcionalmente para validaciones periódicas de licencia (cada 30 días por defecto).</p>
+                            <p>Sí, en cualquier momento y en los dos sentidos. Nos escribís, ajustamos tu plan y el cambio llega solo a tu sistema. No hay que reinstalar nada.</p>
                         </div>
                     </details>
 
-                    <!-- FAQ 4 -->
-                    <details class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
-                            <span>¿Puedo cambiar de plan después?</span>
-                            <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
-                        </summary>
-                        <div class="p-6 pt-0 text-gray-600">
-                            <p>Sí, puedes actualizar o cambiar de plan en cualquier momento. Contacta soporte para gestionar el cambio y te enviaremos un nuevo Serial Key.</p>
-                        </div>
-                    </details>
-
-                    <!-- FAQ 5 -->
                     <details class="bg-white rounded-lg shadow-md overflow-hidden">
                         <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
                             <span>¿Qué métodos de pago aceptan?</span>
                             <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
                         </summary>
                         <div class="p-6 pt-0 text-gray-600">
-                            <p>Aceptamos transferencias bancarias, billeteras electrónicas y efectivo. Contacta soporte para coordinar el método de pago más conveniente.</p>
+                            <p>Transferencia bancaria, billetera electrónica y efectivo. Lo coordinamos por WhatsApp según lo que te quede más cómodo.</p>
                         </div>
                     </details>
 
-                    <!-- FAQ 6 -->
                     <details class="bg-white rounded-lg shadow-md overflow-hidden">
                         <summary class="p-6 cursor-pointer hover:bg-gray-50 transition font-semibold text-gray-700 flex justify-between items-center">
-                            <span>¿Ofrecen soporte técnico?</span>
+                            <span>¿Tengo soporte técnico?</span>
                             <i data-lucide="chevron-down" class="text-gray-400" width="20" height="20"></i>
                         </summary>
                         <div class="p-6 pt-0 text-gray-600">
-                            <p>Sí, todos los planes incluyen soporte técnico por WhatsApp. Los planes Premium y Enterprise tienen soporte prioritario con tiempos de respuesta más rápidos.</p>
+                            <p>Los planes pagos incluyen soporte con tiempo de respuesta comprometido: 48 horas en Inicio, 24 horas en Profesional y 4 horas en Total. El plan Gratuito no tiene soporte garantizado, pero igual podés escribirnos por WhatsApp y te vamos a ayudar en lo que podamos.</p>
                         </div>
                     </details>
                 </div>
@@ -402,11 +328,11 @@
     <section class="py-16 bg-gradient-to-br from-green-600 to-green-800 text-white">
         <div class="container mx-auto px-4 text-center">
             <i data-lucide="headphones" class="mx-auto mb-4 text-white" width="64" height="64"></i>
-            <h2 class="text-4xl font-bold mb-4">¿Necesitas Ayuda?</h2>
+            <h2 class="text-4xl font-bold mb-4">¿Te trabaste en algún paso?</h2>
             <p class="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-                Nuestro equipo de soporte está disponible para ayudarte en cada paso del proceso
+                Escribinos por WhatsApp y te acompañamos hasta que estés vendiendo.
             </p>
-            <a href="https://wa.me/595986708565?text=Hola,%20necesito%20ayuda%20con%20la%20activación%20de%20FlowPOS"
+            <a href="https://wa.me/595986708565?text=Hola,%20necesito%20ayuda%20para%20empezar%20con%20FlowPOS"
                class="inline-flex items-center space-x-2 bg-white text-green-600 px-8 py-4 rounded-lg hover:bg-green-50 transition text-lg font-semibold"
                target="_blank">
                 <i data-lucide="message-circle" width="24" height="24"></i>
@@ -433,15 +359,18 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="index.html#features" class="hover:text-blue-400 transition">Características</a></li>
                         <li><a href="index.html#pricing" class="hover:text-blue-400 transition">Precios</a></li>
+                        <li><a href="planes.html" class="hover:text-blue-400 transition">Comparativa de planes</a></li>
                         <li><a href="descargas.html" class="hover:text-blue-400 transition">Descargas</a></li>
+                        <li><a href="activacion.html" class="hover:text-blue-400 transition">Cómo empezar</a></li>
+                        <li><a href="https://app.flowpos.com.py/" class="hover:text-blue-400 transition">Portal del cliente</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-semibold text-white mb-4">Recursos</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="activacion.html" class="hover:text-blue-400 transition">Guía de Activación</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Documentación</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Soporte</a></li>
+                        <li><a href="activacion.html" class="hover:text-blue-400 transition">Guía de primeros pasos</a></li>
+                        <li><a href="activacion.html#faq" class="hover:text-blue-400 transition">Preguntas frecuentes</a></li>
+                        <li><a href="descargas.html#novedades" class="hover:text-blue-400 transition">Novedades de la versión</a></li>
                     </ul>
                 </div>
                 <div>
@@ -449,7 +378,11 @@
                     <ul class="space-y-2 text-sm">
                         <li class="flex items-center space-x-2">
                             <i data-lucide="mail" width="16" height="16"></i>
-                            <span>soporte@flowpos.com</span>
+                            <span>soporte@flowpos.com.py</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <i data-lucide="phone" width="16" height="16"></i>
+                            <span>+595 986 708 565</span>
                         </li>
                         <li>
                             <a href="https://wa.me/595986708565" class="flex items-center space-x-2 hover:text-blue-400 transition">
@@ -467,14 +400,14 @@
     </footer>
 
     <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/595986708565?text=Hola,%20necesito%20ayuda%20con%20la%20activación%20de%20FlowPOS"
+    <a href="https://wa.me/595986708565?text=Hola,%20necesito%20ayuda%20para%20empezar%20con%20FlowPOS"
        class="fixed bottom-6 right-6 bg-green-500 text-white w-16 h-16 rounded-full shadow-lg hover:bg-green-600 transition flex items-center justify-center z-50"
        target="_blank">
         <i data-lucide="message-circle" width="28" height="28"></i>
     </a>
 
     <!-- Scripts -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=20260815"></script>
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();

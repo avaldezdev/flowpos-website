@@ -10,7 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=20260815">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -30,12 +30,18 @@
                     <a href="index.html" class="text-gray-600 hover:text-blue-600 transition">Inicio</a>
                     <a href="index.html#features" class="text-gray-600 hover:text-blue-600 transition">Características</a>
                     <a href="index.html#pricing" class="text-gray-600 hover:text-blue-600 transition">Planes</a>
-                    <a href="activacion.html" class="text-gray-600 hover:text-blue-600 transition">Activación</a>
+                    <a href="activacion.html" class="text-gray-600 hover:text-blue-600 transition">Cómo empezar</a>
                 </div>
-                <a href="https://wa.me/595986708565" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 transition flex items-center space-x-2">
-                    <i data-lucide="message-circle" width="18" height="18"></i>
-                    <span>Soporte</span>
-                </a>
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <a href="https://app.flowpos.com.py/" class="inline-flex items-center gap-1.5 text-gray-600 hover:text-blue-600 transition font-medium px-2 py-2 whitespace-nowrap">
+                        <i data-lucide="log-in" width="18" height="18"></i>
+                        <span class="hidden sm:inline">Ingresar</span>
+                    </a>
+                    <a href="https://wa.me/595986708565" class="bg-green-500 text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-green-600 transition flex items-center space-x-2 whitespace-nowrap">
+                        <i data-lucide="message-circle" width="18" height="18"></i>
+                        <span>Soporte</span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -44,7 +50,7 @@
     <section class="py-16 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
         <div class="container mx-auto px-4 text-center">
             <h1 class="text-5xl font-bold mb-4">Descarga FlowPOS</h1>
-            <p class="text-xl text-blue-100 mb-8">Versión actual: <span id="current-version" class="font-semibold">v2.4.2</span></p>
+            <p class="text-xl text-blue-100 mb-8">Versión actual: <span id="current-version" class="font-semibold">v3.3.7</span></p>
 
             <!-- Main Download Button (Auto-detect OS) -->
             <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 max-w-2xl mx-auto">
@@ -229,7 +235,7 @@
                     <ul class="grid md:grid-cols-2 gap-3 text-sm text-blue-900">
                         <li class="flex items-center space-x-2">
                             <i data-lucide="check" class="text-blue-600 flex-shrink-0" width="16" height="16"></i>
-                            <span>Impresora térmica 72mm (opcional)</span>
+                            <span>Impresora térmica 80mm (opcional)</span>
                         </li>
                         <li class="flex items-center space-x-2">
                             <i data-lucide="check" class="text-blue-600 flex-shrink-0" width="16" height="16"></i>
@@ -253,7 +259,7 @@
     <section class="py-16">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Notas de la Versión</h2>
+                <h2 id="novedades" class="text-3xl font-bold text-gray-800 mb-8 text-center scroll-mt-24">Notas de la Versión</h2>
 
                 <div id="release-notes" class="space-y-6">
                     <!-- FLOWPOS:RELEASE:CURRENT:START -->
@@ -740,7 +746,7 @@
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto text-center">
                 <h2 class="text-3xl font-bold text-gray-800 mb-6">¿Qué sigue después de descargar?</h2>
-                <p class="text-lg text-gray-600 mb-8">Sigue estos simples pasos para comenzar a usar FlowPOS</p>
+                <p class="text-lg text-gray-600 mb-8">No hace falta pedir ninguna licencia: el sistema arranca solo</p>
 
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="bg-white p-6 rounded-xl shadow-md">
@@ -748,26 +754,26 @@
                             1
                         </div>
                         <h3 class="font-semibold mb-2">Instalar</h3>
-                        <p class="text-sm text-gray-600">Ejecuta el instalador y sigue las instrucciones</p>
+                        <p class="text-sm text-gray-600">Doble clic al instalador y listo, en un par de minutos</p>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-md">
                         <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                             2
                         </div>
-                        <h3 class="font-semibold mb-2">Activar</h3>
-                        <p class="text-sm text-gray-600">Contacta soporte para obtener tu licencia</p>
+                        <h3 class="font-semibold mb-2">Vender</h3>
+                        <p class="text-sm text-gray-600">Entrás directo, con 7 días del sistema completo</p>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-md">
                         <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
                             3
                         </div>
-                        <h3 class="font-semibold mb-2">Usar</h3>
-                        <p class="text-sm text-gray-600">¡Comienza a gestionar tu negocio!</p>
+                        <h3 class="font-semibold mb-2">Seguir gratis</h3>
+                        <p class="text-sm text-gray-600">Al terminar la prueba te registrás y continuás sin costo</p>
                     </div>
                 </div>
 
                 <a href="activacion.html" class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition font-semibold">
-                    Ver Guía de Activación
+                    Ver el paso a paso completo
                 </a>
             </div>
         </div>
@@ -791,15 +797,18 @@
                     <ul class="space-y-2 text-sm">
                         <li><a href="index.html#features" class="hover:text-blue-400 transition">Características</a></li>
                         <li><a href="index.html#pricing" class="hover:text-blue-400 transition">Precios</a></li>
+                        <li><a href="planes.html" class="hover:text-blue-400 transition">Comparativa de planes</a></li>
                         <li><a href="descargas.html" class="hover:text-blue-400 transition">Descargas</a></li>
+                        <li><a href="activacion.html" class="hover:text-blue-400 transition">Cómo empezar</a></li>
+                        <li><a href="https://app.flowpos.com.py/" class="hover:text-blue-400 transition">Portal del cliente</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-semibold text-white mb-4">Recursos</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="activacion.html" class="hover:text-blue-400 transition">Guía de Activación</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Documentación</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Soporte</a></li>
+                        <li><a href="activacion.html" class="hover:text-blue-400 transition">Guía de primeros pasos</a></li>
+                        <li><a href="activacion.html#faq" class="hover:text-blue-400 transition">Preguntas frecuentes</a></li>
+                        <li><a href="descargas.html#novedades" class="hover:text-blue-400 transition">Novedades de la versión</a></li>
                     </ul>
                 </div>
                 <div>
@@ -807,7 +816,7 @@
                     <ul class="space-y-2 text-sm">
                         <li class="flex items-center space-x-2">
                             <i data-lucide="mail" width="16" height="16"></i>
-                            <span>soporte@flowpos.com</span>
+                            <span>soporte@flowpos.com.py</span>
                         </li>
                         <li>
                             <a href="https://wa.me/595986708565" class="flex items-center space-x-2 hover:text-blue-400 transition">
@@ -832,8 +841,8 @@
     </a>
 
     <!-- Scripts -->
-    <script src="js/config.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/config.js?v=20260815"></script>
+    <script src="js/main.js?v=20260815"></script>
     <script>
         // Initialize Lucide Icons
         lucide.createIcons();

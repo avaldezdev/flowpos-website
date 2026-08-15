@@ -148,6 +148,37 @@ gh workflow run update-releases.yml
 - Skip updating config.js
 - Manually edit netlify.toml redirects (Actions does this)
 
+### Cache Busting for Local Assets (IMPORTANT)
+
+`nginx.conf` serves `.css`/`.js` with `expires 1y`. Without a version query, returning
+visitors keep the **old** `main.js` / `styles.css` after a deploy — new behavior silently
+fails to reach them.
+
+All four pages therefore reference local assets with a version query:
+
+```html
+<link rel="stylesheet" href="css/styles.css?v=20260815">
+<script src="js/main.js?v=20260815"></script>
+```
+
+**Whenever you edit `js/main.js`, `js/config.js` or `css/styles.css`, bump `?v=` to the
+current date (`YYYYMMDD`) in ALL pages that reference it** — otherwise the change won't
+reach existing visitors.
+
+### Links to the Client Portal
+
+The public site is the front door to the portal (`app.flowpos.com.py`). Two entry points
+exist on every page and must stay in sync:
+
+- Nav: an **"Ingresar"** button (icon + label; label hidden below `sm`).
+- Footer, "Producto" column: **"Portal del cliente"**.
+
+Short redirects (`/portal`, `/ingresar`, `/login`, `/cuenta`, `/registro`) point to the
+portal and are defined in **both** `nginx.conf` (Coolify) and `netlify.toml` (backup).
+Add new shortcuts to both files or they only work on one host.
+
+The internal back-office (`admin.flowpos.com.py`) is deliberately **not** linked anywhere.
+
 ### File Naming Conventions
 
 FlowPOS releases follow this pattern:

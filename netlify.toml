@@ -78,6 +78,37 @@
   to = "/activacion.html"
   status = 301
 
+# Atajos al portal del cliente (fáciles de dictar por teléfono/WhatsApp)
+[[redirects]]
+  from = "/portal"
+  to = "https://app.flowpos.com.py/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/ingresar"
+  to = "https://app.flowpos.com.py/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/login"
+  to = "https://app.flowpos.com.py/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/cuenta"
+  to = "https://app.flowpos.com.py/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/registro"
+  to = "https://app.flowpos.com.py/"
+  status = 302
+  force = true
+
 # SPA fallback (optional, for future React/Vue conversion)
 # [[redirects]]
 #   from = "/*"

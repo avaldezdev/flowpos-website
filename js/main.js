@@ -352,19 +352,52 @@ function initializeMobileMenu() {
 
   lucide.createIcons()
 
-  // Toggle menu
-  menuBtn.addEventListener('click', () => {
-    navLinks.classList.toggle('hidden')
-    navLinks.classList.toggle('flex')
-    navLinks.classList.toggle('flex-col')
-    navLinks.classList.toggle('absolute')
-    navLinks.classList.toggle('top-full')
-    navLinks.classList.toggle('left-0')
-    navLinks.classList.toggle('right-0')
-    navLinks.classList.toggle('bg-white')
-    navLinks.classList.toggle('shadow-lg')
-    navLinks.classList.toggle('p-4')
-    navLinks.classList.toggle('space-y-4')
+  // Clases que se agregan al abrir el panel desplegable en móvil.
+  const OPEN_CLASSES = [
+    'flex', 'flex-col', 'items-start', 'absolute', 'top-full',
+    'left-0', 'right-0', 'bg-white', 'shadow-lg', 'p-4', 'space-y-4'
+  ]
+  // Clases del layout horizontal que estorban en el panel vertical
+  // (space-x-* desplaza los ítems a la derecha; items-center los centra).
+  const DESKTOP_ONLY_CLASSES = ['space-x-6', 'items-center']
+
+  let isOpen = false
+  const removed = []
+
+  const setMenu = (open) => {
+    isOpen = open
+    menuBtn.setAttribute('aria-expanded', String(open))
+
+    if (open) {
+      navLinks.classList.remove('hidden')
+      navLinks.classList.add(...OPEN_CLASSES)
+      // Guardar y quitar solo las clases de escritorio que la página realmente tenía,
+      // para poder restaurarlas tal cual al cerrar.
+      DESKTOP_ONLY_CLASSES.forEach((cls) => {
+        if (navLinks.classList.contains(cls)) {
+          navLinks.classList.remove(cls)
+          removed.push(cls)
+        }
+      })
+    } else {
+      navLinks.classList.remove(...OPEN_CLASSES)
+      navLinks.classList.add('hidden')
+      while (removed.length) navLinks.classList.add(removed.pop())
+    }
+  }
+
+  menuBtn.setAttribute('aria-label', 'Abrir menú')
+  menuBtn.setAttribute('aria-expanded', 'false')
+  menuBtn.addEventListener('click', () => setMenu(!isOpen))
+
+  // Al tocar un enlace, cerrar el menú (si no, queda abierto sobre la página nueva).
+  navLinks.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setMenu(false)
+  })
+
+  // Al volver a tamaño escritorio, dejar la barra en su estado normal.
+  window.addEventListener('resize', () => {
+    if (isOpen && window.innerWidth >= 768) setMenu(false)
   })
 }
 
