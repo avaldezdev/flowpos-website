@@ -121,9 +121,14 @@ async function initializeDownloadPage() {
     mainDownloadBtn.disabled = false
     mainDownloadBtn.classList.remove('disabled:opacity-50', 'disabled:cursor-not-allowed')
 
-    mainDownloadBtn.addEventListener('click', () => {
-      handleDownload(detectedOS, releaseData)
-    })
+    // Guarda contra doble cableado: "Descargar de nuevo" vuelve a llamar a esta
+    // función, y sin esto cada clic dispararía la descarga dos veces.
+    if (!mainDownloadBtn.dataset.bound) {
+      mainDownloadBtn.dataset.bound = '1'
+      mainDownloadBtn.addEventListener('click', () => {
+        handleDownload(detectedOS, releaseData)
+      })
+    }
   }
 
   // Update download size
@@ -143,7 +148,8 @@ async function initializeDownloadPage() {
 function setupAlternativeDownloads(releaseData) {
   // Only setup Windows download (Mac and Linux are in development)
   const windowsBtn = document.getElementById('download-windows')
-  if (windowsBtn) {
+  if (windowsBtn && !windowsBtn.dataset.bound) {
+    windowsBtn.dataset.bound = '1'
     windowsBtn.addEventListener('click', (e) => {
       e.preventDefault()
       handleDownload('windows', releaseData)
@@ -167,14 +173,109 @@ function handleDownload(os, releaseData) {
   // Track download (optional: add analytics here)
   console.log(`Download initiated for ${os}: ${downloadUrl}`)
 
-  // Trigger download immediately
-  window.location.href = downloadUrl
+  // Disparar la descarga con un <a> temporal en vez de `window.location.href`:
+  // el navegador la trata como una descarga normal y la página no se mueve.
+  const link = document.createElement('a')
+  link.href = downloadUrl
+  link.download = ''
+  link.rel = 'noopener'
+  document.body.appendChild(link)
+  link.click()
+  link.remove()
 
-  // Show post-download message after a short delay
-  // This appears AFTER the browser's save dialog
-  setTimeout(() => {
-    showPostDownloadMessage()
-  }, 1000)
+  // Estado "descarga iniciada" EN LA MISMA TARJETA (sin modal encima):
+  // si el navegador abre su propio diálogo de guardado, no se superponen dos cosas.
+  showDownloadStarted(os)
+}
+
+/**
+ * Reemplaza el contenido de la tarjeta de descarga por el estado "ya empezó",
+ * que orienta al usuario hacia el ícono de descargas del navegador.
+ * @param {string} os - Operating system
+ */
+function showDownloadStarted(os) {
+  const card = document.getElementById('download-card')
+  if (!card) return
+
+  const fileName = CONFIG.getFileName(os) || `FlowPOS-Setup-${CONFIG.version}.exe`
+
+  // Guardar el estado inicial una sola vez, para poder volver con "Descargar de nuevo".
+  if (!card.dataset.initialHtml) {
+    card.dataset.initialHtml = card.innerHTML
+  }
+
+  card.innerHTML = `
+    <div class="text-center">
+      <h2 class="text-2xl font-bold mb-2">Tu descarga ya empezó</h2>
+      <p class="text-blue-100 mb-6">
+        Buscá la flecha de descargas <strong class="text-white">arriba a la derecha</strong> de tu navegador.
+      </p>
+
+      <!-- Dibujo de la barra del navegador con el ícono de descargas resaltado -->
+      <svg viewBox="0 0 320 62" class="w-full max-w-sm mx-auto mb-6"
+           role="img" aria-label="El ícono de descargas está arriba a la derecha de la barra del navegador">
+        <rect x="0" y="10" width="320" height="44" rx="10" fill="#ffffff"></rect>
+        <circle cx="24" cy="32" r="4" fill="#cbd5e1"></circle>
+        <circle cx="42" cy="32" r="4" fill="#cbd5e1"></circle>
+        <circle cx="60" cy="32" r="4" fill="#cbd5e1"></circle>
+        <rect x="80" y="22" width="160" height="20" rx="10" fill="#f1f5f9"></rect>
+        <circle cx="286" cy="32" r="14" fill="#dbeafe">
+          <animate attributeName="r" values="12;17;12" dur="1.6s" repeatCount="indefinite"></animate>
+          <animate attributeName="opacity" values="1;0.45;1" dur="1.6s" repeatCount="indefinite"></animate>
+        </circle>
+        <path d="M286 25 v10 M281 31 l5 5 5-5 M279 41 h14"
+              stroke="#2563eb" stroke-width="2.2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+
+      <div class="bg-white/10 rounded-xl p-5 text-left mb-6">
+        <ol class="space-y-3 text-sm text-blue-50">
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center font-bold text-xs">1</span>
+            <span>Esperá a que la barra termine de cargar (son unos ${CONFIG.installers[os] ? CONFIG.installers[os].size : '~150 MB'}).</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center font-bold text-xs">2</span>
+            <span>Hacé clic en <code class="bg-white/20 px-1.5 py-0.5 rounded text-white">${fileName}</code> para instalarlo.</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center font-bold text-xs">3</span>
+            <span>Abrí FlowPOS y empezá a vender: tenés 7 días con todo incluido.</span>
+          </li>
+        </ol>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="activacion.html" class="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+          <i data-lucide="book-open" width="18" height="18"></i>
+          Ver cómo empezar
+        </a>
+        <button type="button" id="download-again" class="inline-flex items-center justify-center gap-2 border border-white/40 text-white px-6 py-3 rounded-lg font-medium hover:bg-white/10 transition">
+          <i data-lucide="rotate-ccw" width="18" height="18"></i>
+          Descargar de nuevo
+        </button>
+      </div>
+    </div>
+  `
+
+  lucide.createIcons()
+
+  // "Descargar de nuevo" restaura la tarjeta original y vuelve a cablear los botones.
+  const againBtn = document.getElementById('download-again')
+  if (againBtn) {
+    againBtn.addEventListener('click', () => {
+      card.innerHTML = card.dataset.initialHtml
+      // El HTML guardado trae la marca `data-bound`, pero estos nodos son nuevos
+      // y no tienen listener: hay que limpiarla para que se vuelvan a cablear.
+      card.querySelectorAll('[data-bound]').forEach((el) => delete el.dataset.bound)
+      lucide.createIcons()
+      initializeDownloadPage()
+    })
+  }
+
+  // Subir la tarjeta a la vista: el mensaje dice "mirá arriba", así que tiene que
+  // verse cerca de la barra del navegador (importa al bajar a "Otras Plataformas").
+  card.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
 // ============================================================================
@@ -212,77 +313,6 @@ function showToast(type, message) {
     toast.style.opacity = '0'
     setTimeout(() => toast.remove(), 300)
   }, 5000)
-}
-
-/**
- * Shows post-download instructions
- */
-function showPostDownloadMessage() {
-  const modal = document.createElement('div')
-  modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[9999] animate-fade-in'
-  modal.innerHTML = `
-    <div class="bg-white rounded-2xl p-8 max-w-md mx-4 shadow-2xl">
-      <div class="text-center">
-        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <i data-lucide="check-circle" class="text-green-600" width="32" height="32"></i>
-        </div>
-        <h3 class="text-2xl font-bold text-gray-800 mb-2">Descarga en Proceso</h3>
-        <p class="text-gray-600 mb-6">El archivo se está descargando. Revisa tu carpeta de Descargas o la ubicación que elegiste.</p>
-
-        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 text-left">
-          <h4 class="font-semibold text-blue-900 mb-2 flex items-center space-x-2">
-            <i data-lucide="info" class="text-blue-600" width="18" height="18"></i>
-            <span>Próximos pasos:</span>
-          </h4>
-          <ol class="text-sm text-blue-800 space-y-2">
-            <li class="flex items-start space-x-2">
-              <span class="font-semibold">1.</span>
-              <span>Espera a que complete la descarga (~150 MB)</span>
-            </li>
-            <li class="flex items-start space-x-2">
-              <span class="font-semibold">2.</span>
-              <span>Ejecuta el archivo <code class="bg-blue-100 px-1 rounded">FlowPOS-Setup-${window.FLOWPOS_CONFIG.version}.exe</code></span>
-            </li>
-            <li class="flex items-start space-x-2">
-              <span class="font-semibold">3.</span>
-              <span>Sigue la guía de activación para obtener tu licencia</span>
-            </li>
-          </ol>
-        </div>
-
-        <div class="flex space-x-3">
-          <button onclick="this.closest('.fixed').remove()"
-                  class="flex-1 bg-gray-200 text-gray-800 py-3 rounded-lg hover:bg-gray-300 transition font-medium">
-            Entendido
-          </button>
-          <a href="activacion.html"
-             class="flex-1 bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition text-center font-medium flex items-center justify-center space-x-2">
-            <i data-lucide="book-open" width="18" height="18"></i>
-            <span>Ver Guía</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  `
-
-  document.body.appendChild(modal)
-  lucide.createIcons()
-
-  // Close on background click
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.remove()
-    }
-  })
-
-  // Auto-close after 15 seconds (optional)
-  setTimeout(() => {
-    if (modal.parentNode) {
-      modal.style.opacity = '0'
-      modal.style.transition = 'opacity 0.3s ease'
-      setTimeout(() => modal.remove(), 300)
-    }
-  }, 15000)
 }
 
 /**
