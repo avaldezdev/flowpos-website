@@ -1,9 +1,7 @@
-# No copiar al contenedor lo que no es parte del sitio.
+# No copiar al contexto de build lo que no hace falta.
+# OJO: nginx.conf y Dockerfile NO se excluyen acá, porque el build los necesita.
 .git
 .github
 .gitignore
-Dockerfile
-.dockerignore
-nginx.conf
-netlify.toml
 *.md
+netlify.toml
