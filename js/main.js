@@ -22,6 +22,21 @@ function detectOS() {
   const userAgent = window.navigator.userAgent.toLowerCase()
   const platform = window.navigator.platform.toLowerCase()
 
+  // Los celulares van PRIMERO. Android se identifica como "Linux" en su navegador y
+  // el iPhone como "Mac", así que si se pregunta por escritorio antes, a un Android
+  // se le termina ofreciendo el instalador de Linux (que además no existe).
+  if (userAgent.indexOf('android') !== -1) {
+    return 'android'
+  }
+  if (/iphone|ipad|ipod/.test(userAgent)) {
+    return 'ios'
+  }
+  // iPad moderno: se hace pasar por Mac de escritorio y sólo lo delata que la
+  // pantalla es táctil (una Mac no tiene puntos de contacto).
+  if (platform.indexOf('mac') !== -1 && navigator.maxTouchPoints > 1) {
+    return 'ios'
+  }
+
   if (platform.indexOf('win') !== -1 || userAgent.indexOf('windows') !== -1) {
     return 'windows'
   }
@@ -36,6 +51,11 @@ function detectOS() {
 
   // Default to Windows if unable to detect
   return 'windows'
+}
+
+/** ¿Es un teléfono o tablet? Ahí no se puede instalar FlowPOS. */
+function isMobileOS(os) {
+  return os === 'android' || os === 'ios'
 }
 
 /**
@@ -62,6 +82,18 @@ function getOSInfo(os) {
       fullName: 'Ubuntu/Debian',
       icon: 'box',
       color: 'orange'
+    },
+    android: {
+      name: 'Android',
+      fullName: 'Android',
+      icon: 'smartphone',
+      color: 'gray'
+    },
+    ios: {
+      name: 'iPhone / iPad',
+      fullName: 'iPhone / iPad',
+      icon: 'smartphone',
+      color: 'gray'
     }
   }
 
@@ -97,6 +129,14 @@ async function initializeDownloadPage() {
   const versionElement = document.getElementById('current-version')
   if (versionElement) {
     versionElement.textContent = `v${releaseData.version}`
+  }
+
+  // Sin instalador para este sistema (celular, Mac, Linux) → NO ofrecer una descarga
+  // que no existe. Antes se armaba igual la URL y el visitante llegaba a un enlace roto.
+  if (!CONFIG.isAvailable(detectedOS)) {
+    showNoInstallerForOS(detectedOS, osInfo)
+    setupAlternativeDownloads(releaseData)
+    return
   }
 
   // Update detected OS display
@@ -139,6 +179,79 @@ async function initializeDownloadPage() {
 
   // Setup alternative download buttons
   setupAlternativeDownloads(releaseData)
+}
+
+/**
+ * No hay instalador para el sistema del visitante.
+ *
+ * El caso importante es el celular: FlowPOS es un programa para la PC del mostrador,
+ * así que desde el teléfono no hay nada que instalar. En vez de un botón que lleva a
+ * un enlace roto, se le da lo que sí le sirve: la dirección para abrir en su
+ * computadora, y una forma de mandársela sin tener que copiarla a mano.
+ *
+ * @param {string} os - Sistema detectado
+ * @param {object} osInfo - Datos de presentación del sistema
+ */
+function showNoInstallerForOS(os, osInfo) {
+  const card = document.getElementById('download-card')
+  if (!card) return
+
+  const enCelular = isMobileOS(os)
+  const urlDescargas = 'https://flowpos.com.py/descargas'
+
+  const titulo = enCelular
+    ? 'FlowPOS se instala en una computadora'
+    : `Todavía no hay versión para ${osInfo.name}`
+
+  const explicacion = enCelular
+    ? `Es el sistema de la caja de tu negocio y funciona en una PC con Windows 10 u 11. Desde ${osInfo.name} no se puede instalar.`
+    : 'Por ahora el instalador está disponible sólo para Windows 10 y 11. Escribinos y te avisamos cuando salga.'
+
+  const accionPrincipal = enCelular
+    ? `
+      <div class="bg-white/10 rounded-xl p-5 mb-5 text-left">
+        <p class="text-sm text-blue-100 mb-2">Abrí esta dirección en tu computadora:</p>
+        <p class="text-lg font-bold break-all mb-4">flowpos.com.py/descargas</p>
+        <button type="button" id="copiar-enlace"
+                class="w-full bg-white text-blue-600 px-5 py-3 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center justify-center gap-2">
+          <i data-lucide="copy" width="18" height="18"></i>
+          <span>Copiar enlace</span>
+        </button>
+      </div>
+      <a href="https://wa.me/?text=${encodeURIComponent('Descargar FlowPOS en la computadora: ' + urlDescargas)}"
+         target="_blank" rel="noopener"
+         class="w-full inline-flex items-center justify-center gap-2 border border-white/40 text-white px-5 py-3 rounded-lg font-medium hover:bg-white/10 transition">
+        <i data-lucide="message-circle" width="18" height="18"></i>
+        Enviarme el enlace por WhatsApp
+      </a>`
+    : `
+      <a href="https://wa.me/595986708565?text=${encodeURIComponent('Hola, me interesa FlowPOS para ' + osInfo.name)}"
+         target="_blank" rel="noopener"
+         class="inline-flex items-center justify-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition">
+        <i data-lucide="message-circle" width="18" height="18"></i>
+        Avisarme cuando esté
+      </a>`
+
+  card.innerHTML = `
+    <div class="text-center">
+      <i data-lucide="${enCelular ? 'smartphone' : osInfo.icon}" class="mx-auto mb-4 text-white" width="56" height="56"></i>
+      <h2 class="text-2xl font-bold mb-2">${titulo}</h2>
+      <p class="text-blue-100 mb-6">${explicacion}</p>
+      ${accionPrincipal}
+      <a href="activacion.html" class="inline-block mt-5 text-sm text-blue-100 underline hover:text-white">
+        Mientras tanto, mirá cómo empezar
+      </a>
+    </div>
+  `
+
+  if (typeof lucide !== 'undefined') lucide.createIcons()
+
+  const copiar = document.getElementById('copiar-enlace')
+  if (copiar) {
+    copiar.addEventListener('click', () => {
+      copyToClipboard(urlDescargas)
+    })
+  }
 }
 
 /**

@@ -42,20 +42,26 @@ window.FLOWPOS_CONFIG = {
   // ARCHIVOS DE INSTALACIÓN (patrones de nombres)
   // ============================================================================
 
+  // `available` marca si el instalador EXISTE de verdad. Sin esto, la página armaba
+  // alegremente una URL de descarga para Mac y Linux —que nunca se publicaron— y el
+  // visitante se llevaba un enlace roto.
   installers: {
     windows: {
+      available: true,
       pattern: 'FlowPOS-Setup-{version}.exe',
       size: '~150 MB',
       sizeBytes: 157286400,
       icon: 'laptop'
     },
     mac: {
+      available: false,
       pattern: 'FlowPOS-{version}.dmg',
       size: '~160 MB',
       sizeBytes: 167772160,
       icon: 'apple'
     },
     linux: {
+      available: false,
       pattern: 'FlowPOS-{version}.AppImage',
       size: '~155 MB',
       sizeBytes: 162529280,
@@ -73,6 +79,10 @@ window.FLOWPOS_CONFIG = {
    * @param {string} version - Versión (opcional, usa la actual por defecto)
    * @returns {string} URL completa de descarga
    */
+  isAvailable(os) {
+    return Boolean(this.installers[os] && this.installers[os].available);
+  },
+
   getDownloadUrl(os, version = this.version) {
     const installer = this.installers[os];
     if (!installer) {
