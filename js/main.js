@@ -371,6 +371,17 @@ function initializeMobileMenu() {
   const navLinks = nav.querySelector('.md\\:flex')
   if (!navLinks) return
 
+  // El panel desplegable usa `absolute top-full`, que se ubica respecto del ancestro
+  // POSICIONADO más cercano. En las páginas con la barra fija (inicio, planes) ese
+  // ancestro es la barra y todo funciona; donde la barra es estática (descargas,
+  // cómo empezar) el navegador tomaba la ventana y abría el menú en top: 812px, o sea
+  // fuera de la pantalla: se tocaba la hamburguesa y no pasaba nada.
+  if (getComputedStyle(nav).position === 'static') {
+    nav.style.position = 'relative'
+    // Sin esto el panel puede quedar por debajo de la sección siguiente.
+    nav.style.zIndex = '50'
+  }
+
   // Create mobile menu button
   const menuBtn = document.createElement('button')
   // 44×44 es el mínimo recomendado para tocar con el dedo; el ícono sigue siendo de 24
