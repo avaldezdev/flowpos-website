@@ -173,8 +173,9 @@ El sitio no tiene build, así que estas cuatro cosas no se actualizan solas:
    de la lista. `<lastmod>` se toca solo cuando el contenido cambia de verdad.
 2. **`<link rel="canonical">`** — cada página lleva el suyo apuntando a
    `https://flowpos.com.py/<archivo>.html`. Es lo que evita que Google cuente como
-   duplicados las tres formas de llegar a la misma página: `/descargas`, `/descargas.html`
-   (por el `try_files $uri $uri.html` de `nginx.conf`) y el dominio de Netlify.
+   duplicadas las dos formas de llegar a la misma página que habilita el
+   `try_files $uri $uri.html` de `nginx.conf`: `/descargas` y `/descargas.html`.
+   También cubre cualquier otro host que llegue a servir el sitio (staging, previews).
    **Una página nueva sin canonical es una página duplicada.**
 3. **Precios en el JSON-LD de `index.html`** — el bloque `SoftwareApplication` repite los
    4 precios de la sección `#pricing`. Si cambia un plan, hay que cambiarlo en los dos lados.

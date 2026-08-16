@@ -61,16 +61,6 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Dominio canonico: el subdominio de Netlify sirve el mismo sitio y Google lo ve
-# como contenido duplicado. Lo mandamos entero a flowpos.com.py con un 301.
-# Va primero porque Netlify aplica la primera regla que coincide.
-# (Los deploy previews usan deploy-preview-N--flowpos.netlify.app y no coinciden.)
-[[redirects]]
-  from = "https://flowpos.netlify.app/*"
-  to = "https://flowpos.com.py/:splat"
-  status = 301
-  force = true
-
 # Redirects for download shortcuts
 [[redirects]]
   from = "/download"
