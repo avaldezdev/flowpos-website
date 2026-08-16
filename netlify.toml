@@ -40,7 +40,7 @@
       style-src 'self' 'unsafe-inline' https://unpkg.com;
       img-src 'self' data: https:;
       font-src 'self' data:;
-      connect-src 'self' https://api.github.com;
+      connect-src 'self' https://api.github.com https://api.flowpos.com.py;
       frame-ancestors 'none';
     """
 

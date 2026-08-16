@@ -432,6 +432,49 @@ function initializeMobileMenu() {
 }
 
 /**
+ * Botón del portal: "Ingresar" vs "Mi cuenta".
+ *
+ * Este sitio es estático y la cookie de sesión es HttpOnly, así que no puede leerla
+ * por su cuenta: le pregunta a la API si el visitante ya tiene sesión abierta. La
+ * cookie se comparte entre subdominios (Domain=.flowpos.com.py), por eso viaja sola
+ * con `credentials: 'include'`.
+ *
+ * Reglas de diseño:
+ * - NUNCA bloquea la página. Arranca diciendo "Ingresar" y, si hay sesión, cambia.
+ * - Ante CUALQUIER problema (API caída, CORS, sin conexión, visitante anónimo) se
+ *   queda en "Ingresar", que es el estado correcto para quien no es cliente.
+ * - No lee ni muestra datos personales: sólo si hay sesión o no.
+ */
+function initializePortalLink() {
+  const link = document.querySelector('[data-portal-link]')
+  if (!link) return
+
+  // Origen de la API. Si algún día cambia el dominio, es lo único que se toca
+  // (y hay que sumarlo al connect-src de nginx.conf/netlify.toml).
+  const API_ORIGIN = 'https://api.flowpos.com.py'
+
+  fetch(`${API_ORIGIN}/api/auth/get-session`, { credentials: 'include' })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((data) => {
+      if (!data?.user) return // visitante anónimo → queda "Ingresar"
+
+      const label = link.querySelector('[data-portal-label]')
+      if (label) label.textContent = 'Mi cuenta'
+      link.setAttribute('title', 'Ir a mi portal de cliente')
+
+      // El ícono pasa de "entrar" a "persona": ya está adentro, no tiene que entrar.
+      const icon = link.querySelector('[data-portal-icon]')
+      if (icon && typeof lucide !== 'undefined') {
+        icon.setAttribute('data-lucide', 'circle-user')
+        lucide.createIcons()
+      }
+    })
+    .catch(() => {
+      // Silencio a propósito: que el sitio público no muestre errores de la API.
+    })
+}
+
+/**
  * Copies text to clipboard
  * @param {string} text - Text to copy
  */
@@ -481,6 +524,9 @@ function init() {
 
   // Initialize mobile menu
   initializeMobileMenu()
+
+  // Reconocer al cliente que ya inició sesión
+  initializePortalLink()
 
   // Initialize download page if we're on it
   if (document.getElementById('main-download-btn')) {
