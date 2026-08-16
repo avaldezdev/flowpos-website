@@ -179,6 +179,38 @@ async function initializeDownloadPage() {
 
   // Setup alternative download buttons
   setupAlternativeDownloads(releaseData)
+
+  // El peso real lo sabe GitHub, no nosotros.
+  refreshInstallerSize()
+}
+
+/**
+ * Corrige el tamaño anunciado con el del archivo publicado.
+ *
+ * Estaba escrito a mano en la configuración ("~150 MB") mientras el instalador real
+ * pesa 86 MB: casi la mitad. Ese número no se puede mantener a mano — cambia en cada
+ * release y nadie se acuerda. Se lo preguntamos a GitHub, que es quien lo sabe.
+ *
+ * Si la consulta falla (sin conexión, límite de la API), queda el valor de la
+ * configuración: nunca deja la página sin dato.
+ */
+function refreshInstallerSize() {
+  const destinos = ['download-size', 'windows-size']
+    .map((id) => document.getElementById(id))
+    .filter(Boolean)
+  if (destinos.length === 0) return
+
+  fetch(`${CONFIG.repository.apiUrl}/releases/latest`)
+    .then((r) => (r.ok ? r.json() : null))
+    .then((release) => {
+      const exe = release?.assets?.find((a) => a.name.endsWith('.exe'))
+      if (!exe?.size) return
+      const mb = Math.round(exe.size / 1048576)
+      destinos.forEach((el) => (el.textContent = `~${mb} MB`))
+    })
+    .catch(() => {
+      // Silencio: el valor de la configuración ya está en pantalla.
+    })
 }
 
 /**

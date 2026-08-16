@@ -49,8 +49,8 @@ window.FLOWPOS_CONFIG = {
     windows: {
       available: true,
       pattern: 'FlowPOS-Setup-{version}.exe',
-      size: '~150 MB',
-      sizeBytes: 157286400,
+      size: '~87 MB',
+      sizeBytes: 91226112,
       icon: 'laptop'
     },
     mac: {
