@@ -556,7 +556,15 @@ function initializeMobileMenu() {
 
   menuBtn.setAttribute('aria-label', 'Abrir menú')
   menuBtn.setAttribute('aria-expanded', 'false')
-  menuBtn.addEventListener('click', () => setMenu(!isOpen))
+  menuBtn.addEventListener('click', (e) => {
+    // Cortar la propagación es IMPRESCINDIBLE, no un adorno: al alternar se reemplaza
+    // el ícono del botón, así que el elemento tocado queda fuera del documento. El
+    // clic seguía subiendo hasta el manejador de "cerrar al tocar afuera", que ya no
+    // lo encontraba dentro de la barra y cerraba el menú en el mismo toque. Resultado:
+    // tocar el ícono no hacía nada y sólo respondía el relleno de alrededor.
+    e.stopPropagation()
+    setMenu(!isOpen)
+  })
 
   // Al tocar un enlace, cerrar el menú (si no, queda abierto sobre la página nueva).
   navLinks.addEventListener('click', (e) => {
