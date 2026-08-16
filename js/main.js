@@ -531,6 +531,10 @@ function initializeMobileMenu() {
   const setMenu = (open) => {
     isOpen = open
     menuBtn.setAttribute('aria-expanded', String(open))
+    menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú')
+    // El ícono pasa a una X: abierto, el mismo botón tiene que ofrecer cerrarlo.
+    menuBtn.innerHTML = `<i data-lucide="${open ? 'x' : 'menu'}" width="24" height="24"></i>`
+    if (typeof lucide !== 'undefined') lucide.createIcons()
 
     if (open) {
       navLinks.classList.remove('hidden')
@@ -557,6 +561,18 @@ function initializeMobileMenu() {
   // Al tocar un enlace, cerrar el menú (si no, queda abierto sobre la página nueva).
   navLinks.addEventListener('click', (e) => {
     if (e.target.closest('a')) setMenu(false)
+  })
+
+  // Tocar fuera cierra. Es lo que espera cualquiera que use un celular: si no, el
+  // menú queda tapando la página y hay que volver a apuntarle al botón para salir.
+  // `nav.contains` excluye al propio botón y al panel, que tienen su propio manejo.
+  document.addEventListener('click', (e) => {
+    if (isOpen && !nav.contains(e.target)) setMenu(false)
+  })
+
+  // Escape cierra (teclado, y algunos teclados de celular lo tienen).
+  document.addEventListener('keydown', (e) => {
+    if (isOpen && e.key === 'Escape') setMenu(false)
   })
 
   // Al volver a tamaño escritorio, dejar la barra en su estado normal.
