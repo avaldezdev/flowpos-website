@@ -207,23 +207,30 @@ function showNoInstallerForOS(os, osInfo) {
     ? `Es el sistema de la caja de tu negocio y funciona en una PC con Windows 10 u 11. Desde ${osInfo.name} no se puede instalar.`
     : 'Por ahora el instalador está disponible sólo para Windows 10 y 11. Escribinos y te avisamos cuando salga.'
 
+  // En celular, mandarse el enlace por WhatsApp es lo que REALMENTE resuelve el
+  // problema (copiarlo no sirve de nada si no se puede pegar en la PC), así que va
+  // primero y en verde, el color con el que WhatsApp se reconoce en todo el sitio.
   const accionPrincipal = enCelular
     ? `
-      <div class="bg-white/10 rounded-xl p-5 mb-5 text-left">
-        <p class="text-sm text-blue-100 mb-2">Abrí esta dirección en tu computadora:</p>
+      <a href="https://wa.me/?text=${encodeURIComponent('Instalar FlowPOS en la computadora: ' + urlDescargas)}"
+         target="_blank" rel="noopener"
+         class="w-full inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-4 rounded-xl font-semibold transition">
+        <i data-lucide="message-circle" width="20" height="20"></i>
+        Enviar por WhatsApp
+      </a>
+      <p class="text-xs text-blue-100 mt-2 mb-5">
+        Se abre WhatsApp para que elijas a quién mandárselo: a vos mismo, o a quien maneja la computadora.
+      </p>
+
+      <div class="bg-white/10 rounded-xl p-5 text-left">
+        <p class="text-sm text-blue-100 mb-1">O anotá esta dirección y abrila en tu computadora:</p>
         <p class="text-lg font-bold break-all mb-4">flowpos.com.py/descargas</p>
         <button type="button" id="copiar-enlace"
-                class="w-full bg-white text-blue-600 px-5 py-3 rounded-lg font-semibold hover:bg-blue-50 transition flex items-center justify-center gap-2">
+                class="w-full border border-white/40 text-white px-5 py-3 rounded-lg font-medium hover:bg-white/10 transition flex items-center justify-center gap-2">
           <i data-lucide="copy" width="18" height="18"></i>
           <span>Copiar enlace</span>
         </button>
-      </div>
-      <a href="https://wa.me/?text=${encodeURIComponent('Descargar FlowPOS en la computadora: ' + urlDescargas)}"
-         target="_blank" rel="noopener"
-         class="w-full inline-flex items-center justify-center gap-2 border border-white/40 text-white px-5 py-3 rounded-lg font-medium hover:bg-white/10 transition">
-        <i data-lucide="message-circle" width="18" height="18"></i>
-        Enviarme el enlace por WhatsApp
-      </a>`
+      </div>`
     : `
       <a href="https://wa.me/595986708565?text=${encodeURIComponent('Hola, me interesa FlowPOS para ' + osInfo.name)}"
          target="_blank" rel="noopener"
