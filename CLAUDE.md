@@ -165,6 +165,27 @@ All four pages therefore reference local assets with a version query:
 current date (`YYYYMMDD`) in ALL pages that reference it** — otherwise the change won't
 reach existing visitors.
 
+### SEO: qué hay que mantener a mano
+
+El sitio no tiene build, así que estas cuatro cosas no se actualizan solas:
+
+1. **`sitemap.xml`** — al agregar o quitar una página `.html` de la raíz, agregarla/sacarla
+   de la lista. `<lastmod>` se toca solo cuando el contenido cambia de verdad.
+2. **`<link rel="canonical">`** — cada página lleva el suyo apuntando a
+   `https://flowpos.com.py/<archivo>.html`. Es lo que evita que Google cuente como
+   duplicados las tres formas de llegar a la misma página: `/descargas`, `/descargas.html`
+   (por el `try_files $uri $uri.html` de `nginx.conf`) y el dominio de Netlify.
+   **Una página nueva sin canonical es una página duplicada.**
+3. **Precios en el JSON-LD de `index.html`** — el bloque `SoftwareApplication` repite los
+   4 precios de la sección `#pricing`. Si cambia un plan, hay que cambiarlo en los dos lados.
+4. **FAQ de `activacion.html`** — el bloque `FAQPage` copia palabra por palabra las 8
+   preguntas y respuestas visibles. Si no coinciden exactamente, Google descarta el bloque
+   entero. Al editar una respuesta, copiarla también al JSON-LD.
+
+La imagen de compartir (WhatsApp/Facebook) es `assets/images/og-image.png`, 1200×630.
+Se regenera desde la raíz del repo con `python tools/generar-og-image.py` (necesita Pillow).
+Si cambia la marca o el eslogan, editar ese script y volver a correrlo.
+
 ### Links to the Client Portal
 
 The public site is the front door to the portal (`app.flowpos.com.py`). Two entry points

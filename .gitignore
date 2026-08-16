@@ -66,3 +66,6 @@ wip/
 # Downloads folder (installers are hosted on flowpos-releases repo)
 # Note: assets/downloads/ should NOT be ignored as it contains releases.json metadata
 /downloads/
+
+# Config local de Claude Code (no forma parte del sitio).
+.claude/

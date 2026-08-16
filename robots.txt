@@ -1,0 +1,14 @@
+# robots.txt - flowpos.com.py
+# Todo el sitio es publico e indexable.
+
+User-agent: *
+Allow: /
+
+# Los atajos que redirigen al portal de clientes no aportan nada a la busqueda.
+Disallow: /portal
+Disallow: /ingresar
+Disallow: /login
+Disallow: /cuenta
+Disallow: /registro
+
+Sitemap: https://flowpos.com.py/sitemap.xml

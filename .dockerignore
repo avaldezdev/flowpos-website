@@ -5,3 +5,5 @@
 .gitignore
 *.md
 netlify.toml
+.claude
+tools
