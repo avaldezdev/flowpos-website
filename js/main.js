@@ -518,9 +518,14 @@ function initializeMobileMenu() {
 
   // Clases que se agregan al abrir el panel desplegable en móvil.
   const OPEN_CLASSES = [
-    'flex', 'flex-col', 'items-start', 'absolute', 'top-full',
-    'left-0', 'right-0', 'bg-white', 'shadow-lg', 'p-4', 'space-y-4'
+    'flex', 'flex-col', 'items-stretch', 'absolute', 'top-full',
+    'left-0', 'right-0', 'bg-white', 'shadow-lg', 'p-2', 'space-y-1'
   ]
+  // Cada opción pasa a ser una FILA COMPLETA. Con el ancho del texto solo (unos 19px
+  // de alto) hay que apuntarle a la palabra; así se puede tocar en cualquier parte del
+  // renglón. Se agregan al abrir y se quitan al cerrar, porque los mismos enlaces
+  // arman la barra horizontal en escritorio.
+  const LINK_OPEN_CLASSES = ['block', 'w-full', 'py-3', 'px-3', 'rounded-lg', 'hover:bg-gray-50']
   // Clases del layout horizontal que estorban en el panel vertical
   // (space-x-* desplaza los ítems a la derecha; items-center los centra).
   const DESKTOP_ONLY_CLASSES = ['space-x-6', 'items-center']
@@ -539,6 +544,7 @@ function initializeMobileMenu() {
     if (open) {
       navLinks.classList.remove('hidden')
       navLinks.classList.add(...OPEN_CLASSES)
+      navLinks.querySelectorAll('a').forEach((a) => a.classList.add(...LINK_OPEN_CLASSES))
       // Guardar y quitar solo las clases de escritorio que la página realmente tenía,
       // para poder restaurarlas tal cual al cerrar.
       DESKTOP_ONLY_CLASSES.forEach((cls) => {
@@ -549,6 +555,7 @@ function initializeMobileMenu() {
       })
     } else {
       navLinks.classList.remove(...OPEN_CLASSES)
+      navLinks.querySelectorAll('a').forEach((a) => a.classList.remove(...LINK_OPEN_CLASSES))
       navLinks.classList.add('hidden')
       while (removed.length) navLinks.classList.add(removed.pop())
     }
