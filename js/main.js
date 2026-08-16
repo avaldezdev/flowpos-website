@@ -373,7 +373,10 @@ function initializeMobileMenu() {
 
   // Create mobile menu button
   const menuBtn = document.createElement('button')
-  menuBtn.className = 'md:hidden text-gray-600 hover:text-blue-600'
+  // 44×44 es el mínimo recomendado para tocar con el dedo; el ícono sigue siendo de 24
+  // y el `-mr-2` compensa el relleno extra para que no se corra la barra.
+  menuBtn.className =
+    'md:hidden h-11 w-11 -mr-2 flex items-center justify-center text-gray-600 hover:text-blue-600'
   menuBtn.innerHTML = '<i data-lucide="menu" width="24" height="24"></i>'
 
   // Insert before the last nav child (usually the CTA button)
