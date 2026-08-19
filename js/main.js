@@ -322,15 +322,19 @@ function handleDownload(os, releaseData) {
     return
   }
 
-  // Track download (optional: add analytics here)
-  console.log(`Download initiated for ${os}: ${downloadUrl}`)
+  // Aviso de conversión para `tracking.js` (Google Ads / Meta / GA4).
+  // Se usa un evento del DOM en vez de llamar a una función: si tracking.js no
+  // está cargado o no tiene IDs configurados, esto no hace nada ni da error.
+  document.dispatchEvent(new CustomEvent('flowpos:descarga', { detail: { os } }))
 
   // Disparar la descarga con un <a> temporal en vez de `window.location.href`:
   // el navegador la trata como una descarga normal y la página no se mueve.
+  // `data-notrack` evita que tracking.js cuente de nuevo este clic sintético.
   const link = document.createElement('a')
   link.href = downloadUrl
   link.download = ''
   link.rel = 'noopener'
+  link.setAttribute('data-notrack', '')
   document.body.appendChild(link)
   link.click()
   link.remove()
@@ -338,6 +342,43 @@ function handleDownload(os, releaseData) {
   // Estado "descarga iniciada" EN LA MISMA TARJETA (sin modal encima):
   // si el navegador abre su propio diálogo de guardado, no se superponen dos cosas.
   showDownloadStarted(os)
+
+  // Y una flecha viva que lleve la mirada al ícono del navegador.
+  showDownloadPointer()
+}
+
+/**
+ * Flecha animada hacia el ícono de descargas del navegador.
+ *
+ * La tarjeta ya explica dónde quedó el archivo y hasta lo dibuja, pero es una
+ * instrucción escrita: nadie levanta la vista sola. Esto la levanta.
+ *
+ * Ninguna página puede dibujar sobre la barra del navegador, así que se ubica lo
+ * más cerca posible —pegada al borde superior derecho, apuntando hacia arriba—
+ * que es donde está el ícono en Chrome, Edge y Firefox.
+ *
+ * Se va sola a los 9 segundos para no quedar molestando.
+ */
+function showDownloadPointer() {
+  document.querySelector('.download-pointer')?.remove()
+
+  const el = document.createElement('div')
+  el.className = 'download-pointer'
+  el.setAttribute('aria-hidden', 'true') // decorativo: la tarjeta ya lo dice en texto
+  el.innerHTML = `
+    <svg class="download-pointer__arrow" width="34" height="34" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5" />
+      <path d="M5 12l7-7 7 7" />
+    </svg>
+    <span class="download-pointer__label">Tu descarga está acá</span>
+  `
+  document.body.appendChild(el)
+
+  setTimeout(() => {
+    el.classList.add('download-pointer--out')
+    setTimeout(() => el.remove(), 400)
+  }, 9000)
 }
 
 /**

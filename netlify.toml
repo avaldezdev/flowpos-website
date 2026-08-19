@@ -34,13 +34,26 @@
     Cache-Control = "public, max-age=3600"
 
     # Content Security Policy
+    #
+    # OJO: si agregás una herramienta externa (píxel, chat, mapa) y no la sumás acá,
+    # el navegador la bloquea EN SILENCIO. No hay error visible: simplemente no mide.
+    # Los dominios de Google/Meta de abajo son los que necesitan GA4, Google Ads y
+    # el píxel de Meta. Mantener sincronizado con nginx.conf (Coolify usa ese).
     Content-Security-Policy = """
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com;
+      script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com
+        https://www.googletagmanager.com https://www.google-analytics.com
+        https://connect.facebook.net;
       style-src 'self' 'unsafe-inline' https://unpkg.com;
       img-src 'self' data: https:;
       font-src 'self' data:;
-      connect-src 'self' https://api.github.com https://api.flowpos.com.py;
+      connect-src 'self' https://api.github.com https://api.flowpos.com.py
+        https://www.googletagmanager.com https://www.google-analytics.com
+        https://analytics.google.com https://stats.g.doubleclick.net
+        https://www.google.com https://td.doubleclick.net
+        https://connect.facebook.net https://www.facebook.com;
+      frame-src https://td.doubleclick.net https://www.googletagmanager.com
+        https://www.facebook.com;
       frame-ancestors 'none';
     """
 
