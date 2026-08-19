@@ -428,21 +428,31 @@ code {
   animation: dp-in 0.35s ease-out both, dp-bounce 1.1s ease-in-out 0.35s infinite;
 }
 
+/* Ámbar y no azul: el indicador es fijo y puede quedar sobre el encabezado azul o
+   sobre el blanco de más abajo. En azul sobre azul directamente desaparecía. El
+   ámbar es además el color con el que se lee "mirá acá" sin explicarlo. */
 .download-pointer__arrow {
-  color: #2563eb;
-  filter: drop-shadow(0 2px 6px rgba(37, 99, 235, 0.45));
+  color: #fbbf24;
+  /* Dos sombras: la primera, sin desplazamiento y muy cerrada, funciona como
+     CONTORNO oscuro — el ámbar solo tiene contraste 1.6 contra el blanco, y el
+     indicador es fijo: si el visitante baja, queda sobre fondo claro. La segunda
+     es la sombra normal, que lo despega del fondo. */
+  filter: drop-shadow(0 0 2px rgba(15, 23, 42, 0.95))
+          drop-shadow(0 2px 5px rgba(15, 23, 42, 0.5));
 }
 
+/* Pastilla oscura: contrasta tanto contra el azul como contra el blanco, y deja
+   que la flecha ámbar sea lo único que llama la atención. */
 .download-pointer__label {
-  background: #2563eb;
+  background: #0f172a;
   color: #fff;
   font-size: 13px;
   font-weight: 600;
   line-height: 1.2;
-  padding: 7px 12px;
+  padding: 8px 13px;
   border-radius: 9999px;
   white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.18);
 }
 
 .download-pointer--out {
