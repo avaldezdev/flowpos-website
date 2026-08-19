@@ -366,10 +366,9 @@ function showDownloadPointer() {
   el.className = 'download-pointer'
   el.setAttribute('aria-hidden', 'true') // decorativo: la tarjeta ya lo dice en texto
   el.innerHTML = `
-    <svg class="download-pointer__arrow" width="40" height="40" viewBox="0 0 24 24" fill="none"
-         stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 19V5" />
-      <path d="M5 12l7-7 7 7" />
+    <svg class="download-pointer__arrow" width="42" height="42" viewBox="0 0 24 24"
+         fill="currentColor" stroke="none">
+      <path d="M12 1.5 22.5 13.5H16v7a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-7H1.5Z" />
     </svg>
     <span class="download-pointer__label">Tu descarga está acá</span>
   `

@@ -432,17 +432,13 @@ code {
    sobre el blanco de más abajo. En azul sobre azul directamente desaparecía. El
    ámbar es además el color con el que se lee "mirá acá" sin explicarlo. */
 .download-pointer__arrow {
-  color: #fbbf24;
-  /* Dos sombras: la primera, sin desplazamiento y muy cerrada, funciona como
-     CONTORNO oscuro — el ámbar solo tiene contraste 1.6 contra el blanco, y el
-     indicador es fijo: si el visitante baja, queda sobre fondo claro. La segunda
-     es la sombra normal, que lo despega del fondo. */
-  filter: drop-shadow(0 0 2px rgba(15, 23, 42, 0.95))
-          drop-shadow(0 2px 5px rgba(15, 23, 42, 0.5));
+  color: #0f172a;
+  /* Misma sombra que la pastilla, para que se lean como una sola pieza. Ya no hace
+     falta contorno: el gris oscuro contrasta contra el azul (3.45) y contra el
+     blanco (17.08), que son los dos fondos posibles. */
+  filter: drop-shadow(0 4px 10px rgba(15, 23, 42, 0.4));
 }
 
-/* Pastilla oscura: contrasta tanto contra el azul como contra el blanco, y deja
-   que la flecha ámbar sea lo único que llama la atención. */
 .download-pointer__label {
   background: #0f172a;
   color: #fff;
