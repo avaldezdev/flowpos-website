@@ -772,6 +772,9 @@ function init() {
     initializeDownloadPage()
   }
 
+  // Pase de capturas del inicio (solo existe en la portada)
+  initHeroSlider()
+
   // Add fade-in animation to sections
   const sections = document.querySelectorAll('section')
   const observerOptions = {
@@ -790,6 +793,91 @@ function init() {
   sections.forEach(section => {
     observer.observe(section)
   })
+}
+
+
+/**
+ * Pase de capturas del hero: alterna entre la venta por lista y la venta en
+ * grilla táctil. Sin librerías: el sitio ya carga Tailwind, AOS y Lucide desde
+ * CDN y sumar un carrusel de terceros iría en contra de la velocidad en celular.
+ *
+ * No hace nada si la portada no está en pantalla (el resto de las páginas no
+ * tiene el pase).
+ */
+function initHeroSlider() {
+  const slider = document.querySelector('[data-hero-slider]')
+  if (!slider) return
+
+  const slides = Array.from(slider.querySelectorAll('[data-hero-slide]'))
+  const puntos = Array.from(document.querySelectorAll('[data-hero-punto]'))
+  // OJO: el destino se llama distinto de los datos. Las <img> llevan
+  // data-hero-etiqueta con el texto; si el <p> usara ese mismo nombre,
+  // querySelector devolvería la primera imagen en vez del párrafo.
+  const leyenda = document.querySelector('[data-hero-leyenda]')
+  if (slides.length < 2) return
+
+  const INTERVALO = 5000
+  // Respetar a quien pidió menos movimiento en su sistema: se puede cambiar a
+  // mano con los puntos, pero no gira solo.
+  const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+  let actual = 0
+  let timer = null
+
+  function mostrar(indice) {
+    actual = (indice + slides.length) % slides.length
+
+    slides.forEach((slide, i) => {
+      const activa = i === actual
+      slide.classList.toggle('opacity-0', !activa)
+      // Sin esto el lector de pantalla leería las dos descripciones seguidas.
+      slide.setAttribute('aria-hidden', String(!activa))
+    })
+
+    puntos.forEach((punto, i) => {
+      const activo = i === actual
+      // El color va en el <span> de adentro: el <button> es solo el área de clic.
+      const bolita = punto.querySelector('span') || punto
+      bolita.classList.toggle('bg-blue-600', activo)
+      bolita.classList.toggle('bg-gray-300', !activo)
+      punto.setAttribute('aria-current', activo ? 'true' : 'false')
+    })
+
+    if (leyenda) leyenda.textContent = slides[actual].dataset.heroEtiqueta || ''
+  }
+
+  function detener() {
+    if (timer) {
+      clearInterval(timer)
+      timer = null
+    }
+  }
+
+  function arrancar() {
+    if (sinMovimiento) return
+    detener()
+    timer = setInterval(() => mostrar(actual + 1), INTERVALO)
+  }
+
+  puntos.forEach((punto, i) => {
+    punto.addEventListener('click', () => {
+      mostrar(i)
+      arrancar() // reiniciar la cuenta tras un clic
+    })
+  })
+
+  // Que no cambie mientras el visitante está mirando una.
+  slider.addEventListener('mouseenter', detener)
+  slider.addEventListener('mouseleave', arrancar)
+
+  // Ni que siga girando con la pestaña en segundo plano.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) detener()
+    else arrancar()
+  })
+
+  mostrar(0)
+  arrancar()
 }
 
 // Run initialization when DOM is ready

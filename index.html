@@ -40,7 +40,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css?v=20260816o">
+    <link rel="stylesheet" href="css/styles.css?v=20260816r">
 
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -224,9 +224,48 @@
                 </div>
                 <div data-aos="fade-left" class="hidden md:block">
                     <div class="bg-white rounded-xl shadow-2xl p-2">
-                        <div class="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-                            <i data-lucide="monitor" class="text-gray-400" width="200" height="200"></i>
+                        <!-- Pase de capturas. El contenedor lleva la proporción fija y fondo
+                             oscuro: las dos imágenes no miden exactamente igual de alto y así
+                             la página no salta al cambiar de una a otra. -->
+                        <div data-hero-slider class="relative rounded-lg overflow-hidden bg-slate-900" style="aspect-ratio: 1366 / 768;">
+                            <img data-hero-slide
+                                 data-hero-etiqueta="Venta por lista, con buscador"
+                                 src="assets/images/capturas/ventas-oscuro-1024.webp"
+                                 srcset="assets/images/capturas/ventas-oscuro-683.webp 683w,
+                                         assets/images/capturas/ventas-oscuro-1024.webp 1024w,
+                                         assets/images/capturas/ventas-oscuro-1366.webp 1366w"
+                                 sizes="(min-width: 1024px) 550px, 50vw"
+                                 alt="Pantalla de ventas de FlowPOS en modo lista, con el carrito cargado y el total en guaraníes"
+                                 loading="eager" fetchpriority="high"
+                                 class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700">
+                            <img data-hero-slide
+                                 data-hero-etiqueta="Venta en grilla táctil, con fotos"
+                                 src="assets/images/capturas/ventas-grilla-oscuro-1024.webp"
+                                 srcset="assets/images/capturas/ventas-grilla-oscuro-683.webp 683w,
+                                         assets/images/capturas/ventas-grilla-oscuro-1024.webp 1024w,
+                                         assets/images/capturas/ventas-grilla-oscuro-1366.webp 1366w"
+                                 sizes="(min-width: 1024px) 550px, 50vw"
+                                 alt="Pantalla de ventas de FlowPOS en grilla táctil, con los productos en botones con foto y precio"
+                                 loading="lazy" decoding="async"
+                                 class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0">
                         </div>
+                        <!-- Los puntos van sobre el recuadro blanco, así que llevan colores
+                             oscuros. El botón mide 24px aunque el punto se vea de 10px: es el
+                             mínimo recomendado para que se pueda tocar cómodo. -->
+                        <div class="flex items-center justify-center gap-1 pt-2">
+                            <button type="button" data-hero-punto aria-current="true"
+                                    class="w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                                    aria-label="Ver la venta por lista">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 transition-colors"></span>
+                            </button>
+                            <button type="button" data-hero-punto aria-current="false"
+                                    class="w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                                    aria-label="Ver la venta en grilla táctil">
+                                <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors"></span>
+                            </button>
+                        </div>
+                        <p data-hero-leyenda aria-live="polite"
+                           class="text-center text-sm text-gray-600 pb-2 min-h-[1.25rem]"></p>
                     </div>
                 </div>
             </div>
@@ -312,6 +351,78 @@
     </section>
 
     <!-- Offline First Section -->
+    <!-- Capturas del sistema -->
+    <section id="capturas" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Así se ve por dentro</h2>
+                <p class="text-xl text-gray-600">Pantallas reales del sistema, con precios en guaraníes.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto" data-aos="fade-up">
+                <figure class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="assets/images/capturas/inventario-oscuro-683.webp"
+                         srcset="assets/images/capturas/inventario-oscuro-683.webp 683w,
+                                 assets/images/capturas/inventario-oscuro-1024.webp 1024w,
+                                 assets/images/capturas/inventario-oscuro-1366.webp 1366w"
+                         sizes="(min-width: 768px) 45vw, 100vw"
+                         width="1366" height="720"
+                         alt="Control de inventario en FlowPOS con el stock actual de cada producto y alertas de stock bajo"
+                         loading="lazy" decoding="async"
+                         class="w-full h-auto">
+                    <figcaption class="p-5">
+                        <h3 class="font-semibold text-gray-800 mb-1">Inventario siempre al día</h3>
+                        <p class="text-sm text-gray-600">Stock actual, mínimos y avisos cuando un producto está por acabarse.</p>
+                    </figcaption>
+                </figure>
+                <figure class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="assets/images/capturas/informes-oscuro-683.webp"
+                         srcset="assets/images/capturas/informes-oscuro-683.webp 683w,
+                                 assets/images/capturas/informes-oscuro-1024.webp 1024w,
+                                 assets/images/capturas/informes-oscuro-1366.webp 1366w"
+                         sizes="(min-width: 768px) 45vw, 100vw"
+                         width="1366" height="720"
+                         alt="Informe de rentabilidad de FlowPOS con ingresos, costos, ganancia y margen por producto en guaraníes"
+                         loading="lazy" decoding="async"
+                         class="w-full h-auto">
+                    <figcaption class="p-5">
+                        <h3 class="font-semibold text-gray-800 mb-1">Sabés cuánto ganás</h3>
+                        <p class="text-sm text-gray-600">Ingresos, costos y margen por producto. No solo cuánto vendiste: cuánto te quedó.</p>
+                    </figcaption>
+                </figure>
+                <figure class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="assets/images/capturas/facturacion-oscuro-683.webp"
+                         srcset="assets/images/capturas/facturacion-oscuro-683.webp 683w,
+                                 assets/images/capturas/facturacion-oscuro-1024.webp 1024w,
+                                 assets/images/capturas/facturacion-oscuro-1366.webp 1366w"
+                         sizes="(min-width: 768px) 45vw, 100vw"
+                         width="1366" height="720"
+                         alt="Pantalla de facturación de FlowPOS con las facturas emitidas, timbrado y el IVA separado en 10% y 5%"
+                         loading="lazy" decoding="async"
+                         class="w-full h-auto">
+                    <figcaption class="p-5">
+                        <h3 class="font-semibold text-gray-800 mb-1">Facturas con timbrado</h3>
+                        <p class="text-sm text-gray-600">Comprobantes fiscales con el IVA 10% y 5% separado, listo para la SET.</p>
+                    </figcaption>
+                </figure>
+                <figure class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <img src="assets/images/capturas/clientes-oscuro-683.webp"
+                         srcset="assets/images/capturas/clientes-oscuro-683.webp 683w,
+                                 assets/images/capturas/clientes-oscuro-1024.webp 1024w,
+                                 assets/images/capturas/clientes-oscuro-1366.webp 1366w"
+                         sizes="(min-width: 768px) 45vw, 100vw"
+                         width="1366" height="720"
+                         alt="Gestión de clientes en FlowPOS mostrando la cuenta corriente y los saldos de las ventas a crédito"
+                         loading="lazy" decoding="async"
+                         class="w-full h-auto">
+                    <figcaption class="p-5">
+                        <h3 class="font-semibold text-gray-800 mb-1">El fiado bajo control</h3>
+                        <p class="text-sm text-gray-600">Cuenta corriente por cliente: quién te debe, cuánto y desde cuándo.</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
     <section class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -345,10 +456,16 @@
                     </div>
                 </div>
                 <div data-aos="fade-left" class="hidden md:block">
-                    <div class="bg-white rounded-xl shadow-xl p-8">
-                        <div class="flex items-center justify-center h-64">
-                            <i data-lucide="hard-drive" class="text-gray-300" width="200" height="200"></i>
-                        </div>
+                    <div class="bg-white rounded-xl shadow-xl p-2">
+                        <img src="assets/images/capturas/caja-oscuro-1024.webp"
+                             srcset="assets/images/capturas/caja-oscuro-683.webp 683w,
+                                     assets/images/capturas/caja-oscuro-1024.webp 1024w,
+                                     assets/images/capturas/caja-oscuro-1366.webp 1366w"
+                             sizes="(min-width: 1024px) 550px, 50vw"
+                             width="1366" height="720"
+                             alt="Gestión de caja en FlowPOS: sesión abierta, ventas por método de pago y transacciones del día"
+                             loading="lazy" decoding="async"
+                             class="rounded-lg w-full h-auto">
                     </div>
                 </div>
             </div>
@@ -696,8 +813,8 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/tracking.js?v=20260816o"></script>
-    <script src="js/main.js?v=20260816o"></script>
+    <script src="js/tracking.js?v=20260816r"></script>
+    <script src="js/main.js?v=20260816r"></script>
     <script>
         // Initialize AOS
         AOS.init({

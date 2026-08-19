@@ -5,12 +5,41 @@
   <lastmod> se actualiza a mano cuando el contenido de la pagina cambia de verdad
   (no hace falta tocarlo por un ajuste de estilo).
 -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://flowpos.com.py/</loc>
     <lastmod>2026-08-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://flowpos.com.py/assets/images/capturas/ventas-oscuro-1366.webp</image:loc>
+      <image:title>Pantalla de ventas de FlowPOS con el carrito cargado y el total en guaraníes</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://flowpos.com.py/assets/images/capturas/ventas-grilla-oscuro-1366.webp</image:loc>
+      <image:title>Venta en grilla táctil de FlowPOS, con los productos en botones con foto y precio</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://flowpos.com.py/assets/images/capturas/caja-oscuro-1366.webp</image:loc>
+      <image:title>Gestión de caja en FlowPOS: ventas por método de pago y transacciones del día</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://flowpos.com.py/assets/images/capturas/inventario-oscuro-1366.webp</image:loc>
+      <image:title>Control de inventario en FlowPOS con stock actual y alertas de stock bajo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://flowpos.com.py/assets/images/capturas/informes-oscuro-1366.webp</image:loc>
+      <image:title>Informe de rentabilidad de FlowPOS con ingresos, costos y margen por producto</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://flowpos.com.py/assets/images/capturas/facturacion-oscuro-1366.webp</image:loc>
+      <image:title>Facturación con timbrado en FlowPOS y el IVA separado en 10% y 5%</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://flowpos.com.py/assets/images/capturas/clientes-oscuro-1366.webp</image:loc>
+      <image:title>Gestión de clientes de FlowPOS con cuenta corriente y saldos de fiado</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://flowpos.com.py/planes.html</loc>
