@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-FlowPOS Website is a static HTML marketing and download site for FlowPOS - a professional offline-first Point of Sale system. The site automatically updates when new FlowPOS releases are published via GitHub Actions.
+FlowPOS Website is a static HTML marketing and download site for FlowPOS - a professional offline-first Point of Sale system. The published version and the release notes are written by the release pipeline that lives in the app repo (`flowpos/scripts/release.mjs`), not by hand.
 
-**Tech Stack**: Pure HTML/CSS/JavaScript (no build tools), Tailwind CSS CDN, deployed on Netlify
+**Tech Stack**: Pure HTML/CSS/JavaScript (no build tools), Tailwind CSS CDN. Served by nginx from a container on **Coolify** (own VPS) at **https://flowpos.com.py**. Netlify is still connected to the same repo, but only as a **backup**.
 
 **Key Repository**: Downloads are served from `avaldezdev/flowpos-releases` (separate repo)
 
@@ -31,9 +31,10 @@ http-server -p 8000
 
 ### Testing & Deployment
 
-- **Deploy**: Automatic on push to `main` branch via Netlify
-- **Manual Deploy**: Push changes to trigger Netlify rebuild
-- **Preview**: PRs automatically get preview deployments
+- **Official site**: https://flowpos.com.py — nginx in a container built from the repo `Dockerfile`, hosted on Coolify. See `DEPLOY-COOLIFY.md`.
+- **Deploy**: push to `main` → Coolify redeploys automatically (auto-deploy webhook is enabled).
+- **Netlify**: the same push also rebuilds Netlify, which ignores the `Dockerfile` and uses `netlify.toml`. It is the **backup**, not the site.
+- **Preview**: PRs get preview deployments on Netlify (backup host only).
 
 ## Architecture & Key Concepts
 
@@ -41,12 +42,10 @@ http-server -p 8000
 
 **Critical**: Version updates are centralized in `js/config.js` to prevent hardcoded URLs scattered throughout the codebase.
 
-**To update FlowPOS version**:
-1. Edit `js/config.js` - change only 2 lines:
-   - `version: 'X.X.X'`
-   - `releaseDate: 'YYYY-MM-DD'`
-2. Download URLs auto-generate based on filename patterns
-3. GitHub Actions workflow can also auto-update (see below)
+**To update the published version**: you don't. `flowpos/scripts/release.mjs` writes it on every release —
+`js/config.js` (`version`, `releaseDate`) and the release cards in `descargas.html` (between the
+`FLOWPOS:RELEASE:*` markers) — then commits and pushes. Editing those by hand only risks fighting it.
+`ACTUALIZAR_VERSION.md` documents the manual fallback for when the pipeline is not available.
 
 **Config object structure** (`window.FLOWPOS_CONFIG`):
 - `version` - Current FlowPOS version
@@ -57,38 +56,24 @@ http-server -p 8000
 
 **Why this matters**: Previously, version numbers were hardcoded in multiple files. Now everything derives from config.js.
 
-### GitHub Actions Automation
+### Version Sync
 
-**Workflow**: `.github/workflows/update-releases.yml`
+There is **no automation in this repo**. `flowpos/scripts/release.mjs` writes `js/config.js` and
+the release cards of `descargas.html`, commits and pushes; the push triggers the Coolify deploy.
 
-**Triggers**:
-- Daily at 00:00 UTC (scheduled check)
-- Manual dispatch (GitHub Actions UI)
-- Webhook from flowpos-releases repo (repository_dispatch event)
+A `.github/workflows/update-releases.yml` used to do a version sync of its own. It was **removed**:
+it read `assets/downloads/releases.json`, a file that does not exist in this repo, so it failed on
+every scheduled run — and it never touched `js/config.js`, despite what this document used to claim.
 
-**What it does**:
-1. Fetches latest release from `avaldezdev/flowpos-releases` via GitHub API
-2. Compares version in API response vs. current version
-3. If new version detected:
-   - Updates `js/config.js` (version, releaseDate)
-   - Updates `netlify.toml` redirects (filename patterns)
-   - Commits changes
-   - Netlify auto-deploys on commit
+### Server Configuration (nginx + netlify.toml)
 
-**Manual trigger**:
-```bash
-# Via GitHub UI: Actions → Update Release Metadata → Run workflow
-# Or via gh CLI:
-gh workflow run update-releases.yml
-```
+Redirects, security headers and cache policy are declared **twice**, and both copies must be kept in sync:
 
-### Netlify Configuration
+- `nginx.conf` — used by Coolify. **This is the one serving flowpos.com.py.**
+- `netlify.toml` — used by the Netlify backup only.
 
-**File**: `netlify.toml`
-
-**Key features**:
-- Publish directory: `.` (root, since it's static HTML)
-- No build command
+**Key features** (in both):
+- Static root, no build command
 - Security headers (CSP, X-Frame-Options, etc.)
 - Cache headers for static assets (CSS/JS/images)
 - URL redirects:
@@ -96,9 +81,10 @@ gh workflow run update-releases.yml
   - `/activate` → `/activacion.html`
   - `/activation` → `/activacion.html`
 
-**Direct download redirects** (commented out in netlify.toml):
-- Previously had `/download/windows` redirects directly to GitHub releases
-- Now removed in favor of client-side download handling via config.js
+⚠️ A redirect or header added only to `netlify.toml` **does not exist on the official site**.
+
+**Direct download redirects**: previously `/download/windows` pointed straight at GitHub releases.
+Removed in favor of client-side download handling via `config.js`.
 
 ### JavaScript Architecture
 
@@ -139,14 +125,14 @@ gh workflow run update-releases.yml
 ### When Updating Versions
 
 **DO**:
-- Update `js/config.js` (version + releaseDate)
+- Let the release pipeline write `js/config.js` (version + releaseDate)
 - Verify filename patterns match actual GitHub release assets
 - Test download links after deployment
 
 **DON'T**:
 - Hardcode download URLs in HTML
 - Skip updating config.js
-- Manually edit netlify.toml redirects (Actions does this)
+- Add a redirect or header to only one of `nginx.conf` / `netlify.toml` (the official site reads `nginx.conf`)
 
 ### Cache Busting for Local Assets (IMPORTANT)
 
@@ -247,18 +233,16 @@ grep "version:" js/config.js
 # Check latest release in flowpos-releases repo
 gh release view --repo avaldezdev/flowpos-releases
 
-# Manually trigger update workflow if needed
-gh workflow run update-releases.yml
 ```
 
 ### Troubleshooting Failed Deployments
 
-1. **Check Netlify logs**: Dashboard → Deploys → [failed deploy] → Deploy log
+1. **Check Coolify**: app → Deployments → the failing deploy's log (this is the official site).
 2. **Common issues**:
-   - CSP blocking external resources (update `netlify.toml` headers)
+   - CSP blocking external resources (update the headers in `nginx.conf`, and mirror them in `netlify.toml`)
    - Missing config.js (check load order in HTML `<script>` tags)
    - Invalid version format in config.js
-3. **Force rebuild**: Netlify UI → Deploys → Trigger deploy → Deploy site
+3. **Force rebuild**: Coolify → Deploy. (For the backup: Netlify UI → Deploys → Trigger deploy.)
 
 ### Assets & Images
 
@@ -273,11 +257,8 @@ gh workflow run update-releases.yml
 
 ### Branch Strategy
 
-- **Main branch**: `master` (use for PRs, though current branch is `main`)
-- Current working branch: `main`
-- Deploy branch: `main` (Netlify watches this)
-
-**Note**: There's a discrepancy - git status shows main, but README mentions master as main branch.
+- **Main branch**: `main`
+- **Deploy branch**: `main` — Coolify redeploys on push, and Netlify rebuilds the backup from the same push.
 
 ### Commit Message Format
 
@@ -290,11 +271,10 @@ Follow conventional commits style (as seen in recent commits):
 ### Recent Architectural Changes
 
 From commit history:
-- **f16f9aa**: Updated to FlowPOS v2.0.2
-- **bdc1d2f**: Implemented centralized version config system
-- **7051496**: Fixed releases.json and .gitignore
-- **817c79c**: Updated references from flowpos to flowpos-releases
-- **d1d85f3**: Removed unnecessary download redirects
+- **62f4df7**: own deploy on Coolify (`Dockerfile` + `nginx.conf`), keeping Netlify as a backup
+- **e61a2fc / ee75fb2**: SEO base across the 4 pages, and removal of the redirect to the netlify.app domain
+- **bdc1d2f**: centralized version config system (`js/config.js`)
+- The release cards in `descargas.html` and the version in `config.js` are written by `flowpos/scripts/release.mjs`
 
 ## External Dependencies
 
@@ -303,7 +283,7 @@ From commit history:
 - Lucide Icons: `https://unpkg.com/lucide@latest`
 - AOS: `https://unpkg.com/aos@2.3.1/dist/aos.css` + JS
 
-**CSP Whitelist** (in netlify.toml):
+**CSP Whitelist** (in `nginx.conf`, mirrored in `netlify.toml`):
 - script-src: cdn.tailwindcss.com, unpkg.com
 - style-src: unpkg.com
 - connect-src: api.github.com
@@ -312,6 +292,6 @@ From commit history:
 
 - **No package.json**: This is intentional - pure static site
 - **No tests**: Simple enough to test manually
-- **No CI beyond Actions**: Netlify handles deployment, GitHub Actions handles version sync
+- **No CI**: Coolify deploys the site (Netlify mirrors it as backup) and `flowpos/scripts/release.mjs` handles version sync. This repo has no workflows.
 - **Offline-first philosophy**: Reflects FlowPOS product philosophy (the software runs offline)
 - **Paraguay market**: Spanish language, Guaraníes currency, local phone numbers

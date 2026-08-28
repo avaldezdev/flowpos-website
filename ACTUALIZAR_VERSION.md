@@ -1,138 +1,108 @@
-# 🚀 Cómo Actualizar la Versión de FlowPOS
+# 🚀 Cómo se actualiza la versión publicada
 
-## ⚡ Proceso Rápido (2 minutos)
-
-### Paso 1: Subir nuevo release a GitHub
+**No se actualiza a mano.** Lo hace el pipeline de release que vive en el repo de la app:
 
 ```bash
-# En el repositorio flowpos-releases
-gh release create v2.0.2 \
-  --title "FlowPOS v2.0.2" \
-  --notes "Descripción de cambios" \
-  FlowPOS-Setup-2.0.2.exe
+node scripts/release.mjs        # en flowpos/
 ```
 
-O subir manualmente en: https://github.com/avaldezdev/flowpos-releases/releases/new
+Ese script, en una sola corrida: bumpea la versión, construye el instalador, crea el release
+en GitHub y **escribe este repo** — `js/config.js` (`version` + `releaseDate`) y las tarjetas
+de novedades de `descargas.html` (entre los marcadores `FLOWPOS:RELEASE:*`) — y commitea y
+pushea. El push actualiza **https://flowpos.com.py** (Coolify redeploya solo) y de paso
+rebuildea Netlify, que quedó como respaldo.
+
+Para ensayar el pipeline sin publicar nada: `node scripts/release.mjs --dry-run`.
 
 ---
 
-### Paso 2: Actualizar configuración del sitio web
+## 🛟 Fallback manual (solo si el pipeline no está disponible)
 
-**Abrir archivo:** `js/config.js`
+### Paso 1: Subir el release a GitHub
 
-**Cambiar SOLO estas 2 líneas:**
+```bash
+gh release create v3.4.0 \
+  --repo avaldezdev/flowpos-releases \
+  --title "FlowPOS v3.4.0" \
+  --notes "Descripción de cambios" \
+  dist/FlowPOS-Setup-3.4.0.exe dist/latest.yml dist/FlowPOS-Setup-3.4.0.exe.blockmap
+```
+
+⚠️ `latest.yml` y el `.blockmap` **no son opcionales**: sin ellos la actualización automática
+de las instalaciones ya existentes deja de funcionar.
+
+### Paso 2: Actualizar `js/config.js`
+
+Solo estas 2 líneas (las URLs de descarga se generan solas a partir de la versión):
 
 ```javascript
-version: '2.0.2',        // ← Cambiar aquí
-releaseDate: '2026-02-15', // ← Y aquí
+version: '3.4.0',
+releaseDate: '2026-08-28',
 ```
 
-**¡Eso es todo!** Las URLs se generan automáticamente.
+### Paso 3: Actualizar `descargas.html`
 
----
+La tarjeta "Actual" y el historial son **HTML escrito**, no se generan desde JavaScript.
+Van entre marcadores; respetar el formato de las tarjetas que ya están:
 
-### Paso 3: Commit y push
+- `<!-- FLOWPOS:RELEASE:CURRENT:START -->` … `END` → la tarjeta de la versión nueva
+- `<!-- FLOWPOS:RELEASE:HISTORY:START -->` … `END` → la versión saliente baja acá, **con sus
+  propios puntos**, arriba de todo
+
+### Paso 4: Commit y push
 
 ```bash
-git add js/config.js
-git commit -m "chore: actualizar a FlowPOS v2.0.2"
+git add js/config.js descargas.html
+git commit -m "release: FlowPOS v3.4.0"
 git push
 ```
 
 ---
 
-## ✅ Verificación
+## 🔧 Configuración avanzada (opcional)
 
-1. Espera 1-2 minutos que Netlify despliegue
-2. Visita: https://flowpos.com/descargas.html
-3. Verifica que muestre la nueva versión
-4. Prueba la descarga en modo incógnito
-
----
-
-## 📋 Ejemplo Completo
-
-**Antes:**
-```javascript
-version: '2.0.1',
-releaseDate: '2026-02-11',
-```
-
-**Después:**
-```javascript
-version: '2.0.2',
-releaseDate: '2026-02-15',
-```
-
-**Resultado automático:**
-- ✅ https://github.com/.../v2.0.2/FlowPOS-Setup-2.0.2.exe
-- ✅ https://github.com/.../v2.0.2/FlowPOS-2.0.2.dmg
-- ✅ https://github.com/.../v2.0.2/FlowPOS-2.0.2.AppImage
-
----
-
-## 🔧 Configuración Avanzada (Opcional)
-
-Si necesitas cambiar el patrón de nombres de archivos o tamaños:
-
-**Editar en `js/config.js`:**
+Si cambia el patrón de nombre de los instaladores o el tamaño que se muestra, se edita en
+`js/config.js`:
 
 ```javascript
 installers: {
   windows: {
-    pattern: 'FlowPOS-Setup-{version}.exe',  // ← Cambiar patrón
-    size: '~150 MB',                          // ← Cambiar tamaño mostrado
-    sizeBytes: 157286400                      // ← Cambiar tamaño en bytes
+    pattern: 'FlowPOS-Setup-{version}.exe',  // ← patrón del archivo
+    size: '~150 MB',                          // ← tamaño mostrado
+    sizeBytes: 157286400                      // ← tamaño en bytes
   }
 }
 ```
 
 ---
 
-## ❌ NO Editar Estos Archivos
+## ❌ Qué NO tocar
 
-Ya **NO** necesitas editar:
-- ❌ `assets/downloads/releases.json` (eliminado)
-- ❌ `js/main.js` (usa config.js automáticamente)
-- ❌ `netlify.toml` (sin redirects de versión)
-- ❌ `descargas.html` (muestra versión desde JS)
-
----
-
-## 🐛 Troubleshooting
-
-### Problema: La versión no se actualiza en el sitio
-
-**Solución:**
-1. Verifica que el deploy en Netlify terminó (https://app.netlify.com)
-2. Limpia caché del navegador (Ctrl+Shift+R)
-3. Verifica en modo incógnito
-
-### Problema: URL de descarga da 404
-
-**Solución:**
-1. Verifica que el release existe en GitHub: https://github.com/avaldezdev/flowpos-releases/releases
-2. Verifica que el nombre del archivo coincide con el patrón
-3. Verifica que el release está publicado (no draft)
+- ❌ `js/main.js` — lee todo de `config.js`
+- ❌ Las URLs de descarga en el HTML — se arman solas desde `config.js`
+- ❌ `netlify.toml` para versiones — ya no tiene redirects por versión (y solo afecta al respaldo)
+- ❌ No hace falta ningún workflow: había uno (`update-releases.yml`) que se eliminó porque fallaba
+  todos los días buscando `assets/downloads/releases.json`, un archivo que no existe en este repo.
+  La sincronización real la hace `release.mjs`.
 
 ---
 
-## 📝 Changelog del Sistema
+## 🐛 Problemas frecuentes
 
-### v2.0 - Sistema Centralizado (2026-02-12)
-- ✅ Configuración en un solo archivo (`js/config.js`)
-- ✅ URLs generadas automáticamente
-- ✅ Actualización en 2 líneas de código
-- ✅ Eliminado `releases.json` (ya no necesario)
-- ✅ Sin URLs hardcodeadas
-- ✅ Proceso de actualización simplificado
+### La versión no cambia en el sitio
 
-### v1.0 - Sistema Anterior
-- ❌ 3+ archivos para actualizar
-- ❌ URLs duplicadas en múltiples lugares
-- ❌ Propenso a errores
-- ❌ Proceso manual complejo
+1. Verificá que el deploy terminó en **Coolify** (app → Deployments). Netlify es el respaldo.
+2. Limpiá la caché del navegador (Ctrl+Shift+R) o probá en incógnito.
+3. Ojo con la caché de assets: `nginx.conf` sirve `.css`/`.js` con `expires 1y`, así que los
+   archivos locales se referencian con `?v=` — si cambió `main.js` y no el `?v=`, el visitante
+   sigue con el viejo.
+
+### La URL de descarga da 404
+
+1. Verificá que el release existe: https://github.com/avaldezdev/flowpos-releases/releases
+2. Verificá que el nombre del archivo coincide con el patrón de `config.js`
+3. Verificá que el release está publicado (no quedó en draft)
 
 ---
 
-**¿Preguntas?** Contacta soporte: soporte@flowpos.com
+**¿Dudas?** soporte@flowpos.com

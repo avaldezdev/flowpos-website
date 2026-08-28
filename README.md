@@ -4,15 +4,15 @@ Sitio web oficial para descarga y activación de FlowPOS - Sistema de Punto de V
 
 ## 🌐 Sitio en Vivo
 
-- **Producción**: https://flowpos.netlify.app (o custom domain)
-- **Preview**: Generado automáticamente en cada PR
+- **Producción**: https://flowpos.com.py
+- **Respaldo**: Netlify, conectado al mismo repo (genera además un preview por cada PR)
 
 ## 📋 Tabla de Contenidos
 
 - [Características](#características)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Desarrollo Local](#desarrollo-local)
-- [Deploy en Netlify](#deploy-en-netlify)
+- [Deploy](#deploy)
 - [Automatización](#automatización)
 - [Configuración](#configuración)
 - [Mantenimiento](#mantenimiento)
@@ -24,8 +24,8 @@ Sitio web oficial para descarga y activación de FlowPOS - Sistema de Punto de V
 - ✅ **Descargas directas** - Links a GitHub Releases
 - ✅ **Guía de activación paso a paso** - 7 pasos ilustrados
 - ✅ **Responsive design** - Mobile-first, compatible con todos los dispositivos
-- ✅ **Deploy automático** - Netlify se actualiza en cada commit
-- ✅ **Actualización de versiones** - GitHub Actions detecta nuevos releases
+- ✅ **Deploy automático** - Coolify redespliega flowpos.com.py en cada push a `main`
+- ✅ **Actualización de versiones** - la escribe el pipeline de release de la app
 - ✅ **SEO optimizado** - Meta tags, Open Graph, sitemap
 - ✅ **Botón WhatsApp flotante** - Contacto directo con soporte
 
@@ -41,7 +41,9 @@ flowpos-website/
 ├── index.html              # Landing page principal
 ├── descargas.html          # Página de descargas
 ├── activacion.html         # Guía de activación
-├── netlify.toml           # Configuración de Netlify
+├── Dockerfile              # Imagen nginx que sirve el sitio en Coolify
+├── nginx.conf              # Headers, caché y redirects del sitio oficial
+├── netlify.toml            # Lo mismo, para el respaldo en Netlify
 ├── README.md              # Este archivo
 │
 ├── css/
@@ -53,12 +55,7 @@ flowpos-website/
 ├── assets/
 │   ├── images/            # Logo, screenshots, iconos
 │   │   └── (vacío - agregar imágenes aquí)
-│   └── downloads/
-│       └── releases.json  # Metadata de versiones
-│
-└── .github/
-    └── workflows/
-        └── update-releases.yml  # GitHub Actions workflow
+│   └── (sin carpeta downloads: los instaladores viven en el repo flowpos-releases)
 ```
 
 ## 🚀 Desarrollo Local
@@ -99,94 +96,40 @@ http-server -p 8000
 # Abre http://localhost:8000
 ```
 
-## 🌐 Deploy en Netlify
+## 🌐 Deploy
 
-### Opción 1: Deploy desde GitHub (Recomendado)
+El sitio oficial es **https://flowpos.com.py**, servido por nginx dentro de un contenedor en
+**Coolify** (VPS propio). Cada `git push` a `main` dispara el redeploy automáticamente.
 
-#### Paso 1: Subir a GitHub
+El paso a paso de la app en Coolify (build pack Dockerfile, puerto 80, dominio y SSL) está en
+`DEPLOY-COOLIFY.md`.
+
+### Respaldo en Netlify
+
+Netlify sigue conectado al mismo repositorio y rebuildea con el mismo push. Ignora el `Dockerfile`
+y usa `netlify.toml`. Sirve de respaldo y para los previews de PR — **no es el sitio oficial**.
+
+⚠️ Los headers, la caché y los redirects están declarados dos veces: en `nginx.conf` (el que sirve
+flowpos.com.py) y en `netlify.toml` (respaldo). Lo que se agregue a uno hay que agregarlo al otro.
+
+### Probar el contenedor en local
+
 ```bash
-# Inicializar repositorio (si no existe)
-git init
-git add .
-git commit -m "feat: initial commit - FlowPOS website"
-
-# Crear repositorio en GitHub
-# https://github.com/new
-
-# Conectar y push
-git remote add origin https://github.com/TU_USUARIO/flowpos-website.git
-git branch -M main
-git push -u origin main
-```
-
-#### Paso 2: Conectar con Netlify
-1. Ve a https://app.netlify.com
-2. Click "Add new site" → "Import an existing project"
-3. Conecta tu cuenta de GitHub
-4. Selecciona el repositorio `flowpos-website`
-5. Configuración de build:
-   - **Build command**: (dejar vacío)
-   - **Publish directory**: `.` (punto)
-   - **Branch**: `main`
-6. Click "Deploy site"
-
-#### Paso 3: Configurar dominio personalizado (opcional)
-1. En el dashboard de Netlify → "Domain settings"
-2. Click "Add custom domain"
-3. Ingresa tu dominio (ej: `flowpos.com.py`)
-4. Sigue las instrucciones para configurar DNS
-
-### Opción 2: Deploy manual (Drag & Drop)
-1. Ve a https://app.netlify.com
-2. Arrastra la carpeta completa del proyecto
-3. Netlify lo desplegará automáticamente
-
-### Opción 3: Deploy con Netlify CLI
-```bash
-# Instalar Netlify CLI
-npm install -g netlify-cli
-
-# Login
-netlify login
-
-# Deploy
-netlify deploy --prod
+docker build -t flowpos-web .
+docker run --rm -p 8080:80 flowpos-web
+# abrí http://localhost:8080
 ```
 
 ## ⚙️ Automatización
 
-### GitHub Actions Workflow
+La versión publicada y las notas de cada release las escribe el pipeline que vive en el repo de la
+app (`flowpos/scripts/release.mjs`): bumpea la versión, construye el instalador, crea el release en
+GitHub, actualiza `js/config.js` y las tarjetas de `descargas.html`, y pushea. Ese push despliega.
 
-El workflow `update-releases.yml` se ejecuta:
-- ✅ **Diariamente** a las 00:00 UTC (verifica nuevas versiones)
-- ✅ **Manualmente** desde GitHub Actions
-- ✅ **On webhook** desde el repo principal de FlowPOS (requiere configuración)
+Detalle y fallback manual: `ACTUALIZAR_VERSION.md`.
 
-#### Qué hace el workflow:
-1. Consulta la última versión de FlowPOS en GitHub
-2. Compara con la versión actual en `releases.json`
-3. Si hay una nueva versión:
-   - Actualiza `releases.json`
-   - Actualiza redirects en `netlify.toml`
-   - Hace commit y push
-4. Netlify detecta el cambio y redespliega automáticamente
-
-#### Ejecución manual:
-1. Ve a https://github.com/TU_USUARIO/flowpos-website/actions
-2. Selecciona "Update Release Metadata"
-3. Click "Run workflow"
-
-### Webhook desde FlowPOS repo (opcional)
-
-Para que el sitio web se actualice automáticamente cuando se publica un release en FlowPOS:
-
-1. En el repo de FlowPOS, ve a Settings → Webhooks
-2. Add webhook:
-   - **Payload URL**: `https://api.github.com/repos/TU_USUARIO/flowpos-website/dispatches`
-   - **Content type**: `application/json`
-   - **Secret**: (generar uno)
-   - **Events**: Solo "Releases"
-3. En el repo del website, agrega el secret en Settings → Secrets
+Este repo **no tiene workflows de GitHub Actions**. Había uno (`update-releases.yml`) que se eliminó
+porque fallaba todos los días: leía `assets/downloads/releases.json`, un archivo que no existe acá.
 
 ## 🔧 Configuración
 
