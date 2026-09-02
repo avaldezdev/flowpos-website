@@ -300,12 +300,72 @@
                     <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-blue-600">
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <h3 class="text-2xl font-semibold text-gray-800">v3.4.1</h3>
-                                <p class="text-gray-600">Agosto 2026</p>
+                                <h3 class="text-2xl font-semibold text-gray-800">v3.5.0</h3>
+                                <p class="text-gray-600">Septiembre 2026</p>
                             </div>
                             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Actual</span>
                         </div>
                         <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-green-700 mb-2 flex items-center space-x-2">
+                                <i data-lucide="sparkles" width="18" height="18"></i>
+                                <span>Novedades</span>
+                            </h4>
+                            <ul class="space-y-1 text-gray-700 ml-6">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Compras en dólares o reales: se registra la factura en la moneda del proveedor y el costo entra convertido con la cotización del día de la compra, no con la de hoy.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Se le puede pagar a un proveedor en su moneda desde una cuenta en otra: se declara cuánto salió de la cuenta y el sistema deduce la cotización, sin obligar a abrir una cuenta ficticia en esa moneda.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>El negocio puede llevar sus libros en dólares o reales: precios, costos, caja y reportes quedan todos en la moneda elegida, y el equivalente en guaraníes se sigue calculando para el comprobante y para la SET.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>En el mostrador se puede recibir dólares, reales o pesos, y el vuelto se reparte entre las monedas que haya en el cajón. Desde Ajustes se elige cuáles se aceptan.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>El cierre de caja se cuenta moneda por moneda, cada una en sus propios billetes, y cada una entra a la cuenta de su moneda.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Cambio de divisas entre cuentas: se carga cuánto salió y cuánto entró, y queda registrado a qué precio se cambió y cuánto se desvió de la cotización cargada.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Al entregar un pedido se ve de qué lote sale la mercadería y se puede cambiar, porque entre que se toma el pedido y se entrega pueden pasar días.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>El alta rápida de productos marca en rojo los campos que faltan, en vez de avisar con un mensaje en la esquina.</span>
+                        </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-blue-700 mb-2 flex items-center space-x-2">
+                                <i data-lucide="zap" width="18" height="18"></i>
+                                <span>Mejoras</span>
+                            </h4>
+                            <ul class="space-y-1 text-gray-700 ml-6">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>El carrito se comporta igual en Ventas, Pedidos y Presupuestos: las mismas acciones, el mismo buscador y el mismo menú por producto en las tres pantallas.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>El monto de una cuenta en dólares o reales acepta centavos, y los importes se escriben igual en todo el sistema.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>El listado de compras muestra cada una con su propia moneda, sin mezclarlas en una sola columna.</span>
+                        </li>
+                            </ul>
+                        </div>
                         <div>
                             <h4 class="font-semibold text-orange-700 mb-2 flex items-center space-x-2">
                                 <i data-lucide="wrench" width="18" height="18"></i>
@@ -314,7 +374,71 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span>Un chunk dinamico ya no lee un stub vacio con bytecode</span>
+                            <span>El POS ya no queda en pantalla blanca cuando la configuración todavía no terminó de cargar.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>El IVA se calcula con la precisión de la moneda del negocio: en guaraníes queda entero y en dólares con centavos.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Una venta cobrada con varias formas de pago ya no guarda el IVA con decimales de más en cada parte.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Sacar moneda extranjera del cajón ya no le figura al cajero como un faltante que no es suyo.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>El historial del cierre de caja nombra la cuenta a la que fue la plata de verdad.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Al cerrar caja con varias monedas se ve a qué cuenta va cada una, en vez de nombrar una sola.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>La cotización solo la pueden cambiar quienes corresponde: el cajero la sigue cargando al abrir caja, y queda registrado quién la modificó.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Entregar un pedido descuenta el stock del lote correspondiente, no solo el total del producto.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Los resultados de búsqueda del POS vuelven a mostrar la referencia y el código de barras del producto.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>El alta rápida ya no deja crear un producto sin precio de venta.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>El costo de un producto se redondea en la moneda del negocio, no siempre a dos decimales.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Las ventanas para pagar un gasto, una compra o a un proveedor ya se pueden usar completas: antes los botones podían quedar fuera de la pantalla.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Al pagar una deuda, el saldo de la cuenta se muestra y se compara en la moneda de esa cuenta.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Se corrigieron cinco pantallas que mostraban importes rotulados con la moneda equivocada.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Cobrar por transferencia ya no se traba en un negocio que lleva sus libros en otra moneda.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Elegir el proveedor después de cargar una compra vuelve a calcular el costo, en vez de solo cambiarle la etiqueta.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>El peso argentino se escribe igual en pantalla y en los documentos impresos.</span>
                         </li>
                             </ul>
                         </div>
@@ -330,6 +454,13 @@
                         </summary>
                         <div class="p-6 pt-0 space-y-6 border-t">
                             <!-- FLOWPOS:RELEASE:HISTORY:START -->
+                            <div class="border-l-4 border-gray-300 pl-4">
+                                <h3 class="text-lg font-semibold text-gray-800">v3.4.1</h3>
+                                <p class="text-sm text-gray-600 mb-2">Agosto 2026</p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• Un chunk dinamico ya no lee un stub vacio con bytecode</li>
+                                </ul>
+                            </div>
                             <div class="border-l-4 border-gray-300 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-800">v3.4.0</h3>
                                 <p class="text-sm text-gray-600 mb-2">Agosto 2026</p>
