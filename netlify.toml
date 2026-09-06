@@ -74,6 +74,13 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
+# El video del hero pesa mas que cualquier otro estatico: sin cache larga se
+# vuelve a bajar en cada visita. Mismo criterio en nginx.conf (sitio oficial).
+[[headers]]
+  for = "/*.{mp4,webm}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Redirects for download shortcuts
 [[redirects]]
   from = "/download"

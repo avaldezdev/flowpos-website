@@ -40,7 +40,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/styles.css?v=20260816r">
+    <link rel="stylesheet" href="css/styles.css?v=20260903">
 
     <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -224,48 +224,30 @@
                 </div>
                 <div data-aos="fade-left" class="hidden md:block">
                     <div class="bg-white rounded-xl shadow-2xl p-2">
-                        <!-- Pase de capturas. El contenedor lleva la proporción fija y fondo
-                             oscuro: las dos imágenes no miden exactamente igual de alto y así
-                             la página no salta al cambiar de una a otra. -->
-                        <div data-hero-slider class="relative rounded-lg overflow-hidden bg-slate-900" style="aspect-ratio: 1366 / 768;">
-                            <img data-hero-slide
-                                 data-hero-etiqueta="Venta por lista, con buscador"
-                                 src="assets/images/capturas/ventas-oscuro-1024.webp"
-                                 srcset="assets/images/capturas/ventas-oscuro-683.webp 683w,
-                                         assets/images/capturas/ventas-oscuro-1024.webp 1024w,
-                                         assets/images/capturas/ventas-oscuro-1366.webp 1366w"
-                                 sizes="(min-width: 1024px) 550px, 50vw"
-                                 alt="Pantalla de ventas de FlowPOS en modo lista, con el carrito cargado y el total en guaraníes"
-                                 loading="eager" fetchpriority="high"
-                                 class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700">
-                            <img data-hero-slide
-                                 data-hero-etiqueta="Venta en grilla táctil, con fotos"
-                                 src="assets/images/capturas/ventas-grilla-oscuro-1024.webp"
-                                 srcset="assets/images/capturas/ventas-grilla-oscuro-683.webp 683w,
-                                         assets/images/capturas/ventas-grilla-oscuro-1024.webp 1024w,
-                                         assets/images/capturas/ventas-grilla-oscuro-1366.webp 1366w"
-                                 sizes="(min-width: 1024px) 550px, 50vw"
-                                 alt="Pantalla de ventas de FlowPOS en grilla táctil, con los productos en botones con foto y precio"
-                                 loading="lazy" decoding="async"
-                                 class="absolute inset-0 w-full h-full object-contain transition-opacity duration-700 opacity-0">
+                        <!-- Demo del sistema en video: es una captura de pantalla animada,
+                             no un video para "mirar", así que va sin audio, en bucle y sin
+                             controles. La excepción la maneja initHeroVideo() en js/main.js,
+                             para quien pidió menos movimiento en su sistema.
+                             El contenedor lleva la proporción fija para que la página no
+                             salte mientras el video todavía no cargó. -->
+                        <div class="relative rounded-lg overflow-hidden bg-white" style="aspect-ratio: 16 / 9;">
+                            <video data-hero-video
+                                   class="absolute inset-0 w-full h-full object-contain"
+                                   poster="assets/video/flowpos-demo-poster.jpg"
+                                   autoplay muted loop playsinline
+                                   preload="metadata" disablepictureinpicture
+                                   aria-label="Demostración de FlowPOS: se busca un producto, se carga el carrito y se cobra en guaraníes, dólares, reales o pesos">
+                                <!-- data-src y no src: ver conectarFuente() en js/main.js. -->
+                                <source data-src="assets/video/flowpos-demo.mp4" type="video/mp4">
+                                <!-- Solo para un navegador sin <video>: la captura de siempre. -->
+                                <img src="assets/images/capturas/ventas-oscuro-1024.webp"
+                                     alt="Pantalla de ventas de FlowPOS con el carrito cargado y el total en guaraníes"
+                                     class="absolute inset-0 w-full h-full object-contain">
+                            </video>
                         </div>
-                        <!-- Los puntos van sobre el recuadro blanco, así que llevan colores
-                             oscuros. El botón mide 24px aunque el punto se vea de 10px: es el
-                             mínimo recomendado para que se pueda tocar cómodo. -->
-                        <div class="flex items-center justify-center gap-1 pt-2">
-                            <button type="button" data-hero-punto aria-current="true"
-                                    class="w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
-                                    aria-label="Ver la venta por lista">
-                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600 transition-colors"></span>
-                            </button>
-                            <button type="button" data-hero-punto aria-current="false"
-                                    class="w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
-                                    aria-label="Ver la venta en grilla táctil">
-                                <span class="w-2.5 h-2.5 rounded-full bg-gray-300 transition-colors"></span>
-                            </button>
-                        </div>
-                        <p data-hero-leyenda aria-live="polite"
-                           class="text-center text-sm text-gray-600 pb-2 min-h-[1.25rem]"></p>
+                        <p class="text-center text-sm text-gray-600 pt-2 pb-2">
+                            Una venta completa, de la búsqueda al cobro.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -813,8 +795,8 @@
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/tracking.js?v=20260816r"></script>
-    <script src="js/main.js?v=20260816r"></script>
+    <script src="js/tracking.js?v=20260903"></script>
+    <script src="js/main.js?v=20260903"></script>
     <script>
         // Initialize AOS
         AOS.init({

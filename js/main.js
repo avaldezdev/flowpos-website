@@ -772,8 +772,8 @@ function init() {
     initializeDownloadPage()
   }
 
-  // Pase de capturas del inicio (solo existe en la portada)
-  initHeroSlider()
+  // Video demo del inicio (solo existe en la portada)
+  initHeroVideo()
 
   // Add fade-in animation to sections
   const sections = document.querySelectorAll('section')
@@ -797,87 +797,76 @@ function init() {
 
 
 /**
- * Pase de capturas del hero: alterna entre la venta por lista y la venta en
- * grilla táctil. Sin librerías: el sitio ya carga Tailwind, AOS y Lucide desde
- * CDN y sumar un carrusel de terceros iría en contra de la velocidad en celular.
+ * Demo del hero: un video corto, sin audio y en bucle. Es una captura animada
+ * del sistema, no un video para "mirar", así que arranca solo y va sin controles.
  *
  * No hace nada si la portada no está en pantalla (el resto de las páginas no
- * tiene el pase).
+ * tiene el video).
  */
-function initHeroSlider() {
-  const slider = document.querySelector('[data-hero-slider]')
-  if (!slider) return
+function initHeroVideo() {
+  const video = document.querySelector('[data-hero-video]')
+  if (!video) return
 
-  const slides = Array.from(slider.querySelectorAll('[data-hero-slide]'))
-  const puntos = Array.from(document.querySelectorAll('[data-hero-punto]'))
-  // OJO: el destino se llama distinto de los datos. Las <img> llevan
-  // data-hero-etiqueta con el texto; si el <p> usara ese mismo nombre,
-  // querySelector devolvería la primera imagen en vez del párrafo.
-  const leyenda = document.querySelector('[data-hero-leyenda]')
-  if (slides.length < 2) return
-
-  const INTERVALO = 5000
-  // Respetar a quien pidió menos movimiento en su sistema: se puede cambiar a
-  // mano con los puntos, pero no gira solo.
+  const fuente = video.querySelector('source[data-src]')
   const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  let actual = 0
-  let timer = null
-
-  function mostrar(indice) {
-    actual = (indice + slides.length) % slides.length
-
-    slides.forEach((slide, i) => {
-      const activa = i === actual
-      slide.classList.toggle('opacity-0', !activa)
-      // Sin esto el lector de pantalla leería las dos descripciones seguidas.
-      slide.setAttribute('aria-hidden', String(!activa))
-    })
-
-    puntos.forEach((punto, i) => {
-      const activo = i === actual
-      // El color va en el <span> de adentro: el <button> es solo el área de clic.
-      const bolita = punto.querySelector('span') || punto
-      bolita.classList.toggle('bg-blue-600', activo)
-      bolita.classList.toggle('bg-gray-300', !activo)
-      punto.setAttribute('aria-current', activo ? 'true' : 'false')
-    })
-
-    if (leyenda) leyenda.textContent = slides[actual].dataset.heroEtiqueta || ''
+  // Quien pidió menos movimiento en su sistema lo ve a pedido, con controles,
+  // en vez de encontrarse una pantalla moviéndose sola apenas entra.
+  if (sinMovimiento) {
+    video.removeAttribute('autoplay')
+    video.controls = true
   }
 
-  function detener() {
-    if (timer) {
-      clearInterval(timer)
-      timer = null
+  // OJO: la tarjeta del hero está oculta en celular (`hidden md:block`), pero el
+  // navegador se baja el mp4 igual — 2,6 MB a quien nunca lo va a ver, y en
+  // Paraguay eso son datos que se pagan. Por eso el <source> viene con data-src
+  // y se conecta recién acá, cuando la tarjeta de verdad ocupa lugar.
+  function conectarFuente() {
+    if (video.getBoundingClientRect().width === 0) return false
+    if (fuente && !fuente.src) {
+      fuente.src = fuente.dataset.src
+      video.load()
     }
+    return true
   }
 
-  function arrancar() {
-    if (sinMovimiento) return
-    detener()
-    timer = setInterval(() => mostrar(actual + 1), INTERVALO)
+  function reproducir() {
+    if (!conectarFuente() || sinMovimiento) return
+    // play() devuelve una promesa que se rechaza si el navegador bloquea el
+    // autoplay (modo ahorro de datos, por ejemplo). Sin el catch queda un
+    // "Unhandled promise rejection" en la consola; el póster igual se ve.
+    const intento = video.play()
+    if (intento && typeof intento.catch === 'function') intento.catch(() => {})
   }
 
-  puntos.forEach((punto, i) => {
-    punto.addEventListener('click', () => {
-      mostrar(i)
-      arrancar() // reiniciar la cuenta tras un clic
-    })
-  })
+  // Si la ventana pasa de ancho de celular a escritorio, la tarjeta aparece y
+  // ahí sí corresponde bajar el video.
+  const escritorio = window.matchMedia('(min-width: 768px)')
+  if (escritorio.addEventListener) escritorio.addEventListener('change', reproducir)
+  else if (escritorio.addListener) escritorio.addListener(reproducir) // Safari < 14
 
-  // Que no cambie mientras el visitante está mirando una.
-  slider.addEventListener('mouseenter', detener)
-  slider.addEventListener('mouseleave', arrancar)
-
-  // Ni que siga girando con la pestaña en segundo plano.
+  // Que no siga gastando batería con la pestaña en segundo plano.
   document.addEventListener('visibilitychange', () => {
-    if (document.hidden) detener()
-    else arrancar()
+    if (document.hidden) video.pause()
+    else reproducir()
   })
 
-  mostrar(0)
-  arrancar()
+  // Ni con la portada scrolleada fuera de pantalla. El observador solo pausa y
+  // reanuda: el arranque va aparte, porque un IntersectionObserver no dispara
+  // mientras el documento está oculto (pestaña de fondo) y ahí el video se
+  // quedaría sin conectar hasta el primer scroll.
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) reproducir()
+        else video.pause()
+      })
+    }, { threshold: 0.2 }).observe(video)
+  }
+
+  // Dentro de un rAF para medir con los estilos ya aplicados: Tailwind llega por
+  // CDN y es su `hidden md:block` el que decide si la tarjeta ocupa lugar.
+  requestAnimationFrame(reproducir)
 }
 
 // Run initialization when DOM is ready

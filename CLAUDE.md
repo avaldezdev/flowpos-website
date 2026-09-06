@@ -151,6 +151,28 @@ All four pages therefore reference local assets with a version query:
 current date (`YYYYMMDD`) in ALL pages that reference it** — otherwise the change won't
 reach existing visitors.
 
+### Video del hero (portada)
+
+La portada muestra `assets/video/flowpos-demo.mp4` (2,6 MB, 40 s, sin audio, en bucle),
+con `assets/video/flowpos-demo-poster.jpg` como póster. Sale del repo `hyperframes`
+(`videos/flowpos-hero/renders/`), no se edita acá.
+
+Tres cosas que no son obvias:
+
+1. **El `<source>` va con `data-src`, no con `src`.** La tarjeta del hero está oculta en
+   celular (`hidden md:block`), pero si el `src` estuviera en el HTML el navegador se
+   bajaría los 2,6 MB igual — a alguien que nunca lo va a ver, pagando datos.
+   `initHeroVideo()` en `js/main.js` conecta la fuente recién cuando la tarjeta ocupa
+   lugar en pantalla. **Si lo pasás a `src` fijo, volvés a romper eso.**
+2. **`.mp4` está en la caché larga de `nginx.conf` Y de `netlify.toml`.** Es el estático
+   más pesado del sitio: sin eso se vuelve a bajar en cada visita.
+3. **La CSP no necesita `media-src`**: al no estar declarada cae en `default-src 'self'`,
+   y el video se sirve del mismo dominio. Si algún día el video se mueve a un CDN, ahí sí
+   hay que agregar `media-src` en los dos archivos.
+
+Para cambiar el video: reemplazar los dos archivos de `assets/video/` y bumpear el `?v=`
+(ver arriba) solo si además tocaste `main.js`.
+
 ### SEO: qué hay que mantener a mano
 
 El sitio no tiene build, así que estas cuatro cosas no se actualizan solas:
