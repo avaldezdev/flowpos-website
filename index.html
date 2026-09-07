@@ -223,29 +223,30 @@
                     </div>
                 </div>
                 <div data-aos="fade-left" class="hidden md:block">
-                    <div class="bg-white rounded-xl shadow-2xl p-2">
+                    <div class="rounded-xl p-2 bg-slate-900/30 ring-1 ring-white/15 shadow-2xl backdrop-blur-sm">
                         <!-- Demo del sistema en video: es una captura de pantalla animada,
                              no un video para "mirar", así que va sin audio, en bucle y sin
                              controles. La excepción la maneja initHeroVideo() en js/main.js,
                              para quien pidió menos movimiento en su sistema.
                              El contenedor lleva la proporción fija para que la página no
                              salte mientras el video todavía no cargó. -->
-                        <div class="relative rounded-lg overflow-hidden bg-white" style="aspect-ratio: 16 / 9;">
+                        <div class="relative rounded-lg overflow-hidden" style="aspect-ratio: 16 / 9; background: #0F172A;">
                             <video data-hero-video
-                                   class="absolute inset-0 w-full h-full object-contain"
-                                   poster="assets/video/flowpos-demo-poster.jpg"
+                                   class="absolute inset-0 w-full h-full object-cover"
+                                   poster="assets/video/flowpos-demo-v2-poster.jpg"
+                                   width="1280" height="720"
                                    autoplay muted loop playsinline
                                    preload="metadata" disablepictureinpicture
-                                   aria-label="Demostración de FlowPOS: se busca un producto, se carga el carrito y se cobra en guaraníes, dólares, reales o pesos">
+                                   aria-label="Demostración de FlowPOS: se buscan productos, se ajustan cantidades, el IVA se calcula separando 10% y 5%, se elige nota de venta o factura, se cobra en efectivo con el vuelto y se emite el comprobante">
                                 <!-- data-src y no src: ver conectarFuente() en js/main.js. -->
-                                <source data-src="assets/video/flowpos-demo.mp4" type="video/mp4">
+                                <source data-src="assets/video/flowpos-demo-v2.mp4" type="video/mp4">
                                 <!-- Solo para un navegador sin <video>: la captura de siempre. -->
                                 <img src="assets/images/capturas/ventas-oscuro-1024.webp"
                                      alt="Pantalla de ventas de FlowPOS con el carrito cargado y el total en guaraníes"
                                      class="absolute inset-0 w-full h-full object-contain">
                             </video>
                         </div>
-                        <p class="text-center text-sm text-gray-600 pt-2 pb-2">
+                        <p class="text-center text-sm text-white/90 pt-2 pb-2">
                             Una venta completa, de la búsqueda al cobro.
                         </p>
                     </div>
