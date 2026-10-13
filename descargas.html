@@ -300,7 +300,7 @@
                     <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-blue-600">
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <h3 class="text-2xl font-semibold text-gray-800">v3.7.0</h3>
+                                <h3 class="text-2xl font-semibold text-gray-800">v3.7.1</h3>
                                 <p class="text-gray-600">Octubre 2026</p>
                             </div>
                             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Actual</span>
@@ -314,51 +314,19 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Venta por pack y por caja</strong>: cargá presentaciones de un producto (Pack x6, Caja x12) con su propio precio y código de barras; el stock se sigue llevando en unidades, también en pedidos, presupuestos y devoluciones.</span>
+                            <span><strong>App del mozo en el celular</strong>: los mozos cargan los pedidos desde su propio celular, sin instalar nada. Escanean un código QR, entran con su usuario y PIN, eligen la comanda (por número o escaneando la tarjeta) y envían. Tienen buscador, categorías, notas por producto y productos por peso.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Informe «Suelto y cerrado»</strong>: mirá cuánto vendés de cada producto suelto y cuánto en pack o caja.</span>
+                            <span><strong>Estaciones de cocina</strong>: cada sector (Cocina, Barra, Parrilla…) tiene su propia impresora, y cada pedido se reparte solo: lo de cada categoría sale en su estación.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Factura preimpresa</strong>: imprimí tus ventas sobre el formulario de la imprenta, ubicando cada dato directamente sobre la hoja y calibrando la impresora con flechas.</span>
+                            <span><strong>El código QR del mozo, a mano</strong>: el botón "Celular del mozo" en Pedidos muestra el QR para abrir la app, y se puede imprimir para pegarlo en la cocina.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Listas de precios en dólares (u otra moneda)</strong>: una lista en dólares vende en dólares; el carrito, el presupuesto y el pedido muestran el precio pactado, se cobra a la cotización del día y el comprobante dice lo pactado.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Listas de precios en todos los carritos</strong>: elegí la lista también en Pedidos, Presupuestos y la grilla táctil, y exportá o importá sus reglas en Excel.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Cambiar de computadora en un archivo</strong>: llevá todo tu FlowPOS a una PC nueva desde Ajustes → Respaldos, sin perder ventas ni configuración.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Restaurar un respaldo desde la pantalla</strong>: elegí el respaldo y FlowPOS lo aplica de forma segura al volver a abrir.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Pedidos de tu tienda online, solos</strong>: FlowPOS busca los pedidos de WooCommerce cada pocos minutos, sin configurar la red, y la tienda recibe los cambios de stock al momento.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>API para integraciones</strong>: conectá otros programas con llaves que tienen permisos a medida; disponible también en el Plan Profesional.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Anular un recibo de cobranza</strong>: con autorización, el cobro se revierte y la plata vuelve por donde entró.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Anular un despiece</strong>: si cargaste mal una transformación, se deshace y el stock vuelve a su lugar.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Elegir el lote al convertir un presupuesto</strong>: decidí de qué lote sale la mercadería cuando el presupuesto pasa a venta.</span>
+                            <span><strong>Comandas por número</strong>: se crean de a una o de una sola vez ("del 1 al 50"), y las tarjetas se vinculan escaneándolas, con el código que traigan de la imprenta.</span>
                         </li>
                             </ul>
                         </div>
@@ -370,87 +338,23 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Devoluciones por el mismo medio de pago</strong>: lo devuelto sale por donde entró (efectivo, tarjeta o transferencia), y en una venta a crédito primero baja la deuda.</span>
+                            <span><strong>Varios mozos en la misma comanda</strong>: dos personas pueden cargar a la vez en la misma comanda sin pisarse, y un pedido no se cobra si le agregaron productos que todavía no se cobraron.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Pantalla de devoluciones más ágil</strong>: más compacta y se opera entera con el teclado.</span>
+                            <span><strong>Envíos más confiables</strong>: una impresora de cocina lenta ya no hace aparecer un error cuando el pedido sí llegó.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Informes más exactos</strong>: una venta cobrada en varias formas cuenta como una sola, una venta con devolución sigue contando, y el neto resta lo que realmente se devolvió.</span>
+                            <span><strong>Ingreso con PIN más ágil</strong>: varios mozos pueden entrar seguidos desde la misma tableta; el bloqueo por seguridad cuenta solo los PIN equivocados.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Reporte Z más completo</strong>: muestra el neto del día, las devoluciones por comprobante y las notas de crédito emitidas.</span>
+                            <span><strong>Configuración de cocina más clara</strong>: la opción ahora se llama "Imprimir la comanda en cocina", y si está apagada con estaciones configuradas, se avisa con un botón para encenderla.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Cierre de caja con doble control</strong>: si lo contado se aleja mucho de lo esperado, FlowPOS te pregunta antes de cerrar, para evitar un cero de más.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Un recibo por cada cobro</strong>: cobrar varias facturas juntas emite un solo recibo con todas.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Notas de crédito más precisas</strong>: la corrección de errores se elige entre cinco tipos, y la nota manual toma el comprobante entero.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Pedidos más simples</strong>: crear un pedido ya no pide datos de entrega, la nota de cada línea se conserva y pasa a la venta, y el comprobante en A4 dice PEDIDO.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Cajas en red más seguras</strong>: convertir una PC en caja secundaria nunca borra sus datos, exige un equipo principal disponible, y una caja nunca queda sin salida.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Cajas que se actualizan solas</strong>: cada caja secundaria toma la misma versión que su equipo principal.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Respaldos más confiables</strong>: siempre te queda al menos uno, y la copia sale completa aunque FlowPOS esté abierto.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Plan Profesional completo para una computadora</strong>: tiene todo lo del Plan Total; sólo se diferencian en las cajas en red.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Tu plan sigue a tu cuenta</strong>: al cambiar de PC, vinculás la cuenta y tu plan te acompaña.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Configuración de ventas más clara</strong>: cada opción explica qué hace, agrupada por tema.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>El carrito no se pierde en hora pico</strong>: se guarda solo mientras vendés.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Control de stock al cambiar la cantidad</strong>: el POS avisa en rojo si tipeás más de lo que hay.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Importar productos sin sorpresas</strong>: la importación no toca el stock de los productos que ya existen, y se aplica completa o no se aplica.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Planillas de Excel listas para sumar</strong>: importes y porcentajes salen como números.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Comprobantes en la moneda de tu negocio</strong>: el recibo de cobranza muestra la moneda y los decimales correctos.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Copias de comprobantes</strong>: las notas de crédito y los recibos reimpresos salen marcados como COPIA, y una factura reimpresa lleva el timbrado con que se emitió.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Más control de permisos</strong>: cada rol hace sólo lo suyo también desde las cajas en red, y el registro de auditoría dice el nombre de quien operó.</span>
+                            <span><strong>Más seguridad en la red</strong>: cada equipo y cada celular conectado solo puede hacer lo que su usuario tiene permitido.</span>
                         </li>
                             </ul>
                         </div>
@@ -462,47 +366,7 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Venta en cuotas</strong>: la mora no se cobra dos veces y los centavos de las cuotas cierran exacto.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>IVA en facturas con descuento</strong>: se calcula sobre lo que realmente se cobró.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Pedido convertido en venta</strong>: el cobro llega entero a la venta, a la caja y a la factura, y el comprobante se imprime como en el POS.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Presupuesto convertido en venta</strong>: conserva su lista de precios y guarda bien cada importe.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Anulación de ventas</strong>: una anulación que no se pudo completar ya no aparece como hecha.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Padrón de contribuyentes</strong>: la carga desde el archivo ZIP de la DNIT vuelve a funcionar.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Historial de ajustes de inventario</strong>: vuelve a estar disponible.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Costos protegidos</strong>: el último costo de compra tampoco lo ve quien no tiene permiso para ver costos.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Cierre de la ventana</strong>: con la API para integraciones encendida, cerrar FlowPOS ya no lo deja corriendo oculto.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Avisos en pantalla</strong>: ya no tapan la ventana del documento que estás viendo.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Reportes en PDF</strong>: los reportes anchos salen apaisados.</span>
+                            <span><strong>Balcón muestra todas las comandas abiertas</strong>: las comandas abiertas el día anterior ya no desaparecen de la lista.</span>
                         </li>
                             </ul>
                         </div>
@@ -518,6 +382,56 @@
                         </summary>
                         <div class="p-6 pt-0 space-y-6 border-t">
                             <!-- FLOWPOS:RELEASE:HISTORY:START -->
+                            <div class="border-l-4 border-gray-300 pl-4">
+                                <h3 class="text-lg font-semibold text-gray-800">v3.7.0</h3>
+                                <p class="text-sm text-gray-600 mb-2">Octubre 2026</p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• Venta por pack y por caja: cargá presentaciones de un producto (Pack x6, Caja x12) con su propio precio y código de barras; el stock se sigue llevando en unidades, también en pedidos, presupuestos y devoluciones.</li>
+                        <li>• Informe «Suelto y cerrado»: mirá cuánto vendés de cada producto suelto y cuánto en pack o caja.</li>
+                        <li>• Factura preimpresa: imprimí tus ventas sobre el formulario de la imprenta, ubicando cada dato directamente sobre la hoja y calibrando la impresora con flechas.</li>
+                        <li>• Listas de precios en dólares (u otra moneda): una lista en dólares vende en dólares; el carrito, el presupuesto y el pedido muestran el precio pactado, se cobra a la cotización del día y el comprobante dice lo pactado.</li>
+                        <li>• Listas de precios en todos los carritos: elegí la lista también en Pedidos, Presupuestos y la grilla táctil, y exportá o importá sus reglas en Excel.</li>
+                        <li>• Cambiar de computadora en un archivo: llevá todo tu FlowPOS a una PC nueva desde Ajustes → Respaldos, sin perder ventas ni configuración.</li>
+                        <li>• Restaurar un respaldo desde la pantalla: elegí el respaldo y FlowPOS lo aplica de forma segura al volver a abrir.</li>
+                        <li>• Pedidos de tu tienda online, solos: FlowPOS busca los pedidos de WooCommerce cada pocos minutos, sin configurar la red, y la tienda recibe los cambios de stock al momento.</li>
+                        <li>• API para integraciones: conectá otros programas con llaves que tienen permisos a medida; disponible también en el Plan Profesional.</li>
+                        <li>• Anular un recibo de cobranza: con autorización, el cobro se revierte y la plata vuelve por donde entró.</li>
+                        <li>• Anular un despiece: si cargaste mal una transformación, se deshace y el stock vuelve a su lugar.</li>
+                        <li>• Elegir el lote al convertir un presupuesto: decidí de qué lote sale la mercadería cuando el presupuesto pasa a venta.</li>
+                        <li>• Devoluciones por el mismo medio de pago: lo devuelto sale por donde entró (efectivo, tarjeta o transferencia), y en una venta a crédito primero baja la deuda.</li>
+                        <li>• Pantalla de devoluciones más ágil: más compacta y se opera entera con el teclado.</li>
+                        <li>• Informes más exactos: una venta cobrada en varias formas cuenta como una sola, una venta con devolución sigue contando, y el neto resta lo que realmente se devolvió.</li>
+                        <li>• Reporte Z más completo: muestra el neto del día, las devoluciones por comprobante y las notas de crédito emitidas.</li>
+                        <li>• Cierre de caja con doble control: si lo contado se aleja mucho de lo esperado, FlowPOS te pregunta antes de cerrar, para evitar un cero de más.</li>
+                        <li>• Un recibo por cada cobro: cobrar varias facturas juntas emite un solo recibo con todas.</li>
+                        <li>• Notas de crédito más precisas: la corrección de errores se elige entre cinco tipos, y la nota manual toma el comprobante entero.</li>
+                        <li>• Pedidos más simples: crear un pedido ya no pide datos de entrega, la nota de cada línea se conserva y pasa a la venta, y el comprobante en A4 dice PEDIDO.</li>
+                        <li>• Cajas en red más seguras: convertir una PC en caja secundaria nunca borra sus datos, exige un equipo principal disponible, y una caja nunca queda sin salida.</li>
+                        <li>• Cajas que se actualizan solas: cada caja secundaria toma la misma versión que su equipo principal.</li>
+                        <li>• Respaldos más confiables: siempre te queda al menos uno, y la copia sale completa aunque FlowPOS esté abierto.</li>
+                        <li>• Plan Profesional completo para una computadora: tiene todo lo del Plan Total; sólo se diferencian en las cajas en red.</li>
+                        <li>• Tu plan sigue a tu cuenta: al cambiar de PC, vinculás la cuenta y tu plan te acompaña.</li>
+                        <li>• Configuración de ventas más clara: cada opción explica qué hace, agrupada por tema.</li>
+                        <li>• El carrito no se pierde en hora pico: se guarda solo mientras vendés.</li>
+                        <li>• Control de stock al cambiar la cantidad: el POS avisa en rojo si tipeás más de lo que hay.</li>
+                        <li>• Importar productos sin sorpresas: la importación no toca el stock de los productos que ya existen, y se aplica completa o no se aplica.</li>
+                        <li>• Planillas de Excel listas para sumar: importes y porcentajes salen como números.</li>
+                        <li>• Comprobantes en la moneda de tu negocio: el recibo de cobranza muestra la moneda y los decimales correctos.</li>
+                        <li>• Copias de comprobantes: las notas de crédito y los recibos reimpresos salen marcados como COPIA, y una factura reimpresa lleva el timbrado con que se emitió.</li>
+                        <li>• Más control de permisos: cada rol hace sólo lo suyo también desde las cajas en red, y el registro de auditoría dice el nombre de quien operó.</li>
+                        <li>• Venta en cuotas: la mora no se cobra dos veces y los centavos de las cuotas cierran exacto.</li>
+                        <li>• IVA en facturas con descuento: se calcula sobre lo que realmente se cobró.</li>
+                        <li>• Pedido convertido en venta: el cobro llega entero a la venta, a la caja y a la factura, y el comprobante se imprime como en el POS.</li>
+                        <li>• Presupuesto convertido en venta: conserva su lista de precios y guarda bien cada importe.</li>
+                        <li>• Anulación de ventas: una anulación que no se pudo completar ya no aparece como hecha.</li>
+                        <li>• Padrón de contribuyentes: la carga desde el archivo ZIP de la DNIT vuelve a funcionar.</li>
+                        <li>• Historial de ajustes de inventario: vuelve a estar disponible.</li>
+                        <li>• Costos protegidos: el último costo de compra tampoco lo ve quien no tiene permiso para ver costos.</li>
+                        <li>• Cierre de la ventana: con la API para integraciones encendida, cerrar FlowPOS ya no lo deja corriendo oculto.</li>
+                        <li>• Avisos en pantalla: ya no tapan la ventana del documento que estás viendo.</li>
+                        <li>• Reportes en PDF: los reportes anchos salen apaisados.</li>
+                                </ul>
+                            </div>
                             <div class="border-l-4 border-gray-300 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-800">v3.6.1</h3>
                                 <p class="text-sm text-gray-600 mb-2">Septiembre 2026</p>
