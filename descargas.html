@@ -300,64 +300,12 @@
                     <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-blue-600">
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <h3 class="text-2xl font-semibold text-gray-800">v3.7.1</h3>
+                                <h3 class="text-2xl font-semibold text-gray-800">v3.7.2</h3>
                                 <p class="text-gray-600">Octubre 2026</p>
                             </div>
                             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Actual</span>
                         </div>
                         <div class="space-y-4">
-                        <div>
-                            <h4 class="font-semibold text-green-700 mb-2 flex items-center space-x-2">
-                                <i data-lucide="sparkles" width="18" height="18"></i>
-                                <span>Novedades</span>
-                            </h4>
-                            <ul class="space-y-1 text-gray-700 ml-6">
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>App del mozo en el celular</strong>: los mozos cargan los pedidos desde su propio celular, sin instalar nada. Escanean un código QR, entran con su usuario y PIN, eligen la comanda (por número o escaneando la tarjeta) y envían. Tienen buscador, categorías, notas por producto y productos por peso.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Estaciones de cocina</strong>: cada sector (Cocina, Barra, Parrilla…) tiene su propia impresora, y cada pedido se reparte solo: lo de cada categoría sale en su estación.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>El código QR del mozo, a mano</strong>: el botón "Celular del mozo" en Pedidos muestra el QR para abrir la app, y se puede imprimir para pegarlo en la cocina.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Comandas por número</strong>: se crean de a una o de una sola vez ("del 1 al 50"), y las tarjetas se vinculan escaneándolas, con el código que traigan de la imprenta.</span>
-                        </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold text-blue-700 mb-2 flex items-center space-x-2">
-                                <i data-lucide="zap" width="18" height="18"></i>
-                                <span>Mejoras</span>
-                            </h4>
-                            <ul class="space-y-1 text-gray-700 ml-6">
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Varios mozos en la misma comanda</strong>: dos personas pueden cargar a la vez en la misma comanda sin pisarse, y un pedido no se cobra si le agregaron productos que todavía no se cobraron.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Envíos más confiables</strong>: una impresora de cocina lenta ya no hace aparecer un error cuando el pedido sí llegó.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Ingreso con PIN más ágil</strong>: varios mozos pueden entrar seguidos desde la misma tableta; el bloqueo por seguridad cuenta solo los PIN equivocados.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Configuración de cocina más clara</strong>: la opción ahora se llama "Imprimir la comanda en cocina", y si está apagada con estaciones configuradas, se avisa con un botón para encenderla.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Más seguridad en la red</strong>: cada equipo y cada celular conectado solo puede hacer lo que su usuario tiene permitido.</span>
-                        </li>
-                            </ul>
-                        </div>
                         <div>
                             <h4 class="font-semibold text-orange-700 mb-2 flex items-center space-x-2">
                                 <i data-lucide="wrench" width="18" height="18"></i>
@@ -366,7 +314,15 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Balcón muestra todas las comandas abiertas</strong>: las comandas abiertas el día anterior ya no desaparecen de la lista.</span>
+                            <span><strong>Las balanzas NVK POS-NK30 que salen de fábrica este año ya funcionan.</strong> Los equipos nuevos se comunican de una forma distinta a los anteriores, y FlowPOS no los reconocía aunque estuvieran bien conectados. Ahora sí: entrá en Configuración, tocá "Detectar automáticamente" y la balanza queda lista para pesar. No hay que cambiarle ningún ajuste al equipo ni entrar a su menú.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span><strong>La búsqueda de la balanza ya no se equivoca de diagnóstico.</strong> Antes, cuando el equipo respondía algo inesperado, FlowPOS podía arriesgar una suposición errónea y mandarte a cambiar ajustes que en realidad estaban bien. Ahora te muestra en pantalla lo que la balanza está respondiendo, así el técnico ve dónde está el problema en el momento y resuelve la instalación sin revisar archivos del sistema.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span><strong>Si la balanza se desconecta, ahora te enterás.</strong> Antes podía quedarse intentando reconectarse en silencio. Ahora prueba unos veinte segundos y, si el equipo no vuelve, te lo marca en rojo arriba del carrito. Tocando ese aviso se reconecta sola, sin salir de la venta.</span>
                         </li>
                             </ul>
                         </div>
@@ -382,6 +338,22 @@
                         </summary>
                         <div class="p-6 pt-0 space-y-6 border-t">
                             <!-- FLOWPOS:RELEASE:HISTORY:START -->
+                            <div class="border-l-4 border-gray-300 pl-4">
+                                <h3 class="text-lg font-semibold text-gray-800">v3.7.1</h3>
+                                <p class="text-sm text-gray-600 mb-2">Octubre 2026</p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• App del mozo en el celular: los mozos cargan los pedidos desde su propio celular, sin instalar nada. Escanean un código QR, entran con su usuario y PIN, eligen la comanda (por número o escaneando la tarjeta) y envían. Tienen buscador, categorías, notas por producto y productos por peso.</li>
+                        <li>• Estaciones de cocina: cada sector (Cocina, Barra, Parrilla…) tiene su propia impresora, y cada pedido se reparte solo: lo de cada categoría sale en su estación.</li>
+                        <li>• El código QR del mozo, a mano: el botón "Celular del mozo" en Pedidos muestra el QR para abrir la app, y se puede imprimir para pegarlo en la cocina.</li>
+                        <li>• Comandas por número: se crean de a una o de una sola vez ("del 1 al 50"), y las tarjetas se vinculan escaneándolas, con el código que traigan de la imprenta.</li>
+                        <li>• Varios mozos en la misma comanda: dos personas pueden cargar a la vez en la misma comanda sin pisarse, y un pedido no se cobra si le agregaron productos que todavía no se cobraron.</li>
+                        <li>• Envíos más confiables: una impresora de cocina lenta ya no hace aparecer un error cuando el pedido sí llegó.</li>
+                        <li>• Ingreso con PIN más ágil: varios mozos pueden entrar seguidos desde la misma tableta; el bloqueo por seguridad cuenta solo los PIN equivocados.</li>
+                        <li>• Configuración de cocina más clara: la opción ahora se llama "Imprimir la comanda en cocina", y si está apagada con estaciones configuradas, se avisa con un botón para encenderla.</li>
+                        <li>• Más seguridad en la red: cada equipo y cada celular conectado solo puede hacer lo que su usuario tiene permitido.</li>
+                        <li>• Balcón muestra todas las comandas abiertas: las comandas abiertas el día anterior ya no desaparecen de la lista.</li>
+                                </ul>
+                            </div>
                             <div class="border-l-4 border-gray-300 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-800">v3.7.0</h3>
                                 <p class="text-sm text-gray-600 mb-2">Octubre 2026</p>
