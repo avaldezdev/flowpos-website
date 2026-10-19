@@ -300,12 +300,60 @@
                     <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-blue-600">
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <h3 class="text-2xl font-semibold text-gray-800">v3.7.2</h3>
+                                <h3 class="text-2xl font-semibold text-gray-800">v3.8.0</h3>
                                 <p class="text-gray-600">Octubre 2026</p>
                             </div>
                             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Actual</span>
                         </div>
                         <div class="space-y-4">
+                        <div>
+                            <h4 class="font-semibold text-green-700 mb-2 flex items-center space-x-2">
+                                <i data-lucide="sparkles" width="18" height="18"></i>
+                                <span>Novedades</span>
+                            </h4>
+                            <ul class="space-y-1 text-gray-700 ml-6">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span><strong>Tu negocio a salvo, aunque pierdas la computadora.</strong> FlowPOS sube solo una copia cifrada de tu base a la nube: sin configurar nada, sin pegar claves, sin acordarte. Se activa al vincular tu cuenta y se actualiza varias veces al día, más seguido cuanto más vendés.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span><strong>Volvé a vender en otra computadora el mismo día.</strong> Si te roban el equipo, se te quema el disco o Windows no arranca: instalás FlowPOS en otra PC, entrás con tu cuenta y la app te ofrece tus copias. Elegís una y vuelven tus productos, tus clientes, lo que te deben, tu logo en el ticket y tus impresoras configuradas. Entrás con el PIN de siempre.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span><strong>Tus copias, también desde el celular.</strong> Entrás a tu portal en app.flowpos.com.py, sección *Mis respaldos*, y bajás la copia a un pendrive para llevarla a la computadora nueva. El archivo viaja cifrado: si se pierde el pendrive, no le sirve a nadie.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span><strong>Soporte te puede rescatar.</strong> Si no podés solo, el equipo de FlowPOS puede recuperar tu copia por vos. Cada acceso queda registrado.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>&gt; Disponible en los planes pagos, con su espacio incluido: 1 GB en Inicio, 3 GB en Profesional y 10 GB en Total. Las copias viejas se van borrando solas cuando el espacio se llena, y la última nunca se borra.</span>
+                        </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-blue-700 mb-2 flex items-center space-x-2">
+                                <i data-lucide="zap" width="18" height="18"></i>
+                                <span>Mejoras</span>
+                            </h4>
+                            <ul class="space-y-1 text-gray-700 ml-6">
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>La pantalla de Respaldos ahora muestra el espacio en GB y con coma decimal, como el resto del sistema, en vez de números largos en megas.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>Al traer datos de otra computadora, la lista muestra el nombre de cada equipo en lugar de un código, y propone sola la computadora anterior.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>La restauración avisa antes de aplicar que el equipo anterior va a quedar retirado, y te dice por qué número de comprobante sigue el sistema para que no se repitan números ya emitidos.</span>
+                        </li>
+                            </ul>
+                        </div>
                         <div>
                             <h4 class="font-semibold text-orange-700 mb-2 flex items-center space-x-2">
                                 <i data-lucide="wrench" width="18" height="18"></i>
@@ -314,15 +362,11 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Las balanzas NVK POS-NK30 que salen de fábrica este año ya funcionan.</strong> Los equipos nuevos se comunican de una forma distinta a los anteriores, y FlowPOS no los reconocía aunque estuvieran bien conectados. Ahora sí: entrá en Configuración, tocá "Detectar automáticamente" y la balanza queda lista para pesar. No hay que cambiarle ningún ajuste al equipo ni entrar a su menú.</span>
+                            <span>Al importar una copia bajada del portal, FlowPOS ya la reconoce y la abre: antes decía que el archivo no era válido, justo el día que más se necesitaba.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>La búsqueda de la balanza ya no se equivoca de diagnóstico.</strong> Antes, cuando el equipo respondía algo inesperado, FlowPOS podía arriesgar una suposición errónea y mandarte a cambiar ajustes que en realidad estaban bien. Ahora te muestra en pantalla lo que la balanza está respondiendo, así el técnico ve dónde está el problema en el momento y resuelve la instalación sin revisar archivos del sistema.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>Si la balanza se desconecta, ahora te enterás.</strong> Antes podía quedarse intentando reconectarse en silencio. Ahora prueba unos veinte segundos y, si el equipo no vuelve, te lo marca en rojo arriba del carrito. Tocando ese aviso se reconecta sola, sin salir de la venta.</span>
+                            <span>La pantalla que pedía reiniciar para aplicar los datos ahora reinicia de verdad.</span>
                         </li>
                             </ul>
                         </div>
@@ -338,6 +382,15 @@
                         </summary>
                         <div class="p-6 pt-0 space-y-6 border-t">
                             <!-- FLOWPOS:RELEASE:HISTORY:START -->
+                            <div class="border-l-4 border-gray-300 pl-4">
+                                <h3 class="text-lg font-semibold text-gray-800">v3.7.2</h3>
+                                <p class="text-sm text-gray-600 mb-2">Octubre 2026</p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• Las balanzas NVK POS-NK30 que salen de fábrica este año ya funcionan. Los equipos nuevos se comunican de una forma distinta a los anteriores, y FlowPOS no los reconocía aunque estuvieran bien conectados. Ahora sí: entrá en Configuración, tocá "Detectar automáticamente" y la balanza queda lista para pesar. No hay que cambiarle ningún ajuste al equipo ni entrar a su menú.</li>
+                        <li>• La búsqueda de la balanza ya no se equivoca de diagnóstico. Antes, cuando el equipo respondía algo inesperado, FlowPOS podía arriesgar una suposición errónea y mandarte a cambiar ajustes que en realidad estaban bien. Ahora te muestra en pantalla lo que la balanza está respondiendo, así el técnico ve dónde está el problema en el momento y resuelve la instalación sin revisar archivos del sistema.</li>
+                        <li>• Si la balanza se desconecta, ahora te enterás. Antes podía quedarse intentando reconectarse en silencio. Ahora prueba unos veinte segundos y, si el equipo no vuelve, te lo marca en rojo arriba del carrito. Tocando ese aviso se reconecta sola, sin salir de la venta.</li>
+                                </ul>
+                            </div>
                             <div class="border-l-4 border-gray-300 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-800">v3.7.1</h3>
                                 <p class="text-sm text-gray-600 mb-2">Octubre 2026</p>
