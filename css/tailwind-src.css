@@ -1,0 +1,15 @@
+/* Fuente del CSS de Tailwind. ESTE archivo no se publica: el que sirve el sitio es
+   el compilado `css/tailwind.css`, que esta commiteado al repo.
+
+   Para regenerarlo, desde la raiz del repo:
+
+       npm install        (solo la primera vez)
+       npm run build:css
+
+   Y despues bumpear el `?v=AAAAMMDD` del <link> en las 6 paginas (ver la seccion
+   "Cache Busting" de CLAUDE.md): nginx sirve los .css con `expires 1y`, asi que sin
+   el query quien ya visito el sitio se queda con el CSS viejo. */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

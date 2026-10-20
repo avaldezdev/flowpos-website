@@ -40,10 +40,9 @@
     }
     </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/styles.css?v=20260903">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="vendor/aos.css?v=20261019">
+    <script defer src="vendor/lucide.min.js?v=20261019"></script>
 
     <style>
         /* Tabla comparativa */
@@ -76,6 +75,11 @@
             50% { opacity: 1; }
         }
     </style>
+
+    <!-- Tailwind CSS compilado (reemplaza a cdn.tailwindcss.com). Se regenera con
+         `npm run build:css`. ⚠️ VA ULTIMO entre las hojas de estilo: asi lo ponia el
+         CDN, y de eso depende que Tailwind le gane a css/styles.css. Ver CLAUDE.md. -->
+    <link rel="stylesheet" href="css/tailwind.css?v=20261019">
 </head>
 <body class="bg-gray-50">
 
@@ -1027,12 +1031,16 @@
         <i data-lucide="message-circle" width="28" height="28"></i>
     </a>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="vendor/aos.js?v=20261019"></script>
     <script src="js/tracking.js?v=20260903"></script>
-    <script src="js/main.js?v=20260903"></script>
+    <script src="js/main.js?v=20261019"></script>
     <script>
         AOS.init({ duration: 800, once: true });
-        lucide.createIcons();
+        // Lucide ahora va con `defer`, para que sus ~107 KB no frenen el pintado de
+        // la pagina. Un script con defer corre DESPUES de que termina de leerse el
+        // HTML, o sea despues de esta linea: si llamaramos a createIcons() aca nomas,
+        // `lucide` todavia no existiria y no se dibujaria ni un icono.
+        document.addEventListener('DOMContentLoaded', () => lucide.createIcons());
     </script>
 </body>
 </html>

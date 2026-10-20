@@ -39,12 +39,17 @@
     # el navegador la bloquea EN SILENCIO. No hay error visible: simplemente no mide.
     # Los dominios de Google/Meta de abajo son los que necesitan GA4, Google Ads y
     # el píxel de Meta. Mantener sincronizado con nginx.conf (Coolify usa ese).
+    #
+    # 2026-10-19: se sacaron `cdn.tailwindcss.com` y `unpkg.com`. Tailwind ahora se
+    # sirve compilado desde `css/tailwind.css`, y AOS y Lucide desde `vendor/`, así que
+    # el sitio ya no carga NADA de código de terceros. Si algún día se vuelve a traer
+    # una librería por CDN, hay que sumar el dominio acá Y en nginx.conf.
     Content-Security-Policy = """
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com
+      script-src 'self' 'unsafe-inline'
         https://www.googletagmanager.com https://www.google-analytics.com
         https://connect.facebook.net;
-      style-src 'self' 'unsafe-inline' https://unpkg.com;
+      style-src 'self' 'unsafe-inline';
       img-src 'self' data: https:;
       font-src 'self' data:;
       connect-src 'self' https://api.github.com https://api.flowpos.com.py

@@ -36,17 +36,19 @@
     <link rel="icon" href="/isotipo.svg" type="image/svg+xml">
     <title>Sistema de Punto de Venta y Facturación para Paraguay | FlowPOS</title>
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css?v=20260903">
 
     <!-- AOS (Animate On Scroll) -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/aos.css?v=20261019">
+
+    <!-- Tailwind CSS compilado (reemplaza a cdn.tailwindcss.com). Se regenera con
+         `npm run build:css`. ⚠️ VA ULTIMO entre las hojas de estilo: asi lo ponia el
+         CDN, y de eso depende que Tailwind le gane a css/styles.css. Ver CLAUDE.md. -->
+    <link rel="stylesheet" href="css/tailwind.css?v=20261019">
 
     <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script defer src="vendor/lucide.min.js?v=20261019"></script>
 
     <!-- Datos estructurados: la "ficha técnica" que lee Google.
          Si cambian los precios en la sección #pricing, actualizar también acá. -->
@@ -855,9 +857,9 @@
     </a>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="vendor/aos.js?v=20261019"></script>
     <script src="js/tracking.js?v=20260903"></script>
-    <script src="js/main.js?v=20260903"></script>
+    <script src="js/main.js?v=20261019"></script>
     <script>
         // Initialize AOS
         AOS.init({
@@ -865,8 +867,11 @@
             once: true
         });
 
-        // Initialize Lucide Icons
-        lucide.createIcons();
+        // Lucide ahora va con `defer`, para que sus ~107 KB no frenen el pintado de
+        // la pagina. Un script con defer corre DESPUES de que termina de leerse el
+        // HTML, o sea despues de esta linea: si llamaramos a createIcons() aca nomas,
+        // `lucide` todavia no existiria y no se dibujaria ni un icono.
+        document.addEventListener('DOMContentLoaded', () => lucide.createIcons());
     </script>
 </body>
 </html>

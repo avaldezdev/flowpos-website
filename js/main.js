@@ -864,8 +864,12 @@ function initHeroVideo() {
     }, { threshold: 0.2 }).observe(video)
   }
 
-  // Dentro de un rAF para medir con los estilos ya aplicados: Tailwind llega por
-  // CDN y es su `hidden md:block` el que decide si la tarjeta ocupa lugar.
+  // Dentro de un rAF para medir con los estilos ya aplicados: es el `hidden md:block`
+  // de la tarjeta el que decide si ocupa lugar en pantalla.
+  // (Antes esto era imprescindible porque Tailwind llegaba por CDN y armaba los estilos
+  // con JavaScript, un instante despues. Desde que se sirve `css/tailwind.css` como hoja
+  // de estilo normal, el navegador ya los tiene aplicados antes de correr este archivo;
+  // el rAF queda igual porque medir despues de un cuadro nunca esta de mas.)
   requestAnimationFrame(reproducir)
 }
 

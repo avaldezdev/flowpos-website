@@ -6,7 +6,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 FlowPOS Website is a static HTML marketing and download site for FlowPOS - a professional offline-first Point of Sale system. The published version and the release notes are written by the release pipeline that lives in the app repo (`flowpos/scripts/release.mjs`), not by hand.
 
-**Tech Stack**: Pure HTML/CSS/JavaScript (no build tools), Tailwind CSS CDN. Served by nginx from a container on **Coolify** (own VPS) at **https://flowpos.com.py**. Netlify is still connected to the same repo, but only as a **backup**.
+**Tech Stack**: Pure HTML/CSS/JavaScript. The **only** build step is the Tailwind CSS
+compile (`npm run build:css`), and its output `css/tailwind.css` is **committed**, so the
+deploy stays a plain static copy. Served by nginx from a container on **Coolify** (own VPS)
+at **https://flowpos.com.py**. Netlify is still connected to the same repo, but only as a
+**backup**. ⚠️ No external CDN is used any more: Tailwind, AOS and Lucide are all served
+from our own domain (see "El CSS de Tailwind" below).
 
 **Key Repository**: Downloads are served from `avaldezdev/flowpos-releases` (separate repo)
 
@@ -27,7 +32,17 @@ python -m http.server 8000
 http-server -p 8000
 ```
 
-**Note**: This is a static site with no build process. No npm install, no compilation required.
+**Note**: para *mirar* el sitio no hace falta compilar nada: el CSS ya está commiteado.
+Solo se compila al **tocar clases de Tailwind en el HTML o en `js/main.js`**:
+
+```bash
+npm install        # una sola vez
+npm run build:css  # reescribe css/tailwind.css
+npm run watch:css  # lo mismo, pero quedándose escuchando mientras editás
+```
+
+Y después **bumpear el `?v=`** del `<link>` de `css/tailwind.css` en las 6 páginas
+(ver "Cache Busting" más abajo).
 
 ### Testing & Deployment
 
@@ -124,7 +139,7 @@ Removed in favor of client-side download handling via `config.js`.
 - Navigation bar (sticky, responsive)
 - WhatsApp floating button (hardcoded number: 595986708565)
 - Footer with contact info
-- Lucide icons (loaded via CDN)
+- Lucide icons (desde `vendor/lucide.min.js`, con `defer`)
 - AOS (Animate On Scroll) animations
 
 ## Critical Patterns & Conventions
@@ -147,16 +162,19 @@ Removed in favor of client-side download handling via `config.js`.
 visitors keep the **old** `main.js` / `styles.css` after a deploy — new behavior silently
 fails to reach them.
 
-All four pages therefore reference local assets with a version query:
+Las **seis** páginas referencian por eso todo lo propio con una query de versión:
 
 ```html
-<link rel="stylesheet" href="css/styles.css?v=20260815">
-<script src="js/main.js?v=20260815"></script>
+<link rel="stylesheet" href="css/styles.css?v=20260903">
+<link rel="stylesheet" href="css/tailwind.css?v=20261019">
+<script defer src="vendor/lucide.min.js?v=20261019"></script>
+<script src="js/main.js?v=20261019"></script>
 ```
 
-**Whenever you edit `js/main.js`, `js/config.js` or `css/styles.css`, bump `?v=` to the
-current date (`YYYYMMDD`) in ALL pages that reference it** — otherwise the change won't
-reach existing visitors.
+**Cada vez que edites `js/main.js`, `js/config.js`, `css/styles.css`, corras
+`npm run build:css` (que reescribe `css/tailwind.css`) o reemplaces algo de `vendor/`,
+bumpeá el `?v=` a la fecha del día (`AAAAMMDD`) en TODAS las páginas que lo referencian**
+— si no, el cambio no le llega a quien ya visitó el sitio.
 
 ### Video del hero (portada)
 
@@ -180,6 +198,51 @@ Tres cosas que no son obvias:
 
 Para cambiar el video: reemplazar los dos archivos de `assets/video/` y bumpear el `?v=`
 (ver arriba) solo si además tocaste `main.js`.
+
+### El CSS de Tailwind (y por qué el `<link>` va último)
+
+Hasta el 2026-10-19 las 6 páginas cargaban `https://cdn.tailwindcss.com`: **126 KB de
+JavaScript que armaban los estilos en el celular del visitante**, en cada visita. Ahora
+el CSS se compila acá y se commitea ya hecho (**5 KB**), así el `Dockerfile` sigue
+copiando estáticos sin ningún paso de build.
+
+Las piezas:
+
+- `css/tailwind-src.css` — la fuente (las tres líneas `@tailwind`). **No se publica.**
+- `tailwind.config.js` — el `content` dice dónde buscar clases. Incluye las 6 páginas
+  **y `js/*.js`**: `main.js` arma HTML con clases adentro (el modal post-descarga, los
+  toast, el panel del menú en celular). Sin esa línea esas tres cosas se ven rotas, y
+  **solo** en esos momentos — la página quieta se ve perfecta.
+- La `safelist` del config tiene las clases que escribe `flowpos/scripts/release.mjs`
+  (otro repo) dentro de los marcadores `FLOWPOS:RELEASE:*` de `descargas.html`. Ese
+  script **no** corre `npm run build:css`, así que si un release no trae novedades, las
+  clases verdes desaparecerían del HTML y el siguiente build las purgaría.
+- `css/tailwind.css` — el compilado. **Va commiteado.**
+
+⚠️ **Dos trampas que ya costaron tiempo:**
+
+1. **El `<link>` de `css/tailwind.css` va ÚLTIMO entre las hojas de estilo**, después de
+   `css/styles.css` (y en `planes.html`, después del `<style>` de la tabla). El CDN
+   inyectaba sus estilos al final del `<head>`, así que Tailwind le ganaba a
+   `styles.css`. Si lo subís de lugar, se invierte: la regla
+   `.grid { grid-template-columns: 1fr }` que `styles.css` aplica en celular pasa a
+   aplastar a `grid-cols-2`.
+2. **`.dockerignore` tiene que excluir `node_modules`, `package.json` y
+   `tailwind.config.js`.** El `Dockerfile` hace `COPY . /usr/share/nginx/html`: todo lo
+   que llegue al contexto queda **publicado**. Pero `css/tailwind.css` **NO** va ahí —
+   ese es el que sirve el sitio.
+
+**AOS y Lucide** también dejaron unpkg y viven en `vendor/`, con la versión fija
+(AOS 2.3.1, Lucide 1.59.0). Dos motivos: unpkg era un servidor más al que conectarse
+antes de poder dibujar, y `lucide@latest` significaba que una versión nueva podía
+renombrar iconos y dejar el sitio sin los 173 iconos sin que nadie tocara nada.
+Lucide además va con **`defer`** (son 107 KB que antes frenaban el pintado); por eso la
+llamada suelta a `lucide.createIcons()` del final de cada página está envuelta en
+`DOMContentLoaded`: con `defer`, `lucide` todavía no existe cuando el navegador llega
+a esa línea.
+
+⚠️ **Lo que queda pendiente**: el sitio usa **56 iconos** de los ~1600 que trae Lucide.
+Un paquete a medida bajaría esos 107 KB a menos de 10. Es un cambio aparte.
 
 ### SEO: qué hay que mantener a mano
 
@@ -367,15 +430,20 @@ From commit history:
 
 ## External Dependencies
 
-**CDN-loaded**:
-- Tailwind CSS: `https://cdn.tailwindcss.com`
-- Lucide Icons: `https://unpkg.com/lucide@latest`
-- AOS: `https://unpkg.com/aos@2.3.1/dist/aos.css` + JS
+**Servidas desde nuestro propio dominio** (ninguna viene ya de un CDN ajeno):
+- Tailwind CSS: `css/tailwind.css`, compilado acá (ver "El CSS de Tailwind")
+- Lucide Icons: `vendor/lucide.min.js`, versión **1.59.0** fija, con `defer`
+- AOS: `vendor/aos.css` + `vendor/aos.js`, versión **2.3.1** fija (solo en
+  `index.html` y `planes.html`, que son las únicas con `data-aos`)
+
+Para actualizar una de las dos librerías de `vendor/`: bajar el archivo de la versión
+nueva, reemplazarlo, bumpear el `?v=` en las páginas y volver a mirar que los iconos y
+las animaciones sigan saliendo.
 
 **CSP Whitelist** (in `nginx.conf`, mirrored in `netlify.toml`):
-- script-src: cdn.tailwindcss.com, unpkg.com, **googletagmanager.com,
-  google-analytics.com, connect.facebook.net**
-- style-src: unpkg.com
+- script-src: **googletagmanager.com, google-analytics.com, connect.facebook.net**
+  (⚠️ `cdn.tailwindcss.com` y `unpkg.com` se sacaron el 2026-10-19 junto con los CDN)
+- style-src: solo `'self'` y `'unsafe-inline'`
 - connect-src: api.github.com, **api.flowpos.com.py** (session check for the
   "Mi cuenta" button), googletagmanager.com, google-analytics.com,
   analytics.google.com, stats.g.doubleclick.net, google.com,
@@ -388,7 +456,11 @@ which is the worst possible failure for a paid campaign.
 
 ## Important Notes
 
-- **No package.json**: This is intentional - pure static site
+- **Sí hay `package.json`**, desde el 2026-10-19, y tiene **una sola** dependencia de
+  desarrollo: `tailwindcss`. Es para compilar el CSS, nada más. El sitio publicado sigue
+  siendo estático puro: no hay framework, ni bundler, ni paso de build en el deploy.
+  (Este documento decía "No package.json: This is intentional". Lo era, hasta que el
+  CDN de Tailwind se volvió el problema de velocidad más grande del sitio.)
 - **No tests**: Simple enough to test manually
 - **No CI**: Coolify deploys the site (Netlify mirrors it as backup) and `flowpos/scripts/release.mjs` handles version sync. This repo has no workflows.
 - **Offline-first philosophy**: Reflects FlowPOS product philosophy (the software runs offline)

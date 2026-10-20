@@ -8,3 +8,14 @@ netlify.toml
 .claude
 tools
 assets/images/capturas/originales
+
+# --- Lo del build de Tailwind (2026-10-19) ---
+# El Dockerfile hace `COPY . /usr/share/nginx/html`: TODO lo que llegue al contexto
+# queda publicado en el sitio. Estas líneas existen para que no se publiquen las
+# dependencias ni las fuentes del CSS.
+# ⚠️ `css/tailwind.css` (el compilado) NO va acá: ESE es el que sirve el sitio.
+node_modules
+package.json
+package-lock.json
+tailwind.config.js
+css/tailwind-src.css

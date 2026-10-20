@@ -1,0 +1,19 @@
+{
+  "name": "flowpos-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio estatico de FlowPOS. Lo unico que se compila aca es el CSS de Tailwind; el resto sigue siendo HTML/CSS/JS a mano.",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/tailwind-src.css -o ./css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./css/tailwind-src.css -o ./css/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead"
+  ]
+}
