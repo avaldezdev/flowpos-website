@@ -93,9 +93,16 @@
           "description": "Sistema de punto de venta y facturación para negocios en Paraguay. Funciona sin internet, se instala en la PC y se prueba 7 días completos sin tarjeta.",
           "featureList": [
             "Punto de venta y facturación",
-            "Control de inventario y stock",
+            "Facturación fiscal SET con timbrado e IVA 10% y 5%",
+            "Control de inventario, stock y kardex",
+            "Lotes y vencimiento con FEFO",
             "Funciona sin conexión a internet",
-            "Reportes de ventas y caja",
+            "Copia de seguridad cifrada en la nube",
+            "Ventas a crédito, cuotas y cuenta corriente",
+            "Listas de precios y precio mayorista",
+            "Mesas, comandas y app del mozo para restaurantes",
+            "Varias cajas en red local",
+            "Reportes de ventas, caja y rentabilidad",
             "Precios en guaraníes"
           ],
           "publisher": { "@id": "https://flowpos.com.py/#organization" },
@@ -315,7 +322,7 @@
                     </div>
                     <h3 class="text-xl font-semibold mb-3 text-gray-800">Reportes Profesionales</h3>
                     <p class="text-gray-600">
-                        17 tipos de reportes con exportación a PDF y Excel. Reporte Z, ventas por período, rentabilidad, valuación de inventario y más.
+                        20 tipos de reportes con exportación a PDF y Excel. Reporte Z, ventas por período, rentabilidad, valuación de inventario, pérdidas, vencimientos y más.
                     </p>
                 </div>
 
@@ -327,6 +334,39 @@
                     <h3 class="text-xl font-semibold mb-3 text-gray-800">Seguridad y Auditoría</h3>
                     <p class="text-gray-600">
                         Backups automáticos cada 4 horas, sistema de permisos granular, auditoría completa y datos históricos inmutables.
+                    </p>
+                </div>
+
+                <!-- Feature 7 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="700">
+                    <div class="w-14 h-14 bg-sky-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="cloud-upload" class="text-sky-600" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Tu Negocio a Salvo en la Nube</h3>
+                    <p class="text-gray-600">
+                        FlowPOS sube solo una copia cifrada de tus datos. Si te roban la computadora o se quema el disco, instalás en otra PC y vuelven tus productos, tus clientes y lo que te deben.
+                    </p>
+                </div>
+
+                <!-- Feature 8 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="800">
+                    <div class="w-14 h-14 bg-amber-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="tags" class="text-amber-600" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Listas de Precios</h3>
+                    <p class="text-gray-600">
+                        Un precio para el mostrador, otro para el mayorista y otro para quien compra a crédito. Con piso de margen, para que nadie venda por debajo de lo que te conviene.
+                    </p>
+                </div>
+
+                <!-- Feature 9 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition" data-aos="fade-up" data-aos-delay="900">
+                    <div class="w-14 h-14 bg-rose-100 rounded-lg flex items-center justify-center mb-4">
+                        <i data-lucide="utensils" class="text-rose-600" width="28" height="28"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Restaurante y Balcón</h3>
+                    <p class="text-gray-600">
+                        Mesas, comandas numeradas y el ticket que sale solo en la cocina o en la barra. Los mozos cargan el pedido desde el celular, sin instalar nada.
                     </p>
                 </div>
             </div>
@@ -412,7 +452,7 @@
                 <div data-aos="fade-right">
                     <h2 class="text-4xl font-bold text-gray-800 mb-6">Funciona Sin Internet</h2>
                     <p class="text-lg text-gray-600 mb-6">
-                        FlowPOS es 100% local. Todos tus datos están en tu computadora, sin depender de conexión a internet.
+                        FlowPOS trabaja 100% en tu computadora: vendés, facturás e imprimís sin depender de la conexión. Internet se usa solo para subir la copia de seguridad y para traer actualizaciones — nunca para cobrar.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-start space-x-3">
@@ -432,8 +472,8 @@
                         <div class="flex items-start space-x-3">
                             <i data-lucide="lock" class="text-blue-600 mt-1" width="24" height="24"></i>
                             <div>
-                                <h4 class="font-semibold text-gray-800">Datos seguros</h4>
-                                <p class="text-gray-600">Tus datos están en tu computadora, bajo tu control.</p>
+                                <h4 class="font-semibold text-gray-800">Datos seguros, y con copia afuera</h4>
+                                <p class="text-gray-600">Tus datos viven en tu computadora, bajo tu control — y en los planes pagos se suben cifrados a la nube, para que perder el equipo no sea perder el negocio.</p>
                             </div>
                         </div>
                     </div>
@@ -575,7 +615,11 @@
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
-                            <span class="text-sm text-gray-600">Respaldo automático de datos</span>
+                            <span class="text-sm text-gray-600">Respaldo automático en la computadora (cada 4 h)</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="cloud-upload" class="text-sky-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Copia en la nube: 1 GB</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
@@ -628,6 +672,10 @@
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm">Listas de precios y precio mayorista</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
                             <span class="text-sm">Multimoneda (USD, BRL, Gs)</span>
                         </li>
                         <li class="flex items-start gap-2.5">
@@ -644,15 +692,15 @@
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
-                            <span class="text-sm">Despiece, mayorista y balanza por red</span>
+                            <span class="text-sm">Despiece y balanza etiquetadora por red</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i data-lucide="check" class="text-green-300 flex-shrink-0 mt-0.5" width="16" height="16"></i>
-                            <span class="text-sm">Soporte dedicado (respuesta 4h) + capacitación presencial</span>
+                            <span class="text-sm">Soporte dedicado por WhatsApp y asistencia remota (respuesta 4h)</span>
                         </li>
                         <li class="flex items-start gap-2.5">
                             <i data-lucide="cloud-upload" class="text-blue-200 flex-shrink-0 mt-0.5" width="16" height="16"></i>
-                            <span class="text-sm">Backup en la nube: si perdés la computadora, no perdés tu negocio</span>
+                            <span class="text-sm">Copia en la nube (3 GB): si perdés la computadora, no perdés tu negocio</span>
                         </li>
                     </ul>
                     <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20activar%20el%20Plan%20Profesional%20de%20FlowPOS%20(990.000%20Gs%2Fa%C3%B1o)" class="block w-full text-center bg-white text-blue-600 py-3 rounded-xl hover:bg-blue-50 transition font-bold text-sm">
@@ -683,6 +731,14 @@
                         <li class="flex items-start gap-2.5">
                             <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
                             <span class="text-sm text-gray-600">Varias computadoras con los mismos productos, clientes y ventas</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="check" class="text-green-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">App del mozo: el pedido se carga desde el celular</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="cloud-upload" class="text-sky-500 flex-shrink-0 mt-0.5" width="16" height="16"></i>
+                            <span class="text-sm text-gray-600">Copia en la nube: 10 GB</span>
                         </li>
                     </ul>
                     <a href="https://wa.me/595986708565?text=Hola%2C%20quiero%20activar%20el%20Plan%20Total%20de%20FlowPOS%20(1.970.000%20Gs%2Fa%C3%B1o)" class="block w-full text-center bg-purple-600 text-white py-3 rounded-xl hover:bg-purple-700 transition font-semibold text-sm">

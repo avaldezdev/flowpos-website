@@ -1,0 +1,192 @@
+# Plan de medición de flowpos.com.py
+
+Cómo saber **cuánta gente llega al sitio, de dónde viene y qué hace** — para el
+tráfico que llega solo (Google) y para el que se paga (Google Ads, Meta Ads).
+
+> **Estado al 2026-10-19:** todo el trabajo de código **ya está hecho**. Lo que
+> falta son cuentas que hay que crear con tu usuario, y pegar cuatro códigos en
+> un archivo. Mientras esos códigos estén vacíos, el sitio **no envía ni un dato**
+> a Google ni a Meta, y se puede publicar así sin problema.
+
+---
+
+## 1. La idea en una frase
+
+Hoy el sitio es como un local sin cámara ni caja registradora: entra gente, a
+veces compran, pero **no hay manera de saber cuántos entraron, por qué puerta ni
+qué miraron**. Las herramientas de abajo son esa cámara.
+
+Y hay una urgencia concreta: **Google Analytics no tiene memoria hacia atrás**.
+El día que lo creás empieza a contar desde cero. Cada semana que pasa sin
+crearlo es una semana de historia que no se recupera nunca. Por eso es lo
+primero de la lista, aunque todavía no gastes un guaraní en publicidad.
+
+---
+
+## 2. Lo que ya está construido (no hay que tocarlo)
+
+| Pieza | Dónde | Qué hace |
+|---|---|---|
+| `js/tracking.js` | las 6 páginas | Carga Google y Meta, y manda los eventos. **Inerte hasta que pegues los IDs.** |
+| Permisos del navegador (CSP) | `nginx.conf` **y** `netlify.toml` | Los dominios de Google y Meta ya están habilitados. Sin esto, los píxeles se bloquean **en silencio**: la página se ve bien y no mide nada. |
+| `privacidad.html` | el sitio | Google y Meta **exigen** una política de privacidad para aprobar los anuncios. Ya está escrita, y aclara qué se mide y cómo desactivarlo. |
+| Eventos de conversión | `js/tracking.js` | Ya están enganchados a los botones reales. No hay que marcar botón por botón. |
+
+### Los tres eventos que ya se miden
+
+| Qué pasó | Se llama (Google) | Se llama (Meta) |
+|---|---|---|
+| Alguien descargó el instalador | `descarga_iniciada` | `Lead` |
+| Alguien hizo clic en un botón de WhatsApp | `contacto_whatsapp` | `Contact` |
+| Alguien fue al portal del cliente | `click_portal` | — |
+
+El evento de WhatsApp **además dice de qué botón vino**: si salió de la tarjeta
+del Plan Profesional, llega con `origen: plan_profesional`. Eso después permite
+contestar "¿qué plan es el que más consultan?".
+
+---
+
+## 3. Qué hacer, en orden
+
+### Paso 1 — Google Analytics 4 · ~10 minutos · **hacelo ya**
+
+Es el único de la lista que **no recupera nada hacia atrás**.
+
+1. Entrá a [analytics.google.com](https://analytics.google.com) **con la misma
+   cuenta de Google que usaste para Search Console**. Que sea la misma importa:
+   es lo que después permite unirlas (paso 2).
+2. Crear cuenta → nombre: `FlowPOS`.
+3. Crear propiedad → nombre: `flowpos.com.py`, zona horaria **Paraguay**,
+   moneda **Guaraní**.
+4. Plataforma: **Web** → URL `https://flowpos.com.py` → nombre `Sitio público`.
+5. Google te va a mostrar un **ID de medición** con forma `G-XXXXXXXXXX`.
+   Copialo.
+6. Abrí `js/tracking.js` y pegalo en la primera línea:
+
+   ```js
+   ga4: 'G-XXXXXXXXXX',
+   ```
+
+7. `git push` → se publica solo.
+
+**Cómo saber que anda:** entrá a Analytics → *Informes* → *Tiempo real*, y abrí
+flowpos.com.py en el celular. Te tenés que ver a vos mismo en menos de un minuto.
+
+### Paso 2 — Unir Analytics con Search Console · ~3 minutos
+
+Search Console ya está verificado y sabe **qué escribe la gente en Google** para
+encontrarte. Analytics sabe **qué hacen una vez que entran**. Por separado cada
+uno cuenta media historia.
+
+En Analytics → *Administrar* → *Vinculaciones de Search Console* → vincular la
+propiedad `flowpos.com.py`.
+
+Después de esto podés contestar: *"la gente que buscó «sistema de facturación
+Paraguay», ¿descargó o se fue?"*.
+
+### Paso 3 — Marcar las conversiones en Analytics · ~5 minutos
+
+Un evento es cualquier cosa que pasa. Una **conversión** es la que te importa.
+
+En Analytics → *Administrar* → *Eventos*, esperá a que aparezcan (tardan hasta
+24 h en listarse) y marcá como conversión:
+
+- `descarga_iniciada`
+- `contacto_whatsapp`
+
+`click_portal` **no** la marques: es un cliente que ya tenés, no uno nuevo.
+
+### Paso 4 — Google Ads · solo cuando vayas a pagar publicidad
+
+1. Creá la cuenta en [ads.google.com](https://ads.google.com) con la misma
+   cuenta de Google.
+2. *Herramientas* → *Conversiones* → **Importar desde Analytics** las dos que
+   marcaste en el paso 3. Es el camino corto y evita contar dos veces.
+3. Copiá el **ID de conversión** (`AW-123456789`) y pegalo en `js/tracking.js`:
+
+   ```js
+   googleAds: 'AW-123456789',
+   ```
+
+4. Si en vez de importarlas creás las conversiones a mano, Google te da por cada
+   una una etiqueta larga con barra. Van completas, **con la barra incluida**:
+
+   ```js
+   conversiones: {
+     descarga: 'AW-123456789/AbC-D_efGh',
+     whatsapp: 'AW-123456789/XyZ-1_234K'
+   }
+   ```
+
+### Paso 5 — Meta (Facebook / Instagram) · solo si vas a anunciar ahí
+
+1. [business.facebook.com](https://business.facebook.com) → *Administrador de
+   eventos* → **Crear píxel**.
+2. Copiá el número (~15 dígitos) y pegalo:
+
+   ```js
+   metaPixel: '123456789012345',
+   ```
+
+3. **Verificá el dominio.** Meta te va a dar una línea como
+   `<meta name="facebook-domain-verification" content="abc123...">`.
+   Va **solo en `index.html`**, en el lugar que ya está marcado con un
+   comentario en el `<head>`. Sin esta verificación Meta limita lo que podés
+   hacer con los anuncios.
+
+---
+
+## 4. Después de publicar: bumpear la caché
+
+`js/tracking.js` se sirve con caché de un año. Al editarlo hay que subirle el
+número de versión en **las 6 páginas**, o el visitante que ya estuvo antes sigue
+con el archivo viejo y **no se lo mide**:
+
+```bash
+grep -rl "tracking.js?v=" *.html | xargs sed -i "s/tracking.js?v=[0-9]*/tracking.js?v=$(date +%Y%m%d)/"
+```
+
+---
+
+## 5. Qué mirar una vez que esté andando
+
+No mires todo. Estos cuatro números contestan casi cualquier pregunta:
+
+| Pregunta | Dónde se contesta |
+|---|---|
+| ¿Cuánta gente entra y está creciendo? | Analytics → *Adquisición* → *Resumen* |
+| ¿De dónde vienen? (Google, redes, directo, anuncios) | Analytics → *Adquisición* → *Canales* |
+| ¿Qué buscan en Google para encontrarme? | Search Console → *Rendimiento* → *Consultas* |
+| ¿Cuántos descargan o escriben de cada 100 que entran? | Analytics → *Interacción* → *Conversiones* |
+
+**El que de verdad importa es el último.** Mil visitas sin descargas es un
+problema del sitio; cien visitas con veinte descargas es un problema de
+cantidad, que se arregla con tráfico. Son dos problemas distintos y sin este
+número no se distinguen.
+
+---
+
+## 6. Lo que la medición NO va a arreglar
+
+Conviene decirlo para no esperar lo que no va a pasar: **medir no trae gente**.
+Search Console ya reportó *"Página de referencia: no se ha detectado ninguna"* —
+cero sitios enlazan a flowpos.com.py. Para Google sos un negocio del que nadie
+habla.
+
+Lo que mueve esa aguja no es código, y es gratis:
+
+1. **Google Business Profile** — para búsquedas locales en Paraguay pesa más que
+   todo lo técnico junto.
+2. **El enlace en la bio** de Instagram y Facebook del negocio.
+3. **Pedirles el enlace a tres clientes contentos**, o a los directorios y
+   cámaras donde FlowPOS ya figure.
+
+---
+
+## 7. Pendiente técnico que sí afecta el posicionamiento
+
+**Compilar Tailwind.** Hoy cada visitante se baja ~300 KB de JavaScript que arman
+los estilos **en su celular**. Google usa esa lentitud para rankear y el tráfico
+local es mayormente móvil. Es un trabajo de una sesión, toca las 6 páginas y
+necesita prueba visual — ver la fila "Velocidad en celular (Core Web Vitals)" en
+`flowpos-cloud-docs/docs/24-roadmap-ecosistema.md` §3.4.

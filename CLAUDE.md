@@ -91,6 +91,7 @@ Removed in favor of client-side download handling via `config.js`.
 **Files**:
 - `js/config.js` - Centralized configuration (loaded first)
 - `js/main.js` - Main application logic (depends on config.js)
+- `js/tracking.js` - GA4 / Google Ads / Meta Pixel. See "Medicion" below.
 
 **main.js responsibilities**:
 - OS detection (`detectOS()` - returns 'windows', 'mac', or 'linux')
@@ -108,10 +109,16 @@ Removed in favor of client-side download handling via `config.js`.
 
 ### Page Structure
 
-**Three main pages**:
-1. `index.html` - Landing page (hero, features, pricing, CTA)
-2. `descargas.html` - Downloads page (OS detection, download buttons)
-3. `activacion.html` - Activation guide (7-step illustrated process)
+**Six pages** (this list said "three" long after the other three existed):
+1. `index.html` - Landing page (hero, 9 feature cards, screenshots, pricing, CTA)
+2. `planes.html` - Full plan comparison (~16 categories x 4 plans, one table)
+3. `descargas.html` - Downloads page (OS detection, download buttons, release notes)
+4. `activacion.html` - Activation guide (7 steps) + the 8-question FAQ
+5. `privacidad.html` - Privacy policy (required by Meta and Google for ads)
+6. `404.html` - Custom not-found page. **Not in `sitemap.xml` and `noindex`.**
+   Its links are root-relative (`/planes.html`) on purpose: nginx serves this
+   file for any missing path, including ones with folders, where a relative
+   link would resolve to another 404.
 
 **Common elements**:
 - Navigation bar (sticky, responsive)
@@ -153,8 +160,9 @@ reach existing visitors.
 
 ### Video del hero (portada)
 
-La portada muestra `assets/video/flowpos-demo.mp4` (2,6 MB, 40 s, sin audio, en bucle),
-con `assets/video/flowpos-demo-poster.jpg` como póster. Sale del repo `hyperframes`
+La portada muestra `assets/video/flowpos-demo-v2.mp4` (sin audio, en bucle), con
+`assets/video/flowpos-demo-v2-poster.jpg` como póster. ⚠️ El sufijo `-v2` importa:
+este documento nombró los archivos sin él durante dos versiones del video. Sale del repo `hyperframes`
 (`videos/flowpos-hero/renders/`), no se edita acá.
 
 Tres cosas que no son obvias:
@@ -179,6 +187,8 @@ El sitio no tiene build, así que estas cuatro cosas no se actualizan solas:
 
 1. **`sitemap.xml`** — al agregar o quitar una página `.html` de la raíz, agregarla/sacarla
    de la lista. `<lastmod>` se toca solo cuando el contenido cambia de verdad.
+   Hoy lista **5 URLs**: inicio, planes, descargas, activación y privacidad.
+   ⚠️ `404.html` **no va**: es una página de error, lleva `noindex` y no se indexa.
 2. **`<link rel="canonical">`** — cada página lleva el suyo apuntando a
    `https://flowpos.com.py/<archivo>.html`. Es lo que evita que Google cuente como
    duplicadas las dos formas de llegar a la misma página que habilita el
@@ -187,13 +197,47 @@ El sitio no tiene build, así que estas cuatro cosas no se actualizan solas:
    **Una página nueva sin canonical es una página duplicada.**
 3. **Precios en el JSON-LD de `index.html`** — el bloque `SoftwareApplication` repite los
    4 precios de la sección `#pricing`. Si cambia un plan, hay que cambiarlo en los dos lados.
+   Y hay un **tercer** lugar fuera de este repo: `flowpos-cloud/apps/api/src/lib/plans.ts`,
+   que es la fuente única de los precios y la que alimenta al **portal del cliente**.
+   La web estática NO la consume. Un precio cambia en los tres o el cliente ve dos
+   números distintos según entre por la web o por su portal.
 4. **FAQ de `activacion.html`** — el bloque `FAQPage` copia palabra por palabra las 8
    preguntas y respuestas visibles. Si no coinciden exactamente, Google descarta el bloque
    entero. Al editar una respuesta, copiarla también al JSON-LD.
+   ⚠️ Y una respuesta envejece **sin que nada falle**: en octubre de 2026 el FAQ todavía
+   decía que el Profesional respondía en 24 h (el código da 4), que había que pedir por
+   WhatsApp la reasignación de la licencia al cambiar de PC (hoy la licencia sigue a la
+   cuenta) y que internet se usaba en dos momentos (son tres desde la copia en la nube).
+   **Al tocar una función, revisar si la responde alguna de estas 8 preguntas.**
 
 La imagen de compartir (WhatsApp/Facebook) es `assets/images/og-image.png`, 1200×630.
 Se regenera desde la raíz del repo con `python tools/generar-og-image.py` (necesita Pillow).
 Si cambia la marca o el eslogan, editar ese script y volver a correrlo.
+
+### Medicion (GA4, Google Ads, Meta Pixel)
+
+`js/tracking.js` is loaded on **all six pages** and is **inert until you paste the
+IDs** at the top of the file (`ga4`, `googleAds`, `conversiones`, `metaPixel`).
+With them empty it loads nothing and sends nothing, so the site is safe to publish
+as is.
+
+Conversion events are already wired by delegation — no per-button markup:
+
+| Event (GA4) | Meta | Fires on |
+|---|---|---|
+| `descarga_iniciada` | `Lead` | `flowpos:descarga` from `main.js`, and direct GitHub release links |
+| `contacto_whatsapp` | `Contact` | any `wa.me/` link; the preset message identifies the plan |
+| `click_portal` | — | any link to `app.flowpos.com.py` |
+
+- The download's temporary link carries `data-notrack` so the click is not
+  double-counted alongside the `flowpos:descarga` event.
+- Events use `transport_type: 'beacon'` so they survive the navigation that a
+  WhatsApp link triggers.
+- `privacidad.html` exists because Meta and Google require it. **If you add
+  another tool, add its domains to the CSP in BOTH `nginx.conf` and
+  `netlify.toml`** or the browser blocks it silently.
+- The full measurement plan (what to create, in what order, and what to watch)
+  is in `docs/plan-de-medicion.md`.
 
 ### Links to the Client Portal
 
@@ -222,7 +266,8 @@ FlowPOS releases follow this pattern:
 
 Update in multiple locations:
 - **WhatsApp**: Search/replace `595986708565` across all HTML files
-- **Email**: `soporte@flowpos.com` (footer, meta tags)
+- **Email**: `soporte@flowpos.com.py` (footer, JSON-LD `Organization`, privacidad).
+  ⚠️ Es `.com.py`. Este documento decía `soporte@flowpos.com`, que no es el del sitio.
 
 ## Common Maintenance Tasks
 
@@ -241,10 +286,26 @@ git push
 
 ### Updating Pricing Plans
 
-Edit `index.html` → Search for `id="pricing"` section
-- Plans: Trial, Standard, Premium, Enterprise
-- Prices in Guaraníes (Gs)
-- WhatsApp links pre-populated with plan name
+Los planes se llaman, de cara al cliente: **Gratuito, Inicio, Profesional y Total**
+(internamente `free`, `standard`, `premium`, `enterprise`; `trial` es la prueba de 7
+días, no se vende). Un cambio de precio o de contenido toca **cuatro** lugares:
+
+1. `index.html` → sección `id="pricing"` (las 4 tarjetas, con el link de WhatsApp
+   que ya trae el nombre del plan en el mensaje).
+2. `index.html` → el JSON-LD `SoftwareApplication` (repite los 4 precios).
+3. `planes.html` → la tabla comparativa y la fila "Precio anual" del final.
+4. **Otro repo**: `flowpos-cloud/apps/api/src/lib/plans.ts` — fuente única de los
+   precios, la consume el portal por `GET /api/plans`. Cambiarla exige **redeploy
+   manual de la API** (está a propósito fuera del auto-deploy, ver
+   `flowpos-cloud/DEPLOY.md`).
+
+⚠️ Y lo que un plan **incluye** tiene una quinta fuente, que manda sobre todas:
+`flowpos/src/shared/types/license.ts` (`LICENSE_FEATURES`) es lo que el programa de
+verdad habilita. Antes de escribir una fila nueva en `planes.html`, mirar ahí qué
+tier tiene el flag. Dos reglas que ya se violaron y costaron caro:
+**Profesional = Total para UNA computadora** (lo único que los separa son las cajas
+en red), y **ningún plan incluye presencia física** — la web anunció "capacitación
+presencial" y "visita" en planes que nunca la tuvieron.
 
 ### Checking Release Sync Status
 
@@ -269,9 +330,15 @@ gh release view --repo avaldezdev/flowpos-releases
 ### Assets & Images
 
 **Directory**: `assets/images/`
-- Currently mostly empty (placeholders using Lucide icons)
-- To add logo: Place at `assets/images/logo.png` and update HTML `<img>` tags
-- Screenshots: `assets/images/screenshots/`
+- `og-image.png` (1200x630) - share image, regenerated with `tools/generar-og-image.py`
+- `capturas/` - **real product screenshots**, WebP in three widths (683/1024/1366),
+  light and dark, for: ventas, ventas-grilla, caja, inventario, informes,
+  facturacion, clientes. The originals live in `capturas/originales/`.
+  They are used by `index.html` (hero fallback + the "Asi se ve por dentro"
+  gallery + the offline section) and declared in `sitemap.xml` as image entries.
+- The brand mark is `isotipo.svg` at the repo root (favicon + JSON-LD logo).
+- ⚠️ This section used to say the folder was "mostly empty" with Lucide
+  placeholders. It has not been true since the screenshots landed.
 
 **No releases.json file**: Previously tracked in README, but doesn't exist in actual codebase. Version info is in `js/config.js` instead.
 
@@ -306,9 +373,18 @@ From commit history:
 - AOS: `https://unpkg.com/aos@2.3.1/dist/aos.css` + JS
 
 **CSP Whitelist** (in `nginx.conf`, mirrored in `netlify.toml`):
-- script-src: cdn.tailwindcss.com, unpkg.com
+- script-src: cdn.tailwindcss.com, unpkg.com, **googletagmanager.com,
+  google-analytics.com, connect.facebook.net**
 - style-src: unpkg.com
-- connect-src: api.github.com
+- connect-src: api.github.com, **api.flowpos.com.py** (session check for the
+  "Mi cuenta" button), googletagmanager.com, google-analytics.com,
+  analytics.google.com, stats.g.doubleclick.net, google.com,
+  td.doubleclick.net, connect.facebook.net, facebook.com
+- frame-src: td.doubleclick.net, googletagmanager.com, facebook.com
+
+⚠️ The ad and analytics domains are already whitelisted **in both files**. Without
+them the pixels fail silently — the page looks fine and nothing is ever measured,
+which is the worst possible failure for a paid campaign.
 
 ## Important Notes
 

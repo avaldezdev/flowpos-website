@@ -135,7 +135,10 @@
 #   to = "/index.html"
 #   status = 200
 
-# Custom 404 page (optional - create 404.html if needed)
+# Página 404 propia: `404.html` YA EXISTE en la raíz del repo (2026-10-19).
+# Netlify la sirve solo por estar ahí, así que esta regla no hace falta y queda
+# comentada a propósito — descomentarla no agrega nada.
+# El host oficial es nginx (`nginx.conf`), que sí necesita su `error_page 404 /404.html`.
 # [[redirects]]
 #   from = "/*"
 #   to = "/404.html"
