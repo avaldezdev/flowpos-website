@@ -3,10 +3,19 @@
 Cómo saber **cuánta gente llega al sitio, de dónde viene y qué hace** — para el
 tráfico que llega solo (Google) y para el que se paga (Google Ads, Meta Ads).
 
-> **Estado al 2026-10-19:** todo el trabajo de código **ya está hecho**. Lo que
-> falta son cuentas que hay que crear con tu usuario, y pegar cuatro códigos en
-> un archivo. Mientras esos códigos estén vacíos, el sitio **no envía ni un dato**
-> a Google ni a Meta, y se puede publicar así sin problema.
+> ## Estado al 2026-10-21
+>
+> | | |
+> |---|---|
+> | **Google Analytics 4** | ✅ **Andando.** Propiedad `flowpos.com.py`, ID de medición `G-TB865NGFSX`, puesto en `js/tracking.js`. Verificado contra el sitio en vivo: el navegador pide `google-analytics.com/g/collect` con ese `tid` y `en=page_view`, y los eventos se ven en Tiempo real. |
+> | **Search Console ↔ Analytics** | ✅ **Vinculados.** Propiedad de dominio `flowpos.com.py` + flujo "Sitio público". ⚠️ Falta **publicar la colección** en la Biblioteca o los informes no aparecen (ver §3, paso 3). |
+> | **Eventos clave (conversiones)** | ⏳ **Pendiente: marcar la ⭐ de `descarga_iniciada` y `contacto_whatsapp`.** No se puede hacer antes: la lista de Administrar → Eventos → "Eventos recientes" se arma con datos **procesados** y GA4 avisa que tarda **hasta 24 h**. No es un fallo y no se pierde nada esperando — pero **marcar la estrella NO es retroactivo**, así que cuanto antes se haga, antes empiezan a contarse. |
+> | **Google Ads** | ⬜ Vacío a propósito. Se enciende pegando su ID cuando haya campaña. |
+> | **Meta Pixel** | ⬜ Vacío a propósito. Ídem. |
+>
+> ⚠️ Hay **2 eventos falsos** en los datos del 2026-10-21 (una `descarga_iniciada`
+> y un `contacto_whatsapp`) disparados a propósito contra el sitio real para
+> comprobar el cableado de punta a punta. Son de ese día nomás.
 
 ---
 
@@ -48,7 +57,7 @@ contestar "¿qué plan es el que más consultan?".
 
 ## 3. Qué hacer, en orden
 
-### Paso 1 — Google Analytics 4 · ~10 minutos · **hacelo ya**
+### Paso 1 — Google Analytics 4 · ~10 minutos · ✅ HECHO (2026-10-21)
 
 Es el único de la lista que **no recupera nada hacia atrás**.
 
@@ -72,31 +81,52 @@ Es el único de la lista que **no recupera nada hacia atrás**.
 **Cómo saber que anda:** entrá a Analytics → *Informes* → *Tiempo real*, y abrí
 flowpos.com.py en el celular. Te tenés que ver a vos mismo en menos de un minuto.
 
-### Paso 2 — Unir Analytics con Search Console · ~3 minutos
+### Paso 2 — Unir Analytics con Search Console · ~3 minutos · ✅ HECHO
 
 Search Console ya está verificado y sabe **qué escribe la gente en Google** para
 encontrarte. Analytics sabe **qué hacen una vez que entran**. Por separado cada
 uno cuenta media historia.
 
-En Analytics → *Administrar* → *Vinculaciones de Search Console* → vincular la
-propiedad `flowpos.com.py`.
+En Analytics → *Administrar* → columna izquierda, abajo de todo →
+*Vinculaciones con otros productos* → *Enlaces de Search Console* → vincular la
+propiedad de dominio `flowpos.com.py` con el flujo *Sitio público*.
 
-Después de esto podés contestar: *"la gente que buscó «sistema de facturación
-Paraguay», ¿descargó o se fue?"*.
+### Paso 3 — Publicar la colección de Search Console · ~1 minuto
 
-### Paso 3 — Marcar las conversiones en Analytics · ~5 minutos
+⚠️ **Vincular no alcanza, y esto no lo avisa nadie.** Con la vinculación hecha,
+los informes de Search Console **siguen sin aparecer** en el menú de Informes:
+vienen como una colección *sin publicar* en la Biblioteca.
 
-Un evento es cualquier cosa que pasa. Una **conversión** es la que te importa.
+*Informes* → bajar hasta **Biblioteca** (al fondo del menú izquierdo) → buscar la
+tarjeta **"Search Console"** → menú ⋮ → **Publicar**.
 
-En Analytics → *Administrar* → *Eventos*, esperá a que aparezcan (tardan hasta
-24 h en listarse) y marcá como conversión:
+Recién ahí aparece *Informes → Search Console*, con las dos pantallas que
+importan: **Consultas** (qué escribe la gente para llegar) y **Páginas de
+destino de Google Orgánico** (a qué página caen).
+
+### Paso 4 — Marcar los eventos clave (conversiones) · ~2 minutos
+
+Un evento es cualquier cosa que pasa. Un **evento clave** es el que te importa.
+
+*Administrar* → *Visualización de datos* → *Eventos* → pestaña **"Eventos
+recientes"** → clic en la **⭐** de:
 
 - `descarga_iniciada`
 - `contacto_whatsapp`
 
-`click_portal` **no** la marques: es un cliente que ya tenés, no uno nuevo.
+`click_portal` **no** se marca: es un cliente que ya tenés, no uno nuevo.
 
-### Paso 4 — Google Ads · solo cuando vayas a pagar publicidad
+⚠️ **Tres trampas de esta pantalla:**
+
+1. **Los eventos tardan hasta 24 h en aparecer en esa lista**, aunque ya se vean
+   en Tiempo real. Se arma con datos procesados. No hay forma de apurarlo.
+2. ❌ **El botón "+ Crear evento" NO es esto.** Crea un evento *derivado de otro*
+   — viene con `page_view` precargado como disparador, así que si lo confirmás te
+   deja una "conversión" que se cuenta en cada vista de página. Números inflados,
+   y nada avisa.
+3. **Marcar la estrella no es retroactivo.** Lo anterior a la marca no se cuenta.
+
+### Paso 5 — Google Ads · solo cuando vayas a pagar publicidad
 
 1. Creá la cuenta en [ads.google.com](https://ads.google.com) con la misma
    cuenta de Google.
@@ -118,7 +148,7 @@ En Analytics → *Administrar* → *Eventos*, esperá a que aparezcan (tardan ha
    }
    ```
 
-### Paso 5 — Meta (Facebook / Instagram) · solo si vas a anunciar ahí
+### Paso 6 — Meta (Facebook / Instagram) · solo si vas a anunciar ahí
 
 1. [business.facebook.com](https://business.facebook.com) → *Administrador de
    eventos* → **Crear píxel**.
