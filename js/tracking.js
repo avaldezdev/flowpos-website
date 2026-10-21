@@ -13,7 +13,7 @@
 
 window.FLOWPOS_TRACKING = {
   // Google Analytics 4 — formato G-XXXXXXXXXX
-  ga4: '',
+  ga4: 'G-TB865NGFSX',
 
   // Google Ads — formato AW-123456789
   googleAds: '',
