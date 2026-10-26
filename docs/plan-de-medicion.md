@@ -9,7 +9,7 @@ tráfico que llega solo (Google) y para el que se paga (Google Ads, Meta Ads).
 > |---|---|
 > | **Google Analytics 4** | ✅ **Andando.** Propiedad `flowpos.com.py`, ID de medición `G-TB865NGFSX`, puesto en `js/tracking.js`. Verificado contra el sitio en vivo: el navegador pide `google-analytics.com/g/collect` con ese `tid` y `en=page_view`, y los eventos se ven en Tiempo real. |
 > | **Search Console ↔ Analytics** | ✅ **Vinculados.** Propiedad de dominio `flowpos.com.py` + flujo "Sitio público". ⚠️ Falta **publicar la colección** en la Biblioteca o los informes no aparecen (ver §3, paso 3). |
-> | **Eventos clave (conversiones)** | ⏳ **Pendiente: marcar la ⭐ de `descarga_iniciada` y `contacto_whatsapp`.** No se puede hacer antes: la lista de Administrar → Eventos → "Eventos recientes" se arma con datos **procesados** y GA4 avisa que tarda **hasta 24 h**. No es un fallo y no se pierde nada esperando — pero **marcar la estrella NO es retroactivo**, así que cuanto antes se haga, antes empiezan a contarse. |
+> | **Eventos clave (conversiones)** | ✅ **Marcados el 2026-10-25**: `descarga_iniciada` y `contacto_whatsapp`. Tardaron 4 días en poder marcarse porque la lista de Administrar → Eventos → "Eventos recientes" se arma con datos **procesados**. ⚠️ **No es retroactivo**: lo anterior al 25 de octubre no cuenta como conversión. (`purchase` figura ahí como evento clave: lo crea GA4 solo, no tiene datos y es inofensivo.) |
 > | **Google Ads** | ⬜ Vacío a propósito. Se enciende pegando su ID cuando haya campaña. |
 > | **Meta Pixel** | ⬜ Vacío a propósito. Ídem. |
 >
@@ -104,7 +104,14 @@ Recién ahí aparece *Informes → Search Console*, con las dos pantallas que
 importan: **Consultas** (qué escribe la gente para llegar) y **Páginas de
 destino de Google Orgánico** (a qué página caen).
 
-### Paso 4 — Marcar los eventos clave (conversiones) · ~2 minutos
+### Paso 4 — Marcar los eventos clave (conversiones) · ~2 minutos · ✅ HECHO (2026-10-25)
+
+> ⚠️ **La estrella NO hace falta para saber cuántas descargas hubo.** Ese número
+> ya está en *Informes → Ver la interacción y la retención → Eventos*, fila
+> `descarga_iniciada`, y se cuenta desde el día 1. Lo que la estrella agrega es
+> el **contexto**: la tasa de conversión, qué canal trae las descargas, y la
+> posibilidad de optimizar una campaña de Google Ads. Vale la pena aclararlo
+> porque es la confusión natural: "marcar" suena a "empezar a contar".
 
 Un evento es cualquier cosa que pasa. Un **evento clave** es el que te importa.
 
