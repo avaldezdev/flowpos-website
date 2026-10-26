@@ -10,6 +10,7 @@ tráfico que llega solo (Google) y para el que se paga (Google Ads, Meta Ads).
 > | **Google Analytics 4** | ✅ **Andando.** Propiedad `flowpos.com.py`, ID de medición `G-TB865NGFSX`, puesto en `js/tracking.js`. Verificado contra el sitio en vivo: el navegador pide `google-analytics.com/g/collect` con ese `tid` y `en=page_view`, y los eventos se ven en Tiempo real. |
 > | **Search Console ↔ Analytics** | ✅ **Vinculados.** Propiedad de dominio `flowpos.com.py` + flujo "Sitio público". ⚠️ Falta **publicar la colección** en la Biblioteca o los informes no aparecen (ver §3, paso 3). |
 > | **Eventos clave (conversiones)** | ✅ **Marcados el 2026-10-25**: `descarga_iniciada` y `contacto_whatsapp`. Tardaron 4 días en poder marcarse porque la lista de Administrar → Eventos → "Eventos recientes" se arma con datos **procesados**. ⚠️ **No es retroactivo**: lo anterior al 25 de octubre no cuenta como conversión. (`purchase` figura ahí como evento clave: lo crea GA4 solo, no tiene datos y es inofensivo.) |
+> | **Filtro de tráfico interno** | ✅ **Activo desde el 2026-10-25.** Regla "Oficina FlowPOS" en el flujo de datos (IP de la oficina en notación CIDR `/32`) + el filtro `Internal Traffic` pasado de **Prueba** a **Activo** — en Prueba no excluye nada, sólo etiqueta. Verificado en vivo: la página manda `tt=internal` desde esa conexión. ⚠️ **Si el proveedor te cambia la IP, el filtro deja de funcionar sin avisar.** Ver §4.1. |
 > | **Google Ads** | ⬜ Vacío a propósito. Se enciende pegando su ID cuando haya campaña. |
 > | **Meta Pixel** | ⬜ Vacío a propósito. Ídem. |
 >
@@ -132,6 +133,37 @@ recientes"** → clic en la **⭐** de:
    deja una "conversión" que se cuenta en cada vista de página. Números inflados,
    y nada avisa.
 3. **Marcar la estrella no es retroactivo.** Lo anterior a la marca no se cuenta.
+
+### Paso 4.1 — Filtrar tu propia conexión · ✅ HECHO (2026-10-25)
+
+Con 15 visitas al mes, **las tuyas propias son una parte enorme del total**. Cada
+vez que entrás a mirar el sitio te contabas como visita.
+
+Son **dos pasos**, y hacer sólo el primero no sirve de nada:
+
+1. *Administrar → Flujos de datos → Sitio público → Configurar ajustes de
+   etiquetas → Mostrar más → **Definir tráfico interno*** → Crear una regla con
+   la IP. (Se puede poner la IP sola en notación CIDR: `1.2.3.4/32` es "esta
+   sola dirección".) Esto **sólo etiqueta** el tráfico con `traffic_type=internal`.
+2. *Administrar → **Filtros de datos*** → el filtro `Internal Traffic` viene en
+   estado **Prueba**, que **no excluye nada**. Hay que pasarlo a **Activo** desde
+   el menú ⋮.
+
+⚠️ **Tres cosas que conviene saber:**
+
+- **No es retroactivo y la activación no se deshace**: los datos excluidos
+  mientras el filtro está activo no vuelven. Sí se puede volver a poner en Prueba
+  de ahí en adelante.
+- **La IP de una conexión común CAMBIA.** El día que el proveedor te dé otra, el
+  filtro deja de excluirte **en silencio**. Si ves que las visitas suben sin
+  motivo, revisá la IP en `api.ipify.org` y actualizá la regla.
+- **Sólo cubre esa conexión.** Desde el celular con datos móviles, o desde otra
+  oficina, tus visitas se siguen contando.
+
+**Cómo comprobar que funciona** (Google pide hacerlo y es un minuto): abrí el
+sitio desde esa conexión y mirá en la consola del navegador que el pedido a
+`google-analytics.com/g/collect` lleve `tt=internal`. Si no lo lleva, la regla no
+está matcheando la IP.
 
 ### Paso 5 — Google Ads · solo cuando vayas a pagar publicidad
 
