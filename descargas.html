@@ -302,8 +302,8 @@
                     <div class="bg-white p-8 rounded-xl shadow-md border-l-4 border-blue-600">
                         <div class="flex justify-between items-start mb-4">
                             <div>
-                                <h3 class="text-2xl font-semibold text-gray-800">v3.8.1</h3>
-                                <p class="text-gray-600">Octubre 2026</p>
+                                <h3 class="text-2xl font-semibold text-gray-800">v3.9.0</h3>
+                                <p class="text-gray-600">Noviembre 2026</p>
                             </div>
                             <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">Actual</span>
                         </div>
@@ -316,11 +316,55 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Entrás al sistema sin buscarte en una lista.</strong> La pantalla de inicio te muestra al centro al último usuario que entró en esa computadora, con el teclado del PIN ahí mismo: tipeás los cuatro dígitos y adentro. Los demás quedan en una columna al costado, a un toque, así que la pantalla no se llena aunque tengas veinte usuarios cargados.</span>
+                            <span>Recetas: cargá de qué está hecho un producto elaborado y FlowPOS calcula su costo de verdad, en vez de un número escrito a mano que envejece solo.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-green-600 mt-1">•</span>
-                            <span><strong>Buscador en Configuración.</strong> Configuración juntó 25 tarjetas y encontrar la correcta era scrollear arriba y abajo. Ahora al entrar escribís lo que necesitás y quedan sólo las que coinciden, buscando por la palabra que tenés en la cabeza y no por el título: "timbrado" te lleva a Facturación Fiscal, "wifi" a Cajas en red, "térmica" a Impresión y "fiado" a Crédito y cobranzas. Con las flechas recorrés, con Enter abrís, y no hace falta escribir los acentos.</span>
+                            <span>El costo de un elaborado se mantiene al día solo: si sube el jamón, sube el costo del mixto, y queda la línea en el historial de costos.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Con el costo real cargado, el tablero muestra por fin la ganancia verdadera: el costo de lo vendido, la utilidad, el punto de equilibrio y el margen dejan de mostrar un número inventado.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Vender un kit puede descontar sus componentes del depósito. Se prende receta por receta, recién cuando comparaste el consumo con un conteo real.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Lo que se devuelve y no se puede desarmar —un sandwich ya hecho— va a merma: el stock queda exacto y la pérdida aparece valorizada en el reporte de pérdidas de Inventario.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Producir: cargá una tanda —50 panes, una olla de salsa— y FlowPOS saca los insumos del depósito, suma el stock del elaborado y calcula lo que costó, con su documento y sus líneas.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Unidades de medida con equivalencia: el sistema ya sabe que un kilo son mil gramos, así que en una receta escribís «40 g» y se guarda en la unidad del producto, sin que tengas que convertir nada a mano.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Rol Vendedor: el puesto de quien atiende y arma el pedido pero no toca plata. Antes había que darle rol Caja, que además lo deja cobrar y abrir y cerrar la caja.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>La venta ahora se acuerda de quién vendió, además de quién cobró: se puede saber de quién es la comisión aunque el pedido lo cobre la caja.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>El vendedor puede ver sus propias ventas, sin ver las de los demás.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Cobrar y vender dejaron de ser el mismo permiso: ya se puede tener un cajero que cobre lo que armaron otros y que no venda.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>Cada persona puede elegir la impresora de su propia computadora, sin esperar que un administrador se siente en esa caja.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-green-600 mt-1">•</span>
+                            <span>En modo balcón, los pedidos tienen sus propios filtros y su columna de estado, y el lector de tarjetas de comanda funciona desde el buscador.</span>
                         </li>
                             </ul>
                         </div>
@@ -332,15 +376,35 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Atender en el balcón es un toque menos.</strong> Al cargar un pedido ya no se abre un paso intermedio cuando no tiene nada que preguntarte: si no usás mesas, comensales ni mozo, el pedido se crea derecho. Donde ese paso sí hace falta, ahora Enter confirma, y el botón de cargar muestra su tecla F2.</span>
+                            <span>El tablero ya no esconde la utilidad por productos a medio cargar que nadie vendió: para el costo sólo cuentan los que se vendieron en el período.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>El número de comanda se lee de lejos y el aviso de comanda ocupada no se pasa por alto.</strong> El número pasa a ser lo más grande de la franja, y cuando esa comanda ya tiene un pedido abierto la franja entera se tiñe y dice la consecuencia en letra grande: lo que cargues se suma a ese pedido. Además ahora ves la nota que ese pedido ya tiene, así no la escribís de nuevo.</span>
+                            <span>Una instalación nueva cobra con efectivo, tarjeta y transferencia sin configurar nada: las cuentas y el destino de cada cobro se crean solos.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-blue-600 mt-1">•</span>
-                            <span><strong>Las barras de desplazamiento se ven igual en todo el sistema</strong>, finas y redondeadas, en lugar de la barra gris del navegador que aparecía en la mayoría de las pantallas.</span>
+                            <span>El primer arranque en red se lee: las pantallas de «¿es la primera caja?» y «conectar al equipo principal» crecieron, y la lista de equipos encontrados dice de qué negocio es cada uno.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>Configuración → Roles muestra sólo las casillas que de verdad gobiernan algo, y las que quedaron se aplican: antes se podía destildar «puede vender» y el administrador seguía vendiendo.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>En Pedidos, cuando no hay nada que mostrar la pantalla dice qué fecha estás mirando, así no parece que el pedido se perdió.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>El panel de filtros se cierra cuando ya no queda nada que elegir, en vez de quedar tapando la tabla.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>La pantalla de Ventas describe lo que cada persona tiene delante, en vez de un título fijo que a muchos no les correspondía.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-blue-600 mt-1">•</span>
+                            <span>El menú del costado y el recorrido con Ctrl+Tab salen de una sola lista: lo que está en uno está en el otro.</span>
                         </li>
                             </ul>
                         </div>
@@ -352,15 +416,47 @@
                             <ul class="space-y-1 text-gray-700 ml-6">
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>La nota del pedido ya no se pierde.</strong> Lo que escribías en "Nota del pedido" podía quedarse en la pantalla sin llegar al pedido. Ahora llega siempre, y cuando le sumás una ronda a una comanda ocupada la nota se agrega a la que ya había en vez de reemplazarla: lo anotado en la primera vuelta queda.</span>
+                            <span>Una migración que corría en CADA arranque podía borrar todos los pedidos si algo le fallaba.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>En una caja en red la pantalla de inicio avisa que está cargando los usuarios</strong> mientras los pide a la computadora principal, en lugar de mostrar por un instante que no hay ninguno.</span>
+                            <span>Editar la ficha de un producto revertía el stock que se había vendido mientras la ficha estaba abierta, sin dejar ningún rastro.</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <span class="text-orange-600 mt-1">•</span>
-                            <span><strong>El teclado numérico del PIN ya no se queda con las teclas</strong> cuando abrís "Conectar esta caja" desde la pantalla de inicio: lo que tipeás va al campo del formulario.</span>
+                            <span>Editar la ficha también revertía el costo promedio de una compra recibida en el medio, y lo anotaba en el historial como una «corrección manual» que nadie hizo.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Un pedido de balcón confirmado por error quedaba invisible e incobrable con la comanda ocupada: se retiró ese botón y los pedidos que habían quedado varados se reparan solos.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>La tabla del equipo principal no se enteraba de una ronda cargada desde el celular del mozo: había que salir del módulo y volver a entrar.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Con los libros en dólares, el despiece guardaba los costos redondeados a número entero —un corte de 12,50 quedaba en 13— y los centavos no dejaban rastro en el historial.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Crear, editar y borrar usuarios no pedía ningún permiso: desde una caja en red lo podía hacer cualquiera.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Dar de baja una caja era imposible porque faltaba el botón, aunque todo lo demás estaba hecho.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>Un usuario Vendedor no podía entrar a Ventas y el menú se lo ofrecía igual: hacía clic y no pasaba nada.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>«Mi equipo» aparecía dos veces en el menú.</span>
+                        </li>
+                        <li class="flex items-start space-x-2">
+                            <span class="text-orange-600 mt-1">•</span>
+                            <span>En las pantallas con pestañas, la tabla arrastraba la página entera y su barra horizontal quedaba fuera de la pantalla: no había forma de llegar a las últimas columnas.</span>
                         </li>
                             </ul>
                         </div>
@@ -376,6 +472,20 @@
                         </summary>
                         <div class="p-6 pt-0 space-y-6 border-t">
                             <!-- FLOWPOS:RELEASE:HISTORY:START -->
+                            <div class="border-l-4 border-gray-300 pl-4">
+                                <h3 class="text-lg font-semibold text-gray-800">v3.8.1</h3>
+                                <p class="text-sm text-gray-600 mb-2">Octubre 2026</p>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                        <li>• Entrás al sistema sin buscarte en una lista. La pantalla de inicio te muestra al centro al último usuario que entró en esa computadora, con el teclado del PIN ahí mismo: tipeás los cuatro dígitos y adentro. Los demás quedan en una columna al costado, a un toque, así que la pantalla no se llena aunque tengas veinte usuarios cargados.</li>
+                        <li>• Buscador en Configuración. Configuración juntó 25 tarjetas y encontrar la correcta era scrollear arriba y abajo. Ahora al entrar escribís lo que necesitás y quedan sólo las que coinciden, buscando por la palabra que tenés en la cabeza y no por el título: "timbrado" te lleva a Facturación Fiscal, "wifi" a Cajas en red, "térmica" a Impresión y "fiado" a Crédito y cobranzas. Con las flechas recorrés, con Enter abrís, y no hace falta escribir los acentos.</li>
+                        <li>• Atender en el balcón es un toque menos. Al cargar un pedido ya no se abre un paso intermedio cuando no tiene nada que preguntarte: si no usás mesas, comensales ni mozo, el pedido se crea derecho. Donde ese paso sí hace falta, ahora Enter confirma, y el botón de cargar muestra su tecla F2.</li>
+                        <li>• El número de comanda se lee de lejos y el aviso de comanda ocupada no se pasa por alto. El número pasa a ser lo más grande de la franja, y cuando esa comanda ya tiene un pedido abierto la franja entera se tiñe y dice la consecuencia en letra grande: lo que cargues se suma a ese pedido. Además ahora ves la nota que ese pedido ya tiene, así no la escribís de nuevo.</li>
+                        <li>• Las barras de desplazamiento se ven igual en todo el sistema, finas y redondeadas, en lugar de la barra gris del navegador que aparecía en la mayoría de las pantallas.</li>
+                        <li>• La nota del pedido ya no se pierde. Lo que escribías en "Nota del pedido" podía quedarse en la pantalla sin llegar al pedido. Ahora llega siempre, y cuando le sumás una ronda a una comanda ocupada la nota se agrega a la que ya había en vez de reemplazarla: lo anotado en la primera vuelta queda.</li>
+                        <li>• En una caja en red la pantalla de inicio avisa que está cargando los usuarios mientras los pide a la computadora principal, en lugar de mostrar por un instante que no hay ninguno.</li>
+                        <li>• El teclado numérico del PIN ya no se queda con las teclas cuando abrís "Conectar esta caja" desde la pantalla de inicio: lo que tipeás va al campo del formulario.</li>
+                                </ul>
+                            </div>
                             <div class="border-l-4 border-gray-300 pl-4">
                                 <h3 class="text-lg font-semibold text-gray-800">v3.8.0</h3>
                                 <p class="text-sm text-gray-600 mb-2">Octubre 2026</p>
